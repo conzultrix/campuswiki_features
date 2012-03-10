@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Code for the CampusWiki feature.
+ */
+
+include_once('campuswiki.features.inc');
+
+/**
+ * Implementation of hook_ctools_plugin_directory().
+ *
+ */
+function campuswiki_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'panels' && $plugin_type == 'layouts') {
+    return "plugins/$plugin_type";
+  }
+}
