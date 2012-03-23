@@ -1,2 +1,72 @@
 <?php
   include_once('campuswiki_departments.features.inc');
+
+/**
+ * Implements hook_block_info().
+ *
+ */
+function campuswiki_departments_block_info() {
+  $blocks['department_info'] = array(
+    'info' => t('Department info'),
+    'cache' => DRUPAL_NO_CACHE,
+    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function campuswiki_departments_block_view($delta = '') {
+  // create an empty block.
+  $block = array(
+    'subject' => '',
+    'content' => '',
+  );
+  
+  // check which block is being requested.
+  if ($delta == 'department_info') {
+    $term = menu_get_object('taxonomy_term', 2);
+    dpm($term);
+    $block['subject'] = t('Department info');
+    //$block['content'] = '<div>' . $term->tid . '</div>';
+    
+    // add the department image if found
+    if (!empty($term->field_dept_photo)) {
+      $item = $term->field_dept_photo['und'][0];
+
+      $block['content']['image'] = array(
+        '#theme' => 'image_formatter',
+        '#item' => $item,
+        '#image_style' => 'sidebar',
+      );
+    }
+    
+    // display the faculty this department belongs to
+    if (!empty($term->field_faculty)) {
+      $faculty_id = $term->field_faculty['und'][0]['tid'];
+      
+      // locad the faculty object to retrive the term name by id
+      $faculty = taxonomy_term_load($faculty_id);
+            
+      $value = array('@faculty' => $faculty->name);
+      $title = t('Faculty of @faculty', $value);
+      $block['content']['faculty'] = array(
+        '#prefix' => '<div class = "faculty-link">',
+        '#suffix' => '</div>',
+        '#type' => 'link',
+        '#title' => $title,
+        '#href' => 'taxonomy/term/' . $faculty_id,
+        '#options' => array(
+          'attributes' => array(
+            'class' => array('faculty'),
+            'title' => t('view the Faculty of @faculty page', $value),
+          ),
+        ),
+      );
+    }
+  }
+  
+  return $block;
+}
