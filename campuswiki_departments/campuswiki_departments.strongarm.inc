@@ -21,7 +21,7 @@ function campuswiki_departments_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'spaces_preset_taxonomy';
-  $strongarm->value = 'front_page';
+  $strongarm->value = 'campuswiki_departments_basic';
   $export['spaces_preset_taxonomy'] = $strongarm;
 
   $strongarm = new stdClass;
