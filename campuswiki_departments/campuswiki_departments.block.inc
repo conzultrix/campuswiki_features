@@ -1,6 +1,7 @@
 <?php
   
   include_once('campuswiki_departments.inc');
+  include_once(drupal_get_path('module', 'campuswiki') . '/campuswiki.inc');
 
 /**
  * Implements hook_block_info().
@@ -31,6 +32,7 @@ function campuswiki_departments_block_view($delta = '') {
     $term = menu_get_object('taxonomy_term', 2);
     dpm($term);
     dpm(campuswiki_departments_department_user_count($term->tid));
+    
     
     $block['subject'] = t('Department info');
     //$block['content'] = '<div>' . $term->tid . '</div>';
@@ -69,7 +71,54 @@ function campuswiki_departments_block_view($delta = '') {
         ),
       );
     }
+    
+    // build the department menu
+    // initialise and $items array to hold the item in the menu
+    $items = array();
+    
+    // create the home link for the menu
+    $title = t('Home');
+    $items[] = array(
+      'data' => array(
+        '#type' => 'link',
+        '#title' => '<span class="first">' . $title . '</span><span class="icon second"></span>',
+        '#href' => 'taxonomy/term/' . $term->tid,
+        '#options' => array(
+          'html' => TRUE,
+          'attributes' => array(
+            'class' => array('icon-' . strtolower($title)),
+          ),
+        ),
+      ),
+    );
   }
+  
+  // create the member link
+  if (TRUE) {
+    // check if the members feature s enabled
+    $count = campuswiki_departments_department_user_count($term->tid);
+    $title = t('Members');
+    $items[] = array(
+      'data' => array(
+        '#type' => 'link',
+        '#title' => '<span class="first">' . $title . '</span><span class="count second">' . $count . '</span>',
+        '#href' => 'taxonomy/term/' . $term->tid . '/' . strtolower($title),
+        '#options' => array(
+          'html' => TRUE,
+        ),
+      ),
+    );
+  }
+  
+  
+  // add menu to block
+  $block['content']['menu'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#pre_render' => array('campuswiki_item_list_child_render'),
+  );
+  
+  //dpm(campuswiki_item_list_child_render($items));
   
   return $block;
 }
