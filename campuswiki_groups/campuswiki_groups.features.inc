@@ -22,7 +22,7 @@ function campuswiki_groups_node_info() {
     'group' => array(
       'name' => t('Group'),
       'base' => 'node_content',
-      'description' => t('A group can be public or private.'),
+      'description' => t('A group for members to coordinate, collaborate and share ideas. It can be public or private'),
       'has_title' => '1',
       'title_label' => t('Group name'),
       'help' => '',
