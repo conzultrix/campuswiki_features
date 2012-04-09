@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CampusWiki Groups feature.
+ */
+
+include_once('campuswiki_groups.features.inc');
