@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CampusWiki Wiki feature.
+ */
+
+include_once 'campuswiki_wiki.features.inc';

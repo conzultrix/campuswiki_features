@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CampusWiki Gallery feature.
+ */
+
+include_once 'campuswiki_gallery.features.inc';
