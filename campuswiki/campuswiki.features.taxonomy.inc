@@ -15,7 +15,7 @@ function campuswiki_taxonomy_default_vocabularies() {
       'description' => 'Use tags to group articles on similar topics into categories.',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '-8',
+      'weight' => '-9',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
