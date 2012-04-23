@@ -10,7 +10,7 @@
 function campuswiki_departments_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: delete terms in 4
+  // Exported permission: delete terms in 4.
   $permissions['delete terms in 4'] = array(
     'name' => 'delete terms in 4',
     'roles' => array(
@@ -19,7 +19,7 @@ function campuswiki_departments_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: edit terms in 4
+  // Exported permission: edit terms in 4.
   $permissions['edit terms in 4'] = array(
     'name' => 'edit terms in 4',
     'roles' => array(

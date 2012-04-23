@@ -10,7 +10,7 @@
 function campuswiki_departments_spaces_presets() {
   $export = array();
 
-  $spaces_presets = new stdClass;
+  $spaces_presets = new stdClass();
   $spaces_presets->disabled = FALSE; /* Edit this to true to make a default spaces_presets disabled initially */
   $spaces_presets->api_version = 3;
   $spaces_presets->name = 'campuswiki_departments_basic';
