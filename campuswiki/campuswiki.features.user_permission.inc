@@ -119,15 +119,6 @@ function campuswiki_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer advanced pane settings.
-  $permissions['administer advanced pane settings'] = array(
-    'name' => 'administer advanced pane settings',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
