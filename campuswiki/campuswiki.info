@@ -90,7 +90,6 @@ features[user_permission][] = use text format filtered_html
 features[user_permission][] = use text format full_html
 features[user_permission][] = use text format wiki
 features[user_permission][] = view own unpublished content
-features[user_permission][] = view pane admin links
 features[user_permission][] = view revisions
 features[user_permission][] = view the administration theme
 features[user_role][] = administrator

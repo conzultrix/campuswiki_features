@@ -517,15 +517,6 @@ function campuswiki_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: view pane admin links.
-  $permissions['view pane admin links'] = array(
-    'name' => 'view pane admin links',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
   // Exported permission: view revisions.
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
