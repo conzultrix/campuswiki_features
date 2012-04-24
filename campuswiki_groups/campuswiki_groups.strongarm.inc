@@ -190,5 +190,12 @@ function campuswiki_groups_strongarm() {
   $strongarm->value = 'path';
   $export['purl_method_spaces_og'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'spaces_preset_og';
+  $strongarm->value = 'og_controlled';
+  $export['spaces_preset_og'] = $strongarm;
+
   return $export;
 }

@@ -59,5 +59,6 @@ features[variable][] = node_submitted_group
 features[variable][] = nodeformsettings_group
 features[variable][] = pathauto_node_group_pattern
 features[variable][] = purl_method_spaces_og
+features[variable][] = spaces_preset_og
 spaces[types][] = site
 spaces[types][] = taxonomy
