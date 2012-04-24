@@ -31,5 +31,12 @@ function campuswiki_departments_strongarm() {
   $strongarm->value = 'campus_audience';
   $export['spaces_taxonomy_machine_name'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'space_type';
+  $strongarm->value = 'og';
+  $export['space_type'] = $strongarm;
+
   return $export;
 }

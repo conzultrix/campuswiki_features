@@ -25,6 +25,7 @@ features[taxonomy][] = campus_audience
 features[user_permission][] = delete terms in 4
 features[user_permission][] = edit terms in 4
 features[variable][] = pathauto_taxonomy_term_campus_audience_pattern
+features[variable][] = space_type
 features[variable][] = spaces_preset_taxonomy
 features[variable][] = spaces_taxonomy_machine_name
 features[views_view][] = departments
