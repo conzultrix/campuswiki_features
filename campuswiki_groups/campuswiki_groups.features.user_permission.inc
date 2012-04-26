@@ -65,15 +65,6 @@ function campuswiki_groups_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: manage group space.
-  $permissions['manage group space'] = array(
-    'name' => 'manage group space',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'spaces_og',
-  );
-
   // Exported permission: view users outside groups.
   $permissions['view users outside groups'] = array(
     'name' => 'view users outside groups',
