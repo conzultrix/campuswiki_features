@@ -86,6 +86,3 @@ features[variable][] = pathauto_node_album_pattern
 features[variable][] = pathauto_node_photo_pattern
 features[views_view][] = gallery
 features[views_view][] = photo_gallery
-spaces[types][] = site
-spaces[types][] = taxonomy
-spaces[types][] = og
