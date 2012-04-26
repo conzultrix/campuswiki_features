@@ -108,7 +108,8 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['title'] = 'Photo gallery';
   $handler->display->display_options['css_class'] = 'gallery-photo-grid';
   $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'spaces_feature';
+  $handler->display->display_options['access']['spaces_feature'] = 'campuswiki_gallery';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -286,6 +287,10 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'photo' => 'photo',
   );
+  /* Filter criterion: Spaces: Content in current space */
+  $handler->display->display_options['filters']['current']['id'] = 'current';
+  $handler->display->display_options['filters']['current']['table'] = 'spaces';
+  $handler->display->display_options['filters']['current']['field'] = 'current';
 
   /* Display: Entity content: Full gallery */
   $handler = $view->new_display('entity_view', 'Entity content: Full gallery', 'entity_view_photo_gallery');
