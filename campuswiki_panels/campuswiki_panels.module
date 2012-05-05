@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CampusWiki Panels feature.
+ */
+
+include_once 'campuswiki_panels.features.inc';
