@@ -45,14 +45,14 @@ function campuswiki_departments_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'large',
           ),
           'type' => 'image',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'taxonomy_term',
