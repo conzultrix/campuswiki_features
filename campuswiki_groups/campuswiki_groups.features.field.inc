@@ -216,7 +216,8 @@ function campuswiki_groups_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
-        'file_directory' => '',
+        'default_image' => 0,
+        'file_directory' => 'groups',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '1.5 MB',
         'max_resolution' => '1200x1200',
@@ -228,6 +229,7 @@ function campuswiki_groups_field_default_fields() {
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
