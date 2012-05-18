@@ -9,6 +9,7 @@ dependencies[] = campuswiki
 dependencies[] = campuswiki_departments
 dependencies[] = campuswiki_groups
 dependencies[] = ctools
+dependencies[] = diff
 dependencies[] = features
 dependencies[] = field_sql_storage
 dependencies[] = image
