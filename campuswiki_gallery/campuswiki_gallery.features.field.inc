@@ -236,6 +236,78 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-photo-field_campus_audience'
+  $fields['node-photo-field_campus_audience'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_campus_audience',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'campus_audience',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'photo',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_campus_audience',
+      'label' => 'Faculty/Department',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_select',
+        'weight' => '32',
+      ),
+    ),
+  );
+
   // Exported field: 'node-photo-field_photo_album'
   $fields['node-photo-field_photo_album'] = array(
     'field_config' => array(
@@ -456,8 +528,8 @@ function campuswiki_gallery_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'group_audience',
-      'label' => 'Groups audience',
-      'required' => FALSE,
+      'label' => 'Group',
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -474,9 +546,11 @@ function campuswiki_gallery_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'og',
         'settings' => array(
-          'opt_group' => 'auto',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'opt_group' => 'never',
         ),
         'type' => 'group_audience',
         'weight' => '3',
@@ -491,7 +565,6 @@ function campuswiki_gallery_field_default_fields() {
   t('Faculty/Department');
   t('Gallery');
   t('Group');
-  t('Groups audience');
   t('Photo');
 
   return $fields;

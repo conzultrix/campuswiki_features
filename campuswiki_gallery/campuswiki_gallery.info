@@ -26,6 +26,7 @@ features[features_api][] = api:1
 features[field][] = node-album-body
 features[field][] = node-album-field_campus_audience
 features[field][] = node-album-group_audience
+features[field][] = node-photo-field_campus_audience
 features[field][] = node-photo-field_photo_album
 features[field][] = node-photo-field_photo_photo
 features[field][] = node-photo-group_audience
