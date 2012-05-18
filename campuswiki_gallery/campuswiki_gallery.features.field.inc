@@ -75,7 +75,7 @@ function campuswiki_gallery_field_default_fields() {
           'maxlength_js_enforce' => 0,
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'maxlength_js_truncate_html' => 1,
-          'rows' => '20',
+          'rows' => '3',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
@@ -121,7 +121,7 @@ function campuswiki_gallery_field_default_fields() {
       'bundle' => 'album',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Select a faculty or department to target',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -139,7 +139,7 @@ function campuswiki_gallery_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_campus_audience',
-      'label' => 'Campus audience',
+      'label' => 'Faculty/Department',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -205,8 +205,8 @@ function campuswiki_gallery_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'group_audience',
-      'label' => 'Groups audience',
-      'required' => FALSE,
+      'label' => 'Group',
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -223,9 +223,11 @@ function campuswiki_gallery_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'og',
         'settings' => array(
-          'opt_group' => 'auto',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'opt_group' => 'never',
         ),
         'type' => 'group_audience',
         'weight' => '2',
@@ -485,12 +487,12 @@ function campuswiki_gallery_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Campus audience');
   t('Description');
+  t('Faculty/Department');
   t('Gallery');
+  t('Group');
   t('Groups audience');
   t('Photo');
-  t('Select a faculty or department to target');
 
   return $fields;
 }
