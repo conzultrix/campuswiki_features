@@ -387,7 +387,7 @@ function campuswiki_wiki_field_default_fields() {
   $fields['node-wiki-group_audience'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'group_audience',
@@ -432,8 +432,8 @@ function campuswiki_wiki_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'group_audience',
-      'label' => 'Groups audience',
-      'required' => FALSE,
+      'label' => 'Group',
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -450,9 +450,11 @@ function campuswiki_wiki_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'og',
         'settings' => array(
-          'opt_group' => 'auto',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'opt_group' => 'never',
         ),
         'type' => 'group_audience',
         'weight' => '31',
@@ -466,7 +468,7 @@ function campuswiki_wiki_field_default_fields() {
   t('Body');
   t('Campus audience');
   t('Enter a comma-separated list of words to describe your content.');
-  t('Groups audience');
+  t('Group');
   t('Image');
   t('Publish status');
   t('Select the faculty or department to target');
