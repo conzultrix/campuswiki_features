@@ -173,15 +173,6 @@ function campuswiki_user_default_permissions() {
     'module' => 'flag',
   );
 
-  // Exported permission: administer freelinking.
-  $permissions['administer freelinking'] = array(
-    'name' => 'administer freelinking',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'freelinking',
-  );
-
   // Exported permission: administer image styles.
   $permissions['administer image styles'] = array(
     'name' => 'administer image styles',
@@ -483,17 +474,6 @@ function campuswiki_user_default_permissions() {
     'name' => 'use text format full_html',
     'roles' => array(
       0 => 'administrator',
-    ),
-    'module' => 'filter',
-  );
-
-  // Exported permission: use text format wiki.
-  $permissions['use text format wiki'] = array(
-    'name' => 'use text format wiki',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'manager',
     ),
     'module' => 'filter',
   );
