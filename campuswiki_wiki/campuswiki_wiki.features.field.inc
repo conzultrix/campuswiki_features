@@ -124,7 +124,7 @@ function campuswiki_wiki_field_default_fields() {
       'bundle' => 'wiki',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Select the faculty or department to target',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -142,7 +142,7 @@ function campuswiki_wiki_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_campus_audience',
-      'label' => 'Campus audience',
+      'label' => 'Faculty/Department',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -466,12 +466,11 @@ function campuswiki_wiki_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Campus audience');
   t('Enter a comma-separated list of words to describe your content.');
+  t('Faculty/Department');
   t('Group');
   t('Image');
   t('Publish status');
-  t('Select the faculty or department to target');
   t('Tags');
   t('Upload an image to go with this article.');
 
