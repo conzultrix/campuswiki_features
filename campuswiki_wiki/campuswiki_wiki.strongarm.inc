@@ -13,65 +13,6 @@ function campuswiki_wiki_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'cfs_anonymoushomepage_wiki';
-  $strongarm->value = '0';
-  $export['cfs_anonymoushomepage_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cfs_anonymousmail_wiki';
-  $strongarm->value = '0';
-  $export['cfs_anonymousmail_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cfs_anonymousname_wiki';
-  $strongarm->value = '0';
-  $export['cfs_anonymousname_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cfs_author_wiki';
-  $strongarm->value = '0';
-  $export['cfs_author_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cfs_inputformat_wiki';
-  $strongarm->value = '1';
-  $export['cfs_inputformat_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cfs_title_wiki';
-  $strongarm->value = '0';
-  $export['cfs_title_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'commentformsettings_wiki';
-  $strongarm->value = array(
-    'cfs_author' => '0',
-    'cfs_newadmin' => '1',
-    'cfs_title' => '0',
-    'cfs_inputformat' => '1',
-    'cfs_submit' => 'Submit',
-    'cfs_anonymousname' => '0',
-    'cfs_anonymousmail' => '0',
-    'cfs_anonymoushomepage' => '0',
-    'cfs_comment_cancel' => '1',
-  );
-  $export['commentformsettings_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_wiki';
   $strongarm->value = '1';
   $export['comment_anonymous_wiki'] = $strongarm;
@@ -260,6 +201,41 @@ function campuswiki_wiki_strongarm() {
   $strongarm->name = 'show_preview_changes_wiki';
   $strongarm->value = 1;
   $export['show_preview_changes_wiki'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'talk_addcmnt_teaser';
+  $strongarm->value = 0;
+  $export['talk_addcmnt_teaser'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'talk_link';
+  $strongarm->value = 'Discuss';
+  $export['talk_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'talk_page';
+  $strongarm->value = 'Discuss';
+  $export['talk_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'talk_page_no_comments';
+  $strongarm->value = 1;
+  $export['talk_page_no_comments'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'talk_tab';
+  $strongarm->value = 'Discuss';
+  $export['talk_tab'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
