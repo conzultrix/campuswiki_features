@@ -266,9 +266,9 @@ function campuswiki_wiki_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'wikitools_404_type';
   $strongarm->value = array(
-    'Link to creation' => 'Link to creation',
+    'Creation form' => 'Creation form',
     'Link to search' => 0,
-    'Creation form' => 0,
+    'Link to creation' => 0,
   );
   $export['wikitools_404_type'] = $strongarm;
 
@@ -283,7 +283,7 @@ function campuswiki_wiki_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'wikitools_hijack_freelinking';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['wikitools_hijack_freelinking'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -299,8 +299,13 @@ function campuswiki_wiki_strongarm() {
   $strongarm->name = 'wikitools_node_types';
   $strongarm->value = array(
     'wiki' => 'wiki',
+    'article' => 0,
     'page' => 0,
+    'event' => 0,
     'group' => 0,
+    'photo' => 0,
+    'album' => 0,
+    'rsvp' => 0,
   );
   $export['wikitools_node_types'] = $strongarm;
 
@@ -310,12 +315,12 @@ function campuswiki_wiki_strongarm() {
   $strongarm->name = 'wikitools_options';
   $strongarm->value = array(
     'node creation' => 'node creation',
-    'node search' => 'node search',
     'unique titles' => 'unique titles',
     'move protection' => 'move protection',
-    'underscore as space' => 'underscore as space',
+    'dash as space' => 'dash as space',
+    'node search' => 0,
     'auto redirect' => 0,
-    'dash as space' => 0,
+    'underscore as space' => 0,
   );
   $export['wikitools_options'] = $strongarm;
 
