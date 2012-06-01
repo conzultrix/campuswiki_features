@@ -163,7 +163,8 @@ function campuswiki_wiki_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_wiki';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_wiki'] = $strongarm;
 
