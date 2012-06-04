@@ -76,6 +76,55 @@ function campuswiki_wiki_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_createnode_failover';
+  $strongarm->value = 'search';
+  $export['freelinking_createnode_failover'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_default';
+  $strongarm->value = 'path';
+  $export['freelinking_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_match_syntax';
+  $strongarm->value = 'double_bracket';
+  $export['freelinking_match_syntax'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_nodetitle_searchcontenttype';
+  $strongarm->value = 'wiki';
+  $export['freelinking_nodetitle_searchcontenttype'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_path_basepath';
+  $strongarm->value = 'wiki';
+  $export['freelinking_path_basepath'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_path_failover';
+  $strongarm->value = 'createnode';
+  $export['freelinking_path_failover'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'freelinking_search_failover';
+  $strongarm->value = 'error';
+  $export['freelinking_search_failover'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_wiki';
   $strongarm->value = array();
   $export['menu_options_wiki'] = $strongarm;
@@ -290,7 +339,7 @@ function campuswiki_wiki_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'wikitools_main_page_title';
-  $strongarm->value = 'Main Page';
+  $strongarm->value = 'Wiki ';
   $export['wikitools_main_page_title'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -344,6 +393,13 @@ function campuswiki_wiki_strongarm() {
   $strongarm->name = 'wikitools_subpages_handling';
   $strongarm->value = 'disabled';
   $export['wikitools_subpages_handling'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_wiki';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_wiki'] = $strongarm;
 
   return $export;
 }
