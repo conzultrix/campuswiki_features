@@ -128,7 +128,7 @@ function campuswiki_groups_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nfs_submit_group';
-  $strongarm->value = 'Create group';
+  $strongarm->value = 'Submit';
   $export['nfs_submit_group'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -146,7 +146,7 @@ function campuswiki_groups_strongarm() {
       'nfs_cancel_status' => '1',
       'nfs_cancel_behaviour' => '0',
     ),
-    'nfs_submit' => 'Create group',
+    'nfs_submit' => 'Submit',
     'nfs_hide_node_title' => '0',
     'nfs_title_create' => 'Create !node_type',
     'nfs_title_edit' => '!node_title',
