@@ -6,6 +6,7 @@ php = 5.2.4
 version = 7.x-0.1-alpha2
 project = campuswiki_events
 dependencies[] = addressfield
+dependencies[] = auto_nodetitle
 dependencies[] = calendar
 dependencies[] = campuswiki
 dependencies[] = campuswiki_departments
