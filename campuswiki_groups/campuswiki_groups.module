@@ -5,3 +5,41 @@
  */
 
 include_once('campuswiki_groups.features.inc');
+module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.block');
+
+/**
+ * Implements hook_block_info().
+ *
+ */
+function campuswiki_groups_block_info() {
+  $blocks['group_info'] = array(
+    'info' => t('Group info'),
+    'cache' => DRUPAL_NO_CACHE
+    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function campuswiki_groups_block_view($delta = '') {
+
+  $block = array();
+
+  switch ($delta) {
+    
+    case 'group_info':
+      // The info block is visible to everyone, group member or not.
+      $content = campuswiki_groups_info_block();
+      if (!empty($content)) {
+        $block['subject'] = t('Group info');
+        $block['content'] = $content;
+      }
+      break;
+
+  }
+  return $block;
+}
