@@ -1,5 +1,8 @@
 <?php
 
+module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
+
+
 /**
  * Create a group information block
  *
@@ -70,6 +73,34 @@ function campuswiki_groups_info_block() {
     );
   }
   
+  // creating Group info menu
+  // initailize the items array to hold the links
+  $items = array();
+  
+  // the home link
+  $label = t('Wall');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid,
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  $output['menu'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#prefix' => '<div id="group-menu">',
+    '#suffix' => '</div>',
+    '#pre_render' => array('campuswiki_basic_item_list_child_render'),
+  );
   
   return $output;
 }
