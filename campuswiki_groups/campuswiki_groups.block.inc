@@ -1,5 +1,9 @@
 <?php
 
+module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
+module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
+
+
 /**
  * Create a group information block
  *
@@ -17,7 +21,7 @@ function campuswiki_groups_info_block() {
     // If there is no group at this point we might be viewing
     // a private group page. In that case we still want to
     // to display this block, so try to retrieve it manually from the arg.
-    $group = groupal_get_group_by_arg();
+    $group = campuswiki_groups_get_group_by_arg();
 
     // Private groups will see the data but no link for many of the items
     // in this block.
@@ -69,6 +73,96 @@ function campuswiki_groups_info_block() {
       ),
     );
   }
+  
+  // creating Group info menu
+  // initailize the items array to hold the links
+  $items = array();
+  
+  // the home link
+  $label = t('Wall');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid,
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  
+  // Members link
+  $label = t('Members');
+  $count = campuswiki_groups_member_count($gid);
+  $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/members',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('count-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  // upcoming events
+  $label = t('Upcoming events');
+  $count = campuswiki_groups_upcoming_events_count($gid);
+  $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/events',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('count-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  // past events
+  $label = t('Past events');
+  $count = campuswiki_groups_past_events_count($gid);
+  $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/events/past',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('count-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  // events calenar
+  
+  
+  // build a list of the links
+  $output['menu'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#prefix' => '<div id="group-menu">',
+    '#suffix' => '</div>',
+    '#pre_render' => array('campuswiki_basic_item_list_child_render'),
+  );
+  
+  
   
   
   return $output;
