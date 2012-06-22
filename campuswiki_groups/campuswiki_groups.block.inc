@@ -1,7 +1,10 @@
 <?php
 
 module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
+<<<<<<< HEAD
 module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
+=======
+>>>>>>> origin/og
 
 
 /**
@@ -95,6 +98,7 @@ function campuswiki_groups_info_block() {
     ),
   );
   
+<<<<<<< HEAD
   
   // Members link
   $label = t('Members');
@@ -154,6 +158,8 @@ function campuswiki_groups_info_block() {
   
   
   // build a list of the links
+=======
+>>>>>>> origin/og
   $output['menu'] = array(
     '#theme' => 'item_list',
     '#items' => $items,
@@ -161,9 +167,12 @@ function campuswiki_groups_info_block() {
     '#suffix' => '</div>',
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
+<<<<<<< HEAD
   
   
   
+=======
+>>>>>>> origin/og
   
   return $output;
 }
