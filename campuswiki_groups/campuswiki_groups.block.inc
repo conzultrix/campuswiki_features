@@ -1,10 +1,8 @@
 <?php
 
 module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
-<<<<<<< HEAD
 module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
-=======
->>>>>>> origin/og
+
 
 
 /**
@@ -98,7 +96,6 @@ function campuswiki_groups_info_block() {
     ),
   );
   
-<<<<<<< HEAD
   
   // Members link
   $label = t('Members');
@@ -136,7 +133,7 @@ function campuswiki_groups_info_block() {
     ),
   );
   
-  // past events
+    // past events
   $label = t('Past events');
   $count = campuswiki_groups_past_events_count($gid);
   $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
@@ -144,7 +141,7 @@ function campuswiki_groups_info_block() {
     'data' => array(
       '#type' => 'link',
       '#title' => $title,
-      '#href' =>  'node/' . $group_node->nid . '/events/past',
+      '#href' =>  'node/' . $group_node->nid . '/past-events',
       '#options' => array(
         'html' => TRUE,
         'attributes' => array(
@@ -154,12 +151,61 @@ function campuswiki_groups_info_block() {
     ),
   );
   
-  // events calenar
+  // events calendar
+  $label = t('Calendar');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/calendar',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  
+  // wiki
+  $label = t('Wiki');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/wiki',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  
+  // Gallery
+  $label = t('Gallery');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/gallery',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
   
   
   // build a list of the links
-=======
->>>>>>> origin/og
   $output['menu'] = array(
     '#theme' => 'item_list',
     '#items' => $items,
@@ -167,12 +213,10 @@ function campuswiki_groups_info_block() {
     '#suffix' => '</div>',
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
-<<<<<<< HEAD
   
   
   
-=======
->>>>>>> origin/og
+
   
   return $output;
 }
