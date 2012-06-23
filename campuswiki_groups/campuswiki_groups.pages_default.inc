@@ -69,7 +69,19 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->type = 'entity_field';
     $pane->subtype = 'node:body';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'hidden',
       'formatter' => 'text_default',
@@ -95,9 +107,21 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'block';
-    $pane->subtype = 'shoutbox-shoutbox';
+    $pane->subtype = 'statuses-statuses';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'override_title' => 0,
       'override_title_text' => '',
@@ -114,11 +138,56 @@ function campuswiki_groups_default_page_manager_handlers() {
     $display->panels['left'][0] = 'new-2';
     $pane = new stdClass();
     $pane->pid = 'new-3';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'shoutbox-shoutbox';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/events',
+          ),
+          'context' => 'empty',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][1] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:group_group';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'title',
       'formatter' => 'og_group_subscribe',
@@ -138,15 +207,27 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][0] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'node_create_links';
     $pane->subtype = 'node_create_links';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'types' => array(
         'event' => 'event',
@@ -165,8 +246,8 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][1] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][1] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
