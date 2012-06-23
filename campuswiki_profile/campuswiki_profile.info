@@ -22,5 +22,6 @@ features[variable][] = field_bundle_settings_user__user
 features[variable][] = user_email_verification
 features[variable][] = user_picture_dimensions
 features[variable][] = user_picture_path
+features[variable][] = user_picture_style
 features[variable][] = user_pictures
 features[variable][] = user_register
