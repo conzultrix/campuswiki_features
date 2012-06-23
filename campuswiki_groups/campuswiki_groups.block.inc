@@ -209,13 +209,52 @@ function campuswiki_groups_info_block() {
   $output['menu'] = array(
     '#theme' => 'item_list',
     '#items' => $items,
-    '#prefix' => '<div id="group-menu">',
+    '#prefix' => '<div id="group-info-block-menu">',
     '#suffix' => '</div>',
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
   
+  // Add group Manager(s) info
+  $manager_uids = array($group_node->uid);
+  $role = og_role_load(3);
+  foreach (og_get_users_by_roles($gid, array(3)) as $item) {
+    $manager_uids[] = $item->uid;
+  }
+  $manager_uids = array_unique($manager_uids);
+  
+  $first = TRUE;
+  $header = count($manager_uids) > 1 ? t('Managers:') . '<br />': t('Manager:') . '<br />';
+  $names = array();
+  foreach ($manager_uids as $uid) {
+    $account = user_load($uid);
+    $names[] =  l($account->name, 'user/' . $account->uid);
+    if ($first) {
+      $picture = theme('user_picture', array('account' => $account));
+    }
+    $first = FALSE;
+  }
+  
+  // reset $items array
+  $items = array();
+  
+  // add Managers' names and $picture to $tiems
+  $items[] = array(
+    'data' => $header . implode(', ', $names),
+    'class' => array('group-info-manager-name'),
+  );
+  
+  $items[] = array(
+    'data' => $picture,
+    'class' => array('group-info-manager-picture'),
+  );
   
   
+  $output['manager'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#prefix' => '<div id="group-info-block-manager">',
+    '#suffix' => '</div>',
+  );
 
   
   return $output;
