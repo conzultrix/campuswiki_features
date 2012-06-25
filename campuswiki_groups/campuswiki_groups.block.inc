@@ -48,7 +48,7 @@ function campuswiki_groups_info_block() {
   }
   
   // add group fonded date
-  $output['funded'] = array(
+  $output['founded'] = array(
     '#markup' => t('Founded @date', array('@date' => format_date($group_node->created, 'custom', 'd M Y'))),
     '#prefix' => '<div class="founded">',
     '#suffix' => '</div>',
