@@ -139,8 +139,8 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-3';
     $pane->panel = 'left';
-    $pane->type = 'block';
-    $pane->subtype = 'shoutbox-shoutbox';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'campuswiki_group_members-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
@@ -148,7 +148,7 @@ function campuswiki_groups_default_page_manager_handlers() {
           'name' => 'path_visibility',
           'settings' => array(
             'visibility_setting' => '1',
-            'paths' => 'node/*/events',
+            'paths' => 'node/*/members',
           ),
           'context' => 'empty',
           'not' => FALSE,
@@ -156,6 +156,9 @@ function campuswiki_groups_default_page_manager_handlers() {
       ),
     );
     $pane->configuration = array(
+      'context' => array(
+        0 => 'relationship_og_group_from_node_1',
+      ),
       'override_title' => 0,
       'override_title_text' => '',
     );

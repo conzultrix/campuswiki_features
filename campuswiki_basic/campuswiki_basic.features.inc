@@ -86,5 +86,51 @@ function campuswiki_basic_image_default_styles() {
     ),
   );
 
+  // Exported image style: user_avatar
+  $styles['user_avatar'] = array(
+    'name' => 'user_avatar',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '50',
+          'height' => '50',
+          'upscale' => 1,
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported image style: user_avatar_32
+  $styles['user_avatar_32'] = array(
+    'name' => 'user_avatar_32',
+    'effects' => array(
+      5 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '32',
+          'height' => '32',
+          'upscale' => 1,
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
   return $styles;
 }
