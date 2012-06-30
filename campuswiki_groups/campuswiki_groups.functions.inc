@@ -1,6 +1,30 @@
 <?php
 
 /**
+ * Get the group that a node belongs to,
+ * works for either the group node itself or a group content node.
+ */
+function campuswiki_groups_get_node_group($node) {
+  if (og_is_group_type('node', $node->type)) {
+    $group = og_get_group('node', $node->nid);
+  }
+  elseif (og_is_group_content_type('node', $node->type)) {
+    $gids = og_get_entity_groups('node', $node);
+    if (!$gids) {
+      return;
+    }
+    // Get the first group.
+    $gid = reset($gids);
+    $group = og_load($gid);
+  }
+  if (empty($group)) {
+    return;
+  }
+  return $group;
+
+}
+
+/**
  * Helper function to get group information even when when we 
  * get access denied on group page, needed to collect group
  * information for private groups.

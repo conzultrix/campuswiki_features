@@ -5,3 +5,5 @@
  */
 
 include_once 'campuswiki_events.features.inc';
+module_load_include('inc', 'campuswiki_events', 'campuswiki_events');
+module_load_include('inc', 'campuswiki_events', 'campuswiki_events.theme');

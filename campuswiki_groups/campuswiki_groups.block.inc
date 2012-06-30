@@ -13,7 +13,7 @@ function campuswiki_groups_info_block() {
   $output = array();
   
   $group = og_context();
-  dpm($group);
+  //dpm($group);
   
   $is_private = FALSE;
 
@@ -37,7 +37,7 @@ function campuswiki_groups_info_block() {
   $gid = $group->gid;
 
   $group_node = node_load($group->etid);
-  dpm($group_node);
+  //dpm($group_node);
   
   if (!empty($group_node->field_group_photo)) {
     $output['image'] = array(
