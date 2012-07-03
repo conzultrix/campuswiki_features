@@ -36,7 +36,7 @@ function campuswiki_events_allow_rsvp($node = NULL) {
   }
   
   // See if the event is past already.
-  if (!cck_signup_event_is_past($node)) {
+  if ($override || !cck_signup_event_is_past($node)) {
     // See if the event is full.
     $capacity = cck_signup_get_remaining_capacity($node);
     // A NULL value means there was no capacity set.
