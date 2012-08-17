@@ -13,13 +13,13 @@ function campuswiki_basic_user_default_roles() {
   // Exported role: administrator.
   $roles['administrator'] = array(
     'name' => 'administrator',
-    'weight' => '2',
+    'weight' => '3',
   );
 
   // Exported role: manager.
   $roles['manager'] = array(
     'name' => 'manager',
-    'weight' => '3',
+    'weight' => '2',
   );
 
   return $roles;

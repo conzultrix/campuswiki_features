@@ -43,10 +43,12 @@ function campuswiki_basic_flag_default_flags() {
         0 => 2,
       ),
     ),
-    'show_on_page' => 1,
-    'show_on_teaser' => 1,
+    'weight' => 0,
     'show_on_form' => 1,
     'access_author' => '',
+    'show_on_page' => 1,
+    'show_on_teaser' => 1,
+    'show_contextual_link' => FALSE,
     'i18n' => 0,
     'module' => 'campuswiki_basic',
     'locked' => array(
@@ -63,7 +65,7 @@ function campuswiki_basic_flag_default_flags() {
 function campuswiki_basic_image_default_styles() {
   $styles = array();
 
-  // Exported image style: sidebar
+  // Exported image style: sidebar.
   $styles['sidebar'] = array(
     'name' => 'sidebar',
     'effects' => array(
@@ -86,7 +88,7 @@ function campuswiki_basic_image_default_styles() {
     ),
   );
 
-  // Exported image style: user_avatar
+  // Exported image style: user_avatar.
   $styles['user_avatar'] = array(
     'name' => 'user_avatar',
     'effects' => array(
@@ -109,7 +111,7 @@ function campuswiki_basic_image_default_styles() {
     ),
   );
 
-  // Exported image style: user_avatar_32
+  // Exported image style: user_avatar_32.
   $styles['user_avatar_32'] = array(
     'name' => 'user_avatar_32',
     'effects' => array(
