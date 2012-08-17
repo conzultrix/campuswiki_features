@@ -7,3 +7,20 @@
 include_once 'campuswiki_events.features.inc';
 module_load_include('inc', 'campuswiki_events', 'campuswiki_events');
 module_load_include('inc', 'campuswiki_events', 'campuswiki_events.theme');
+
+/**
+ * Implements hook_theme().
+ */
+function campuswiki_events_theme() {
+  return array(
+    'campuswiki_events_flipcard' => array(
+      'variables' => array('nid' => NULL),
+    ),
+    'campuswiki_events_rsvp_badge' => array(
+      'variables' => array('nid' => NULL, 'link' => NULL),
+    ),
+    'campuswiki_events_rsvp_button_simple' => array(
+      'variables' => array('nid' => NULL),
+    ),
+  );
+} 
