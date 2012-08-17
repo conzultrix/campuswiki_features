@@ -10,7 +10,7 @@
 function campuswiki_events_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-event-body'
+  // Exported field: 'node-event-body'.
   $fields['node-event-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -87,7 +88,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_campus_audience'
+  // Exported field: 'node-event-field_campus_audience'.
   $fields['node-event-field_campus_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -108,6 +109,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -137,7 +139,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '13',
         ),
       ),
       'entity_type' => 'node',
@@ -159,7 +161,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_address'
+  // Exported field: 'node-event-field_event_address'.
   $fields['node-event-field_event_address'] = array(
     'field_config' => array(
       'active' => '1',
@@ -169,6 +171,7 @@ function campuswiki_events_field_default_fields() {
       'field_name' => 'field_event_address',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'addressfield',
       'settings' => array(),
       'translatable' => '0',
@@ -241,7 +244,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_capacity'
+  // Exported field: 'node-event-field_event_capacity'.
   $fields['node-event-field_event_capacity'] = array(
     'field_config' => array(
       'active' => '1',
@@ -251,6 +254,7 @@ function campuswiki_events_field_default_fields() {
       'field_name' => 'field_event_capacity',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -278,7 +282,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '15',
         ),
       ),
       'entity_type' => 'node',
@@ -304,7 +308,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_date'
+  // Exported field: 'node-event-field_event_date'.
   $fields['node-event-field_event_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -314,10 +318,11 @@ function campuswiki_events_field_default_fields() {
       'field_name' => 'field_event_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'cache_count' => '4',
-        'cache_enabled' => 1,
+        'cache_enabled' => 0,
         'granularity' => array(
           'day' => 'day',
           'hour' => 'hour',
@@ -352,10 +357,10 @@ function campuswiki_events_field_default_fields() {
           'weight' => '2',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
-            'format_type' => 'long',
+            'format_type' => 'day_w_breaks',
             'fromto' => 'value',
             'multiple_from' => '',
             'multiple_number' => '',
@@ -395,7 +400,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_open'
+  // Exported field: 'node-event-field_event_open'.
   $fields['node-event-field_event_open'] = array(
     'field_config' => array(
       'active' => '1',
@@ -405,6 +410,7 @@ function campuswiki_events_field_default_fields() {
       'field_name' => 'field_event_open',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -430,7 +436,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '14',
         ),
       ),
       'entity_type' => 'node',
@@ -456,7 +462,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_venue'
+  // Exported field: 'node-event-field_venue'.
   $fields['node-event-field_venue'] = array(
     'field_config' => array(
       'active' => '1',
@@ -477,6 +483,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -527,7 +534,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-group_audience'
+  // Exported field: 'node-event-group_audience'.
   $fields['node-event-group_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -548,6 +555,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'gid',
         ),
       ),
+      'locked' => '0',
       'module' => 'og',
       'no_ui' => TRUE,
       'settings' => array(),
@@ -572,7 +580,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '16',
         ),
       ),
       'entity_type' => 'node',
@@ -608,7 +616,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-rsvp-field_add_a_comment'
+  // Exported field: 'node-rsvp-field_add_a_comment'.
   $fields['node-rsvp-field_add_a_comment'] = array(
     'field_config' => array(
       'active' => '1',
@@ -629,6 +637,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -678,7 +687,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-rsvp-field_campus_audience'
+  // Exported field: 'node-rsvp-field_campus_audience'.
   $fields['node-rsvp-field_campus_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -699,6 +708,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -750,7 +760,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-rsvp-field_rsvp'
+  // Exported field: 'node-rsvp-field_rsvp'.
   $fields['node-rsvp-field_rsvp'] = array(
     'field_config' => array(
       'active' => '1',
@@ -764,6 +774,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -818,7 +829,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-rsvp-field_rsvp_event'
+  // Exported field: 'node-rsvp-field_rsvp_event'.
   $fields['node-rsvp-field_rsvp_event'] = array(
     'field_config' => array(
       'active' => '1',
@@ -839,12 +850,16 @@ function campuswiki_events_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
+          'album' => 0,
+          'blog' => 0,
           'event' => 'event',
           'group' => 0,
           'page' => 0,
+          'photo' => 0,
           'rsvp' => 0,
           'wiki' => 0,
         ),
@@ -893,7 +908,7 @@ function campuswiki_events_field_default_fields() {
           'fallback' => 'select',
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'node_link' => array(
-            'destination' => 'node',
+            'destination' => 'source',
             'full' => 1,
             'hover_title' => 'RSVP for this event',
             'teaser' => 1,
@@ -906,7 +921,7 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-rsvp-group_audience'
+  // Exported field: 'node-rsvp-group_audience'.
   $fields['node-rsvp-group_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -927,6 +942,7 @@ function campuswiki_events_field_default_fields() {
           0 => 'gid',
         ),
       ),
+      'locked' => '0',
       'module' => 'og',
       'no_ui' => TRUE,
       'settings' => array(),
