@@ -14,12 +14,19 @@ function campuswiki_events_preprocess_node(&$var) {
       unset($var['content']['links']['nodereference_url']);
     }
     
-    //$var['rsvp_badge'] = theme('campuswiki_events_rsvp_badge', array('nid' => $node->nid, 'link' => $var['rsvp_link']));
     $var['rsvp_badge'] = array(
       '#theme' => 'campuswiki_events_rsvp_badge',
       '#nid' => $node->nid,
       '#link' => $var['rsvp_link'],
     );
+    
+    $var['attendee_count'] = '<div class="event-attendance">' . t('@count @action', array(
+      '@count' => campuswiki_events_attendee_count($node), 
+      '@action' => (cck_signup_event_is_past($node) ? t('attended') : t('attending')),
+    ))  . '</div>';
+    
+    $var['attendee_images'] = '<div class="attendee-images clearfix">' . implode(' ', campuswiki_events_attendees($node, 'picture')) . '</div>';
+    $var['attendee_names'] = '<div class="attendee-names">' . implode(', ', campuswiki_events_attendees($node, 'name')) . '</div>';
   }
 }
 
