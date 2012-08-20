@@ -210,6 +210,42 @@ function campuswiki_groups_default_page_manager_handlers() {
     $display->panels['left'][1] = 'new-4';
     $pane = new stdClass();
     $pane->pid = 'new-5';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'campuswiki_group_event-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/past-events',
+          ),
+          'context' => 'empty',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'relationship_og_group_from_node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['left'][2] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:group_group';
@@ -246,10 +282,10 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['right'][0] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][0] = 'new-6';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'node_create_links';
     $pane->subtype = 'node_create_links';
@@ -285,8 +321,8 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][1] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][1] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
