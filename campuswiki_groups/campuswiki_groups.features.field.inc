@@ -10,7 +10,7 @@
 function campuswiki_groups_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-group-body'
+  // Exported field: 'node-group-body'.
   $fields['node-group-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function campuswiki_groups_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -87,7 +88,7 @@ function campuswiki_groups_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-group-field_campus_audience'
+  // Exported field: 'node-group-field_campus_audience'.
   $fields['node-group-field_campus_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -108,6 +109,7 @@ function campuswiki_groups_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -159,7 +161,7 @@ function campuswiki_groups_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-group-field_group_photo'
+  // Exported field: 'node-group-field_group_photo'.
   $fields['node-group-field_group_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -180,6 +182,7 @@ function campuswiki_groups_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -239,7 +242,7 @@ function campuswiki_groups_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-group-field_group_type'
+  // Exported field: 'node-group-field_group_type'.
   $fields['node-group-field_group_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -253,6 +256,7 @@ function campuswiki_groups_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -307,7 +311,7 @@ function campuswiki_groups_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-group-group_access'
+  // Exported field: 'node-group-group_access'.
   $fields['node-group-group_access'] = array(
     'field_config' => array(
       'active' => '1',
@@ -321,6 +325,7 @@ function campuswiki_groups_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'no_ui' => TRUE,
       'settings' => array(
@@ -384,7 +389,7 @@ function campuswiki_groups_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-group-group_group'
+  // Exported field: 'node-group-group_group'.
   $fields['node-group-group_group'] = array(
     'field_config' => array(
       'active' => '1',
@@ -398,6 +403,7 @@ function campuswiki_groups_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'no_ui' => TRUE,
       'settings' => array(
