@@ -27,6 +27,16 @@ function campuswiki_events_preprocess_node(&$var) {
     
     $var['attendee_images'] = '<div class="attendee-images clearfix">' . implode(' ', campuswiki_events_attendees($node, 'picture')) . '</div>';
     $var['attendee_names'] = '<div class="attendee-names">' . implode(', ', campuswiki_events_attendees($node, 'name')) . '</div>';
+    
+    if ($count = campuswiki_events_comment_count($node)) {
+      $var['comment_count'] = '<div class="event-comment">' . t('@count @text', array(
+        '@count' => $count,
+        '@text' => $count > 1 ? 'comments' : 'comment',
+      )) . '</div>';
+    }
+    else {
+      $var['comment_count'] = NULL;
+    }
   }
 }
 

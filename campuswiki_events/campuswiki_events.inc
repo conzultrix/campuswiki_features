@@ -63,7 +63,7 @@ function campuswiki_events_attendee_count($event) {
 
   $signups = array();
   foreach ($types as $type) {
-    $field = field_info_field($signup_field);
+    $field = field_info_field($signup_field); 
     $query = new EntityFieldQuery;
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', $type)
@@ -112,3 +112,32 @@ function campuswiki_events_attendees($node, $type = 'picture', $max = 10) {
   return $attendees;
 }
 
+
+
+/**
+ * get the number of comments for an event
+ *
+ * @param object $event
+ *   Event node object.
+ *
+ */
+function campuswiki_events_comment_count($event) {
+  $signup_field = variable_get('cck_signup_field_' . $event->type, FALSE); 
+  // content type $signup_field refers to
+  $types = cck_signup_get_signup_types($signup_field);
+
+  $comments = array();
+  foreach ($types as $type) {
+    $field = field_info_field($signup_field); 
+    $query = new EntityFieldQuery;
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', $type)
+      ->fieldCondition($field, 'nid', $event->nid)
+      ->fieldCondition('field_add_a_comment', 'value', 'NULL', '!=' )
+      ->count();
+    $count = $query->execute();
+    $comments[$type] = $count;
+  }
+
+  return array_sum($comments);
+}
