@@ -23,6 +23,13 @@ function campuswiki_groups_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function campuswiki_groups_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function campuswiki_groups_node_info() {
