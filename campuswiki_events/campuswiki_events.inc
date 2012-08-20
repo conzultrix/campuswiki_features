@@ -3,7 +3,7 @@
 // module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
 
 /**
- * Check if to allow RSVP for an Event
+ * Check whether to show RSVP for an Event
  */
 function campuswiki_events_show_rsvp_link($node = NULL) {
   // if $node not provided, get one from loaded page
@@ -46,6 +46,31 @@ function campuswiki_events_show_rsvp_link($node = NULL) {
     }
   }
   
+  return FALSE;
+}
+
+/**
+ * Check if rsvp is enabled for an event
+ *
+ * @param object $event
+ *  Event node object
+ *
+ * @return bool
+ *  Returns FALSE if rsvp is not allowed
+ *  TRUE if rsvp is allowed
+ *
+ */
+function campuswiki_events_allow_rsvp($event) {
+  // Check signup status.
+  if ($check_status = variable_get('cck_signup_field_status_' . $event->type, FALSE)) {
+    // Simple status check.
+    if ($status = field_get_items('node', $event, $check_status)) {
+      $status = $status[0]['value'];
+      if ($status > 0) {
+        return TRUE;
+      }
+    }
+  }
   return FALSE;
 }
 

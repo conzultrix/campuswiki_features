@@ -20,10 +20,15 @@ function campuswiki_events_preprocess_node(&$var) {
       '#link' => $var['rsvp_link'],
     );
     
-    $var['attendee_count'] = '<div class="event-attendance">' . t('@count @action', array(
-      '@count' => campuswiki_events_attendee_count($node), 
-      '@action' => (cck_signup_event_is_past($node) ? t('attended') : t('attending')),
-    ))  . '</div>';
+    if (!campuswiki_events_allow_rsvp($node)) {
+      $var['attendee_count'] = NULL;
+    }
+    else {
+      $var['attendee_count'] = '<div class="event-attendance">' . t('@count @action', array(
+        '@count' => campuswiki_events_attendee_count($node), 
+        '@action' => (cck_signup_event_is_past($node) ? t('attended') : t('attending')),
+      ))  . '</div>';
+    }
     
     $var['attendee_images'] = '<div class="attendee-images clearfix">' . implode(' ', campuswiki_events_attendees($node, 'picture')) . '</div>';
     $var['attendee_names'] = '<div class="attendee-names">' . implode(', ', campuswiki_events_attendees($node, 'name')) . '</div>';
