@@ -45,6 +45,13 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '5',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -83,7 +90,7 @@ function campuswiki_events_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -128,6 +135,12 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => 'Select the faculty or department to target',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -156,7 +169,7 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -193,6 +206,12 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'addressfield',
@@ -239,7 +258,7 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'addressfield_standard',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -266,6 +285,12 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -303,7 +328,7 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'number',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -343,6 +368,19 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'value',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+          ),
+          'type' => 'date_default',
+          'weight' => '1',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'date',
@@ -395,7 +433,7 @@ function campuswiki_events_field_default_fields() {
           'year_range' => '-0:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -426,6 +464,12 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => 'Yes = 1, No = 0.',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -457,7 +501,91 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'number',
-        'weight' => '9',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-event-field_event_rating'.
+  $fields['node-event-field_event_rating'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_event_rating',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'fivestar',
+      'settings' => array(
+        'axis' => 'vote',
+      ),
+      'translatable' => '0',
+      'type' => 'fivestar',
+    ),
+    'field_instance' => array(
+      'bundle' => 'event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'fivestar',
+          'settings' => array(
+            'expose' => TRUE,
+            'style' => 'average',
+            'text' => 'average',
+            'widget' => array(
+              'fivestar_widget' => NULL,
+            ),
+          ),
+          'type' => 'fivestar_formatter_default',
+          'weight' => '4',
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'fivestar',
+          'settings' => array(
+            'expose' => TRUE,
+            'style' => 'average',
+            'text' => 'average',
+            'widget' => array(
+              'fivestar_widget' => NULL,
+            ),
+          ),
+          'type' => 'fivestar_formatter_default',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_event_rating',
+      'label' => 'Rating',
+      'required' => 0,
+      'settings' => array(
+        'allow_clear' => 0,
+        'stars' => '5',
+        'target' => 'none',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'fivestar',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'widget' => array(
+            'fivestar_widget' => 'default',
+          ),
+        ),
+        'type' => 'stars',
+        'weight' => '1',
       ),
     ),
   );
@@ -497,6 +625,12 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -529,7 +663,7 @@ function campuswiki_events_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -569,6 +703,12 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'og',
@@ -610,7 +750,7 @@ function campuswiki_events_field_default_fields() {
           'opt_group' => 'never',
         ),
         'type' => 'group_audience',
-        'weight' => '6',
+        'weight' => '7',
       ),
       'widget_type' => 'group_audience',
     ),
@@ -1014,6 +1154,7 @@ function campuswiki_events_field_default_fields() {
   t('Description');
   t('Event');
   t('Group');
+  t('Rating');
   t('Select the faculty or department to target');
   t('Venue');
   t('Will you attend?');

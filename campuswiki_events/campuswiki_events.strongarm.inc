@@ -181,6 +181,9 @@ function campuswiki_events_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'alternate_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -188,7 +191,7 @@ function campuswiki_events_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
