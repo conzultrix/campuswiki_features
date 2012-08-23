@@ -10,7 +10,7 @@
 function campuswiki_wiki_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Wiki
+  // Exported format: Wiki.
   $formats['wiki'] = array(
     'format' => 'wiki',
     'name' => 'Wiki',

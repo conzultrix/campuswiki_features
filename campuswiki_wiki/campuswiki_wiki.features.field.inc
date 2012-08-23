@@ -10,7 +10,7 @@
 function campuswiki_wiki_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-wiki-body'
+  // Exported field: 'node-wiki-body'.
   $fields['node-wiki-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function campuswiki_wiki_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -87,7 +88,7 @@ function campuswiki_wiki_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-wiki-field_campus_audience'
+  // Exported field: 'node-wiki-field_campus_audience'.
   $fields['node-wiki-field_campus_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -108,6 +109,7 @@ function campuswiki_wiki_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -159,7 +161,7 @@ function campuswiki_wiki_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-wiki-field_image'
+  // Exported field: 'node-wiki-field_image'.
   $fields['node-wiki-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -180,6 +182,7 @@ function campuswiki_wiki_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => '13',
@@ -243,74 +246,7 @@ function campuswiki_wiki_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-wiki-field_publish_status'
-  $fields['node-wiki-field_publish_status'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_publish_status',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'draft' => 'Draft: unpublished',
-          'publish' => 'Publish',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'wiki',
-      'default_value' => array(
-        0 => array(
-          'value' => 'draft',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '5',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_publish_status',
-      'label' => 'Publish status',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        ),
-        'type' => 'options_select',
-        'weight' => '34',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-wiki-field_tags'
+  // Exported field: 'node-wiki-field_tags'.
   $fields['node-wiki-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -331,6 +267,7 @@ function campuswiki_wiki_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -383,7 +320,7 @@ function campuswiki_wiki_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-wiki-group_audience'
+  // Exported field: 'node-wiki-group_audience'.
   $fields['node-wiki-group_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -404,6 +341,7 @@ function campuswiki_wiki_field_default_fields() {
           0 => 'gid',
         ),
       ),
+      'locked' => '0',
       'module' => 'og',
       'no_ui' => TRUE,
       'settings' => array(),
@@ -470,7 +408,6 @@ function campuswiki_wiki_field_default_fields() {
   t('Faculty/Department');
   t('Group');
   t('Image');
-  t('Publish status');
   t('Tags');
   t('Upload an image to go with this article.');
 
