@@ -5,3 +5,4 @@
  */
 
 include_once 'campuswiki_wiki.features.inc';
+module_load_include('inc', 'campuswiki_wiki', 'campuswiki_wiki.theme');
