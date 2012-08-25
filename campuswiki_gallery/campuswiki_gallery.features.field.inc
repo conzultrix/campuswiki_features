@@ -10,7 +10,7 @@
 function campuswiki_gallery_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-album-body'
+  // Exported field: 'node-album-body'.
   $fields['node-album-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -84,7 +85,7 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-album-field_campus_audience'
+  // Exported field: 'node-album-field_campus_audience'.
   $fields['node-album-field_campus_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -105,6 +106,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -156,7 +158,7 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-album-group_audience'
+  // Exported field: 'node-album-group_audience'.
   $fields['node-album-group_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -177,6 +179,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'gid',
         ),
       ),
+      'locked' => '0',
       'module' => 'og',
       'no_ui' => TRUE,
       'settings' => array(),
@@ -236,7 +239,7 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-photo-field_campus_audience'
+  // Exported field: 'node-photo-field_campus_audience'.
   $fields['node-photo-field_campus_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -257,6 +260,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -308,7 +312,7 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-photo-field_photo_album'
+  // Exported field: 'node-photo-field_photo_album'.
   $fields['node-photo-field_photo_album'] = array(
     'field_config' => array(
       'active' => '1',
@@ -329,6 +333,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -399,7 +404,7 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-photo-field_photo_photo'
+  // Exported field: 'node-photo-field_photo_photo'.
   $fields['node-photo-field_photo_photo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -420,6 +425,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -479,7 +485,7 @@ function campuswiki_gallery_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-photo-group_audience'
+  // Exported field: 'node-photo-group_audience'.
   $fields['node-photo-group_audience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -500,6 +506,7 @@ function campuswiki_gallery_field_default_fields() {
           0 => 'gid',
         ),
       ),
+      'locked' => '0',
       'module' => 'og',
       'no_ui' => TRUE,
       'settings' => array(),

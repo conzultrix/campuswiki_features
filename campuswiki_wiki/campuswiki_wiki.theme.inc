@@ -7,7 +7,6 @@ function campuswiki_wiki_preprocess_node(&$var) {
   $node = $var['node'];
   
   if ($node->type == 'wiki') {
-    dpm($var);
     if (module_exists('talk')) {
       // remove the add comment link to allow
       // only the discuss link

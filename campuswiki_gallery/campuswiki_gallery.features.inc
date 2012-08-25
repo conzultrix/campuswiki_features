@@ -27,7 +27,7 @@ function campuswiki_gallery_views_api() {
 function campuswiki_gallery_image_default_styles() {
   $styles = array();
 
-  // Exported image style: photo
+  // Exported image style: photo.
   $styles['photo'] = array(
     'name' => 'photo',
     'effects' => array(
