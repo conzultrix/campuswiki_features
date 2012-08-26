@@ -5,3 +5,5 @@
  */
 
 include_once 'campuswiki_gallery.features.inc';
+module_load_include('inc', 'campuswiki_gallery', 'campuswiki_gallery');
+module_load_include('inc', 'campuswiki_gallery', 'campuswiki_gallery.theme');
