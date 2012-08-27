@@ -25,7 +25,7 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['title'] = 'Gallery';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -68,10 +68,6 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'album' => 'album',
   );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['current']['id'] = 'current';
-  $handler->display->display_options['filters']['current']['table'] = 'spaces';
-  $handler->display->display_options['filters']['current']['field'] = 'current';
 
   /* Display: Page: gallery */
   $handler = $view->new_display('page', 'Page: gallery', 'page_gallery');
@@ -80,6 +76,40 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Gallery';
   $handler->display->display_options['menu']['name'] = 'features';
+
+  /* Display: Group gallery pane */
+  $handler = $view->new_display('panel_pane', 'Group gallery pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Field: Group (group_audience:gid) */
+  $handler->display->display_options['arguments']['group_audience_gid']['id'] = 'group_audience_gid';
+  $handler->display->display_options['arguments']['group_audience_gid']['table'] = 'field_data_group_audience';
+  $handler->display->display_options['arguments']['group_audience_gid']['field'] = 'group_audience_gid';
+  $handler->display->display_options['arguments']['group_audience_gid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['group_audience_gid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['group_audience_gid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['group_audience_gid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['group_audience_gid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['pane_title'] = 'Campuswiki group gallery ';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'group_audience_gid' => array(
+      'type' => 'context',
+      'context' => 'entity:group.gid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Field: Group (group_audience:gid)',
+    ),
+  );
   $export['gallery'] = $view;
 
   $view = new view();
