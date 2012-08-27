@@ -182,7 +182,17 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->subtype = 'gallery-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(),
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'node/*/gallery',
+          ),
+          'context' => 'empty',
+          'not' => FALSE,
+        ),
+      ),
     );
     $pane->configuration = array(
       'context' => array(
