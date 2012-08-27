@@ -145,7 +145,7 @@ function campuswiki_gallery_strongarm() {
       'display' => array(
         'photo_gallery_entity_view_photo_gallery' => array(
           'teaser' => array(
-            'weight' => '10',
+            'weight' => '16',
             'visible' => FALSE,
           ),
           'default' => array(
@@ -159,7 +159,7 @@ function campuswiki_gallery_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '10',
+            'weight' => '0',
             'visible' => TRUE,
           ),
         ),

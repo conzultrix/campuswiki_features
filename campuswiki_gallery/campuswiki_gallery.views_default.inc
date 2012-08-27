@@ -209,6 +209,52 @@ function campuswiki_gallery_views_default_views() {
   /* Display: Entity content: Album cover */
   $handler = $view->new_display('entity_view', 'Entity content: Album cover', 'entity_view_photo_gallery_cover');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Gallery (field_photo_album) */
+  $handler->display->display_options['relationships']['field_photo_album_nid']['id'] = 'field_photo_album_nid';
+  $handler->display->display_options['relationships']['field_photo_album_nid']['table'] = 'field_data_field_photo_album';
+  $handler->display->display_options['relationships']['field_photo_album_nid']['field'] = 'field_photo_album_nid';
+  $handler->display->display_options['relationships']['field_photo_album_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_photo_album_nid']['delta'] = '-1';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['relationship'] = 'field_photo_album_nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['relationship'] = 'field_photo_album_nid';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '125';
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Content: Photo */
+  $handler->display->display_options['fields']['field_photo_photo']['id'] = 'field_photo_photo';
+  $handler->display->display_options['fields']['field_photo_photo']['table'] = 'field_data_field_photo_photo';
+  $handler->display->display_options['fields']['field_photo_photo']['field'] = 'field_photo_photo';
+  $handler->display->display_options['fields']['field_photo_photo']['label'] = '';
+  $handler->display->display_options['fields']['field_photo_photo']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_photo_photo']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_photo_photo']['alter']['alt'] = '[body]';
+  $handler->display->display_options['fields']['field_photo_photo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_photo_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_photo_photo']['settings'] = array(
+    'image_style' => 'medium',
+    'image_link' => '',
+  );
   $handler->display->display_options['entity_type'] = 'node';
   $handler->display->display_options['bundles'] = array(
     0 => 'album',
