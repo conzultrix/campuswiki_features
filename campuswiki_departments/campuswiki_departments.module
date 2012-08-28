@@ -1,2 +1,42 @@
 <?php
   include_once('campuswiki_departments.features.inc');
+  module_load_include('inc', 'campuswiki_departments', 'campuswiki_departments.block');
+  
+  
+/**
+ * Implements hook_block_info().
+ *
+ */
+function campuswiki_departments_block_info() {
+  $blocks['department_info'] = array(
+    'info' => t('Department info'),
+    'cache' => DRUPAL_NO_CACHE
+    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function campuswiki_departments_block_view($delta = '') {
+
+  $block = array();
+
+  switch ($delta) {
+    
+    case 'department_info':
+      // The info block is visible to everyone.
+      $content = campuswiki_departments_info_block();
+      if (!empty($content)) {
+        $block['subject'] = t('Department info');
+        $block['content'] = $content;
+      }
+      break;
+
+  }
+  return $block;
+}
