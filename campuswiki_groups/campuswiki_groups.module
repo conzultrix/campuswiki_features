@@ -27,7 +27,7 @@ function campuswiki_groups_block_info() {
  */
 function campuswiki_groups_block_view($delta = '') {
 
-  $block = array();
+  $block = array(); 
 
   switch ($delta) {
     

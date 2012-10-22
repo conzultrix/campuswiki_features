@@ -10,7 +10,7 @@
 function campuswiki_departments_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'taxonomy_term-campus_audience-field_audience_image'
+  // Exported field: 'taxonomy_term-campus_audience-field_audience_image'.
   $fields['taxonomy_term-campus_audience-field_audience_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function campuswiki_departments_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,

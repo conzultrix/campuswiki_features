@@ -10,7 +10,7 @@
 function campuswiki_departments_views_default_views() {
   $export = array();
 
-  $view = new view;
+  $view = new view();
   $view->name = 'departments';
   $view->description = 'Listing of departments grouped by faculties';
   $view->tag = 'default';
@@ -23,6 +23,7 @@ function campuswiki_departments_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Departments';
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -39,14 +40,13 @@ function campuswiki_departments_views_default_views() {
     ),
   );
   $handler->display->display_options['style_options']['columns'] = '3';
-  $handler->display->display_options['style_options']['fill_single_line'] = 1;
   $handler->display->display_options['style_options']['summary'] = 'Listing of Departments grouped by Faculty';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Taxonomy term: Parent term */
   $handler->display->display_options['relationships']['parent']['id'] = 'parent';
   $handler->display->display_options['relationships']['parent']['table'] = 'taxonomy_term_hierarchy';
   $handler->display->display_options['relationships']['parent']['field'] = 'parent';
-  $handler->display->display_options['relationships']['parent']['required'] = 1;
+  $handler->display->display_options['relationships']['parent']['required'] = TRUE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
@@ -54,80 +54,27 @@ function campuswiki_departments_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'parent';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_type'] = 'h3';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
-  $handler->display->display_options['fields']['name']['convert_spaces'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
   /* Field: Taxonomy term: Image */
   $handler->display->display_options['fields']['field_audience_image']['id'] = 'field_audience_image';
   $handler->display->display_options['fields']['field_audience_image']['table'] = 'field_data_field_audience_image';
   $handler->display->display_options['fields']['field_audience_image']['field'] = 'field_audience_image';
-  $handler->display->display_options['fields']['field_audience_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_audience_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_audience_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_audience_image']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_audience_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_audience_image']['settings'] = array(
     'image_style' => 'medium',
     'image_link' => 'content',
   );
-  $handler->display->display_options['fields']['field_audience_image']['field_api_classes'] = 0;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
   $handler->display->display_options['fields']['name_1']['label'] = '';
-  $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['name_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['name_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['name_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['name_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['name_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['name_1']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['name_1']['link_to_taxonomy'] = 1;
-  $handler->display->display_options['fields']['name_1']['convert_spaces'] = 0;
+  $handler->display->display_options['fields']['name_1']['link_to_taxonomy'] = TRUE;
   /* Sort criterion: Taxonomy term: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
@@ -143,6 +90,7 @@ function campuswiki_departments_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'departments';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Departments';

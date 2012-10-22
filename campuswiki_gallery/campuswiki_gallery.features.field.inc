@@ -230,7 +230,7 @@ function campuswiki_gallery_field_default_fields() {
         'module' => 'og',
         'settings' => array(
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'opt_group' => 'never',
+          'opt_group' => 'auto',
         ),
         'type' => 'group_audience',
         'weight' => '2',
@@ -557,7 +557,7 @@ function campuswiki_gallery_field_default_fields() {
         'module' => 'og',
         'settings' => array(
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'opt_group' => 'never',
+          'opt_group' => 'auto',
         ),
         'type' => 'group_audience',
         'weight' => '3',

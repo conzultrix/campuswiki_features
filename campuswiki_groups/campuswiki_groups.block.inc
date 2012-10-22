@@ -115,6 +115,24 @@ function campuswiki_groups_info_block() {
     ),
   );
   
+  // wiki
+  $label = t('Wiki');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/wiki',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  
   // upcoming events
   $label = t('Upcoming events');
   $count = campuswiki_groups_upcoming_events_count($gid);
@@ -169,24 +187,7 @@ function campuswiki_groups_info_block() {
   );
   
   
-  // wiki
-  $label = t('Wiki');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
-  $items[] = array(
-    'data' => array(
-      '#type' => 'link',
-      '#title' => $title,
-      '#href' =>  'node/' . $group_node->nid . '/wiki',
-      '#options' => array(
-        'html' => TRUE,
-        'attributes' => array(
-          'class' => array('icon-' . strtolower($label)),
-        ),
-      ),
-    ),
-  );
-  
-  
+   
   // Gallery
   $label = t('Gallery');
   $title = '<span class="label">' . $label . '</span><span class="icon"></span>';

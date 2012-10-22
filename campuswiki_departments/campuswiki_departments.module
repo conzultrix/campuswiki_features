@@ -1,5 +1,7 @@
 <?php
   include_once('campuswiki_departments.features.inc');
+  module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
+  module_load_include('inc', 'campuswiki_departments', 'campuswiki_departments');
   module_load_include('inc', 'campuswiki_departments', 'campuswiki_departments.block');
   
   
