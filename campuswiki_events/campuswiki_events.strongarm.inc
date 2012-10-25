@@ -184,6 +184,12 @@ function campuswiki_events_strongarm() {
       'alternate_teaser' => array(
         'custom_settings' => TRUE,
       ),
+      'square' => array(
+        'custom_settings' => TRUE,
+      ),
+      'small_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

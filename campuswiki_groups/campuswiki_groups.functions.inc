@@ -85,3 +85,27 @@ function campuswiki_groups_past_events_count($gid) {
     ->count();
   return $query->execute();
 }
+
+
+/**
+ * Get the nid for the next event for this group
+ */
+function campuswiki_groups_next_event($gid) {
+  // Get a comparison date in the same timezone and format
+  // as the data stored in the database.
+  $now = date_now('UTC');
+  $now = $now->format(DATE_FORMAT_DATETIME);
+
+  $query = db_select('og_membership', 'og');
+  $query->condition('og.gid', $gid);
+  $query->condition('og.entity_type', 'node');
+  $query->leftJoin('node', 'n', 'n.nid = og.etid');
+  $query->condition('n.type', 'event');
+  $query->leftJoin('field_data_field_event_date', 'd', 'n.nid=d.entity_id');
+  $query->condition('d.field_event_date_value', $now, '>=');
+  $query->addField('n', 'nid');
+  $query->orderBy('d.field_event_date_value', 'asc');
+  $query->range(0, 1);
+  $result = $query->execute()->fetchField();
+  return $result;
+}

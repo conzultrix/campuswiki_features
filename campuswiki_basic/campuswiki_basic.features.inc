@@ -57,6 +57,7 @@ function campuswiki_basic_flag_default_flags() {
     'api_version' => 2,
   );
   return $flags;
+
 }
 
 /**
@@ -79,7 +80,7 @@ function campuswiki_basic_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '180',
+          'width' => '170',
           'height' => '',
           'upscale' => 0,
         ),

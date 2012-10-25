@@ -1,7 +1,7 @@
 <?php
 
-module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
-module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
+//module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
+//module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
 
 
 

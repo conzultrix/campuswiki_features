@@ -83,6 +83,12 @@ function campuswiki_groups_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'small_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

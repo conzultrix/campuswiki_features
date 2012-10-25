@@ -56,9 +56,9 @@ function campuswiki_wiki_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(
-            'trim_length' => '810',
+            'trim_length' => '600',
           ),
-          'type' => 'text_summary_or_trimmed',
+          'type' => 'text_trimmed',
           'weight' => '3',
         ),
       ),
