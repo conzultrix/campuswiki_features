@@ -19,8 +19,8 @@ function campuswiki_events_theme() {
     'campuswiki_events_rsvp_badge' => array(
       'variables' => array('nid' => NULL, 'link' => NULL),
     ),
-    'campuswiki_events_rsvp_button_simple' => array(
-      'variables' => array('nid' => NULL),
+    'campuswiki_events_rsvp_button' => array(
+      'variables' => array('nid' => NULL, 'link' => NULL),
     ),
   );
 } 

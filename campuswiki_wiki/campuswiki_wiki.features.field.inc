@@ -52,13 +52,38 @@ function campuswiki_wiki_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'square' => array(
+          'label' => 'hidden',
+          'module' => 'smart_trim',
+          'settings' => array(
+            'more_link' => '0',
+            'more_text' => 'Read more',
+            'summary_handler' => 'ignore',
+            'trim_length' => '150',
+            'trim_options' => array(
+              'text' => 0,
+            ),
+            'trim_suffix' => '...',
+            'trim_type' => 'chars',
+          ),
+          'type' => 'smart_trim_format',
+          'weight' => '3',
+        ),
         'teaser' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'smart_trim',
           'settings' => array(
+            'more_link' => '0',
+            'more_text' => 'Read more',
+            'summary_handler' => 'ignore',
             'trim_length' => '600',
+            'trim_options' => array(
+              'text' => 0,
+            ),
+            'trim_suffix' => '...',
+            'trim_type' => 'chars',
           ),
-          'type' => 'text_trimmed',
+          'type' => 'smart_trim_format',
           'weight' => '3',
         ),
       ),
@@ -135,6 +160,12 @@ function campuswiki_wiki_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '4',
         ),
+        'square' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -205,6 +236,16 @@ function campuswiki_wiki_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '0',
+        ),
+        'square' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'thumbnail',
+          ),
+          'type' => 'image',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -293,6 +334,13 @@ function campuswiki_wiki_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '2',
         ),
+        'square' => array(
+          'label' => 'inline',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -360,6 +408,12 @@ function campuswiki_wiki_field_default_fields() {
           'settings' => array(),
           'type' => 'og_list_default',
           'weight' => '3',
+        ),
+        'square' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',

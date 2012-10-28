@@ -18,6 +18,7 @@ dependencies[] = list
 dependencies[] = markdown
 dependencies[] = og
 dependencies[] = options
+dependencies[] = smart_trim
 dependencies[] = strongarm
 dependencies[] = talk
 dependencies[] = taxonomy

@@ -109,3 +109,23 @@ function campuswiki_groups_next_event($gid) {
   $result = $query->execute()->fetchField();
   return $result;
 }
+
+
+/**
+ * Get the nid for the recently modified wiki page for this group
+ */
+function campuswiki_groups_recent_wiki($gid) {
+  
+  $query = db_select('og_membership', 'og');
+  $query->condition('og.gid', $gid);
+  $query->condition('og.entity_type', 'node');
+  $query->leftJoin('node', 'n', 'n.nid = og.etid');
+  $query->condition('n.type', 'wiki');
+  $query->condition('n.status', 1, '=');
+  $query->addField('n', 'nid');
+  $query->orderBy('n.changed', 'desc');
+  $query->range(0, 1);
+  $result = $query->execute()->fetchField();
+  return $result;
+}
+

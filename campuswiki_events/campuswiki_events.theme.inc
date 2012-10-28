@@ -11,7 +11,7 @@ function campuswiki_events_preprocess_node(&$var) {
     $var['rsvp_link'] = NULL;
     if (isset($var['content']['links']['nodereference_url'])) {
       $var['rsvp_link'] = $var['content']['links']['nodereference_url'];
-      unset($var['content']['links']['nodereference_url']);
+      //unset($var['content']['links']['nodereference_url']);
     }
     
     $var['rsvp_badge'] = array(
@@ -19,6 +19,12 @@ function campuswiki_events_preprocess_node(&$var) {
       '#nid' => $node->nid,
       '#link' => $var['rsvp_link'],
     );
+    
+    $var['rsvp_button'] = array(
+      '#theme' => 'campuswiki_events_rsvp_button',
+      '#nid' => $node->nid,
+      '#link' => $var['rsvp_link'],
+    ); 
     
     if (!campuswiki_events_allow_rsvp($node)) {
       $var['attendee_count'] = NULL;
@@ -41,6 +47,17 @@ function campuswiki_events_preprocess_node(&$var) {
     }
     else {
       $var['comment_count'] = NULL;
+    }
+    
+    //format date like a mini calendar
+    $date = new DateObject($node->field_event_date[LANGUAGE_NONE][0]['value'], 'UTC');
+    date_timezone_set($date, date_default_timezone_object());
+    $var['event_calendar_day'] = theme('date_calendar_day', array('date' => $date));
+    
+    // get information about the venue of an event
+    if (!empty($node->field_venue)) {
+      $venue = $node->field_venue[LANGUAGE_NONE][0]['value'];
+      $var['venue_formatted_text'] = '<span class="event-venue-formatted">' . t('at @venue', array('@venue' => $venue));
     }
   }
 }
@@ -74,7 +91,7 @@ function theme_campuswiki_events_flipcard ($var) {
 }
 
 function theme_campuswiki_events_rsvp_badge($var) {
-  $output = "";
+  $output = '';
   $nid = $var['nid'];
   $node = node_load($nid);
   $link = $var['link'];
@@ -89,4 +106,22 @@ function theme_campuswiki_events_rsvp_badge($var) {
   $output .= '</div>';
 
   return $output;
+}
+
+function theme_campuswiki_events_rsvp_button($var) {
+  $output = '';
+  $nid = $var['nid'];
+  $node = node_load($nid);
+  $link = $var['link'];
+  
+  $output .= '<div class="rsvp-button clearfix">';
+  if (campuswiki_events_show_rsvp_link($node)) {
+    $output .= '<div class="rsvp-link">';
+    $output .= is_array($link) ? drupal_render($link) : $link;
+    $output .= '</div>';
+  }
+  $output .= '</div>';
+  
+  return $output;
+  
 }
