@@ -112,3 +112,30 @@ function campuswiki_departments_past_events_count($term) {
     ->count();
   return $query->execute();
 }
+
+/**
+ * Return the number of contents of a specific type
+ * in a department.
+ *
+ * if type is not given, returns the number of contents
+ * posted in a department
+ *
+ * @param object $term
+ *    The taxonomy $term object
+ *
+ * @param String $type
+ *    The content type to restrict the count to
+ *
+ * @return Int
+ * 
+ */
+function campuswiki_departments_content_count($term, $type = NULL) {
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node');
+  if ($type) {
+    $query->entityCondition('bundle', $type);
+  }
+  $query->fieldCondition('field_campus_audience', 'tid', $term->tid)
+    ->count();
+  return $query->execute();
+}

@@ -55,6 +55,16 @@ function campuswiki_departments_field_default_fields() {
           'type' => 'image',
           'weight' => '0',
         ),
+        'term_teaser' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'medium',
+          ),
+          'type' => 'image',
+          'weight' => '0',
+        ),
       ),
       'entity_type' => 'taxonomy_term',
       'field_name' => 'field_audience_image',
