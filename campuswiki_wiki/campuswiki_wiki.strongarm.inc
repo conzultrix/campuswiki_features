@@ -69,13 +69,6 @@ function campuswiki_wiki_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'enable_revisions_page_wiki';
-  $strongarm->value = 1;
-  $export['enable_revisions_page_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__wiki';
   $strongarm->value = array(
     'view_modes' => array(
@@ -285,20 +278,6 @@ function campuswiki_wiki_strongarm() {
   $strongarm->name = 'pathauto_node_wiki_pattern';
   $strongarm->value = 'wiki/[node:title]';
   $export['pathauto_node_wiki_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'show_diff_inline_wiki';
-  $strongarm->value = 1;
-  $export['show_diff_inline_wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'show_preview_changes_wiki';
-  $strongarm->value = 1;
-  $export['show_preview_changes_wiki'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
