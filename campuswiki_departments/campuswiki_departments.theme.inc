@@ -4,7 +4,6 @@
  * Implements hook_preprocess_taxonomy_term().
  */
 function campuswiki_departments_preprocess_taxonomy_term(&$vars) {
-  dpm($vars);
   $title = $vars['name'];
   $term = $vars['term'];
   $term_id = $vars['tid'];
