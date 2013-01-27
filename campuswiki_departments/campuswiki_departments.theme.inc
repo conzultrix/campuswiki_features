@@ -41,9 +41,25 @@ function campuswiki_departments_preprocess_taxonomy_term(&$vars) {
   }
   
   // Create 'audience formatted text' field
-  $vars['audience_formatted_text'] = '<div class="audience-formatted-text">';
-  $vars['audience_formatted_text'] .= '<h3><a href="taxonomy/term/' . $term_id . '">' . $title . '</a></h3>';
-  $vars['audience_formatted_text'] .= '<div class="audience-content"> <span>' . $group_text . ' </span><span>' . $wiki_text . ' </span><span>' . $event_text . ' </span></div>';
-  $vars['audience_formatted_text'] .= '</div>';
+  
+  $vars['audience_formatted_text'] = array(
+    '#prefix' => '<div class="audience-formatted-text">',
+    '#suffix' => '</div>',
+  );
+  
+  $vars['audience_formatted_text']['department'] = array(
+    '#prefix' => '<h3>',
+    '#suffix' => '</h3>',
+    '#type' => 'link',
+    '#title' => $title,
+    '#href' => 'taxonomy/term/' . $term_id,
+  );
+  
+  $vars['audience_formatted_text']['info'] = array(
+    '#prefix' => '<div class="audience-content"> <span>',
+    '#suffix' => '</div>',
+    '#markup' => '<span>' . $group_text . ' </span><span>' . $wiki_text . ' </span><span>' . $event_text . ' </span>',
+  );
+  
   
 }
