@@ -48,23 +48,8 @@ function _campuswiki_departments_department_member_count($term) {
  *
  */
 function campuswiki_departments_group_count($term) {
-  $children = taxonomy_get_children($term->tid, $term->vid);
-  // if term has no child we are viewing a department, return the count
-  if (empty($children)) {
-    return _campuswiki_departments_department_group_count($term);
-  }
-  else {
-    // perform group count on each of the departments
-    // since we are viewing a faculty
-    $groups = array();
-    // first add the faculty specific groups
-    $groups[$term->tid] = _campuswiki_departments_department_group_count($term);
-    // then add the groups from departments in the faculty
-    foreach ($children as $cid => $child) {
-      $groups[$cid] = _campuswiki_departments_department_group_count($child);
-    }
-    return array_sum($groups);
-  }
+  
+  return _campuswiki_departments_department_group_count($term);
 }
  
  
