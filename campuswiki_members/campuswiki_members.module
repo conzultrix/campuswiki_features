@@ -5,3 +5,24 @@
  */
 
 include_once 'campuswiki_members.features.inc';
+
+
+function campuswiki_members_preprocess_username(&$variables) {
+  // Ensure that the full user object is loaded.
+  $account = user_load($variables['account']->uid);
+
+  // See there first_name and last_name fields and add that as the name instead.
+
+  
+  if (isset($account->field_first_name[LANGUAGE_NONE][0]['safe_value']) && isset($account->field_last_name[LANGUAGE_NONE][0]['safe_value'])) {
+    $fullname = $account->field_first_name[LANGUAGE_NONE][0]['safe_value'] . " " . $account->field_last_name[LANGUAGE_NONE][0]['safe_value'];
+    
+    // Shorten the fullname when it is too long or it will break many tables.
+    if (drupal_strlen($fullname) > 20) {
+      $fullname = drupal_substr($fullname, 0, 15) .'...';
+    }
+    $variables['name'] = $fullname;
+  }
+  
+}
+

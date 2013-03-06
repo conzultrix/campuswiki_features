@@ -55,6 +55,14 @@ function campuswiki_members_views_default_views() {
   $handler->display->display_options['fields']['field_user_department']['label'] = '';
   $handler->display->display_options['fields']['field_user_department']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_department']['type'] = 'taxonomy_term_reference_plain';
+  /* Sort criterion: User: First Name (field_first_name) */
+  $handler->display->display_options['sorts']['field_first_name_value']['id'] = 'field_first_name_value';
+  $handler->display->display_options['sorts']['field_first_name_value']['table'] = 'field_data_field_first_name';
+  $handler->display->display_options['sorts']['field_first_name_value']['field'] = 'field_first_name_value';
+  /* Sort criterion: User: Last Name (field_last_name) */
+  $handler->display->display_options['sorts']['field_last_name_value']['id'] = 'field_last_name_value';
+  $handler->display->display_options['sorts']['field_last_name_value']['table'] = 'field_data_field_last_name';
+  $handler->display->display_options['sorts']['field_last_name_value']['field'] = 'field_last_name_value';
   /* Sort criterion: User: Name */
   $handler->display->display_options['sorts']['name']['id'] = 'name';
   $handler->display->display_options['sorts']['name']['table'] = 'users';
