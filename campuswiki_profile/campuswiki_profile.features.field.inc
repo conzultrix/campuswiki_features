@@ -10,7 +10,7 @@
 function campuswiki_profile_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'user-user-field_about'
+  // Exported field: 'user-user-field_about'.
   $fields['user-user-field_about'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function campuswiki_profile_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -77,7 +78,7 @@ function campuswiki_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_dob'
+  // Exported field: 'user-user-field_dob'.
   $fields['user-user-field_dob'] = array(
     'field_config' => array(
       'active' => '1',
@@ -87,6 +88,7 @@ function campuswiki_profile_field_default_fields() {
       'field_name' => 'field_dob',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'cache_count' => '4',
@@ -150,7 +152,7 @@ function campuswiki_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_first_name'
+  // Exported field: 'user-user-field_first_name'.
   $fields['user-user-field_first_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -171,6 +173,7 @@ function campuswiki_profile_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
@@ -214,7 +217,7 @@ function campuswiki_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_interest'
+  // Exported field: 'user-user-field_interest'.
   $fields['user-user-field_interest'] = array(
     'field_config' => array(
       'active' => '1',
@@ -235,6 +238,7 @@ function campuswiki_profile_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -281,7 +285,7 @@ function campuswiki_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_last_name'
+  // Exported field: 'user-user-field_last_name'.
   $fields['user-user-field_last_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -302,6 +306,7 @@ function campuswiki_profile_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
@@ -345,7 +350,7 @@ function campuswiki_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_sex'
+  // Exported field: 'user-user-field_sex'.
   $fields['user-user-field_sex'] = array(
     'field_config' => array(
       'active' => '1',
@@ -359,6 +364,7 @@ function campuswiki_profile_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -403,7 +409,7 @@ function campuswiki_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'user-user-field_user_department'
+  // Exported field: 'user-user-field_user_department'.
   $fields['user-user-field_user_department'] = array(
     'field_config' => array(
       'active' => '1',
@@ -424,6 +430,7 @@ function campuswiki_profile_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
