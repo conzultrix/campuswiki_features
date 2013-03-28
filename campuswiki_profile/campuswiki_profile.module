@@ -5,3 +5,43 @@
  */
 
 include_once 'campuswiki_profile.features.inc';
+module_load_include('inc', 'campuswiki_profile', 'campuswiki_profile.block');
+module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.functions');
+module_load_include('inc', 'campuswiki_profile', 'campuswiki_profile');
+
+/**
+ * Implements hook_block_info().
+ *
+ */
+function campuswiki_profile_block_info() {
+  $blocks['cw_user_info'] = array(
+    'info' => t('Campuswiki User Info'),
+    'cache' => DRUPAL_NO_CACHE
+    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function campuswiki_profile_block_view($delta = '') {
+
+  $block = array(); 
+
+  switch ($delta) {
+    
+    case 'cw_user_info':
+      $content = campuswiki_profile_user_info_block();
+      if (!empty($content)) {
+        $block['subject'] = t('');
+        $block['content'] = $content;
+      }
+      break;
+
+  }
+  return $block;
+}
