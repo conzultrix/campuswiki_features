@@ -5,6 +5,7 @@ function campuswiki_profile_events_count($uid) {
   $now->format(DATE_FORMAT_DATETIME);
   $field = field_info_field('field_event_date');
 
+  // count events user created
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'event')
@@ -13,4 +14,5 @@ function campuswiki_profile_events_count($uid) {
     ->fieldCondition($field, 'value', $now, '>=')
     ->count();
   return $query->execute();
+  
 }
