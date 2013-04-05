@@ -77,7 +77,6 @@ function campuswiki_departments_views_default_views() {
 
   /* Display: department group pane */
   $handler = $view->new_display('panel_pane', 'department group pane', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pane_title'] = 'Campuswiki department groups';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -98,6 +97,17 @@ function campuswiki_departments_views_default_views() {
       'label' => 'Taxonomy term: Term ID',
     ),
   );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['path'] = 'groups';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Groups';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'features';
+  $handler->display->display_options['menu']['context'] = 0;
   $export['campuswiki_department_groups'] = $view;
 
   $view = new view();
@@ -166,7 +176,6 @@ function campuswiki_departments_views_default_views() {
 
   /* Display: Wiki pane */
   $handler = $view->new_display('panel_pane', 'Wiki pane', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pane_title'] = 'Campuswiki department wiki pages';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -264,7 +273,6 @@ function campuswiki_departments_views_default_views() {
 
   /* Display: Upcoming event pane */
   $handler = $view->new_display('panel_pane', 'Upcoming event pane', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pane_title'] = 'Department upcoming events';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -288,7 +296,6 @@ function campuswiki_departments_views_default_views() {
 
   /* Display: Past event pane */
   $handler = $view->new_display('panel_pane', 'Past event pane', 'panel_pane_2');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -348,7 +355,6 @@ function campuswiki_departments_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Calendar event pane', 'panel_pane_4');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -550,7 +556,6 @@ function campuswiki_departments_views_default_views() {
   /* Display: Content pane: Faculty departments */
   $handler = $view->new_display('panel_pane', 'Content pane: Faculty departments', 'panel_pane_1');
   $handler->display->display_options['display_description'] = 'Listing of departments within a faculty section';
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['style_options']['grouping'] = array(

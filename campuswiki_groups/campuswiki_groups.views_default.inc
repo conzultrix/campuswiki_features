@@ -79,7 +79,6 @@ function campuswiki_groups_views_default_views() {
 
   /* Display: Upcoming event pane */
   $handler = $view->new_display('panel_pane', 'Upcoming event pane', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pane_title'] = 'Group upcoming events';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -103,7 +102,6 @@ function campuswiki_groups_views_default_views() {
 
   /* Display: Past event pane */
   $handler = $view->new_display('panel_pane', 'Past event pane', 'panel_pane_2');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -163,7 +161,6 @@ function campuswiki_groups_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Calendar event pane', 'panel_pane_4');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -321,7 +318,6 @@ function campuswiki_groups_views_default_views() {
 
   /* Display: Wiki pane */
   $handler = $view->new_display('panel_pane', 'Wiki pane', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pane_title'] = 'Campuswiki group wiki pages';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;

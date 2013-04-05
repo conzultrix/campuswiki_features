@@ -82,7 +82,6 @@ function campuswiki_gallery_views_default_views() {
 
   /* Display: Group gallery pane */
   $handler = $view->new_display('panel_pane', 'Group gallery pane', 'panel_pane_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Field: Group (group_audience:gid) */
   $handler->display->display_options['arguments']['group_audience_gid']['id'] = 'group_audience_gid';
@@ -116,9 +115,8 @@ function campuswiki_gallery_views_default_views() {
 
   /* Display: Department gallery pane */
   $handler = $view->new_display('panel_pane', 'Department gallery pane', 'panel_pane_2');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Faculty/Department (field_campus_audience) */
+  /* Relationship: Content: Campus audience (field_campus_audience) */
   $handler->display->display_options['relationships']['field_campus_audience_tid']['id'] = 'field_campus_audience_tid';
   $handler->display->display_options['relationships']['field_campus_audience_tid']['table'] = 'field_data_field_campus_audience';
   $handler->display->display_options['relationships']['field_campus_audience_tid']['field'] = 'field_campus_audience_tid';
@@ -274,7 +272,6 @@ function campuswiki_gallery_views_default_views() {
 
   /* Display: Entity content: Full gallery */
   $handler = $view->new_display('entity_view', 'Entity content: Full gallery', 'entity_view_photo_gallery');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['entity_type'] = 'node';
   $handler->display->display_options['bundles'] = array(
     0 => 'album',
@@ -282,7 +279,6 @@ function campuswiki_gallery_views_default_views() {
 
   /* Display: Entity content: Album cover */
   $handler = $view->new_display('entity_view', 'Entity content: Album cover', 'entity_view_photo_gallery_cover');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
