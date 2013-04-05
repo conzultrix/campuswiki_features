@@ -35,6 +35,12 @@ function campuswiki_profile_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'campuswiki_profile-cw_user_groups' => array(
+          'module' => 'campuswiki_profile',
+          'delta' => 'cw_user_groups',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

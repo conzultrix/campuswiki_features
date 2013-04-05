@@ -12,7 +12,6 @@ function campuswiki_profile_user_info_block() {
   
   $user = menu_get_object('user');
   dpm($user);
-  dpm($user->picture->uri);
   
   // get the user image
     
@@ -130,4 +129,17 @@ function campuswiki_profile_user_info_block() {
   
   
   return $output;
-} 
+}
+
+function campuswiki_profile_user_groups_block() {
+  // retrive the object of the user being viewed
+  
+  $output = array();
+  
+  $user = menu_get_object('user');
+  
+  // Get the group IDs of all the groups a user is an approved member of.
+  $gids = og_get_groups_by_user($user); dpm($gids);
+  
+  $output = $gids;
+}

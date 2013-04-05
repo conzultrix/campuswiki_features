@@ -20,6 +20,12 @@ function campuswiki_profile_block_info() {
     // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
   );
   
+  // create block to list user groups
+  $blocks['cw_user_groups'] = array(
+    'info' => t('Campuswiki User Groups'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  
   return $blocks;
 }
 
@@ -41,7 +47,14 @@ function campuswiki_profile_block_view($delta = '') {
         $block['content'] = $content;
       }
       break;
-
+    
+    case 'cw_user_groups':
+      $content = campuswiki_profile_user_groups_block();
+      if (!empty($content)) {
+        $block['subject'] = t('Groups');
+        $block['content'] = $content;
+      }
+      break;
   }
   return $block;
 }
