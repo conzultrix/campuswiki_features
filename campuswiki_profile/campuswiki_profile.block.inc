@@ -132,6 +132,7 @@ function campuswiki_profile_user_info_block() {
 }
 
 function campuswiki_profile_user_groups_block() {
+  //define('NUMBER_OF_GROUPS', 5);
   // retrive the object of the user being viewed
   
   $output = array();
@@ -140,6 +141,59 @@ function campuswiki_profile_user_groups_block() {
   
   // Get the group IDs of all the groups a user is an approved member of.
   $gids = og_get_groups_by_user($user); dpm($gids);
+  //shuffle($gids);
   
-  $output = $gids;
+  // limit the $gids array to the number of groups needed to be listed
+  // in the block
+  // may make this configurable but currently using the constant
+  // NUMBER_OF_GROUPS
+  //if (count($gids) > NUMBER_OF_GROUPS) {
+  //  $gids = array_slice($gids, 0, 5);
+  //}
+  
+  // initialise an items array to hold the list of groups
+  $items = array();
+  
+  // load the groups that the user belong to using the $gids
+  foreach ($gids as $gid) {
+    $group = og_load($gid);
+    $group_node = node_load($group->etid);
+    dpm($group_node);
+    if (!empty($group_node->field_group_photo)) {
+      $variables = array(
+        'item' => $group_node->field_group_photo[LANGUAGE_NONE][0],
+        'image_style' => 'user_avatar',
+      );
+      $image = theme('image_formatter', $variables);
+    }
+    else {
+      $image = NULL; // to be replaced by default image
+    }
+    $group_name = $group->label;
+    $items[] = '<span class="group-thumbnail">' . $image . '</span><span class="group-name">' . $group_name . '</span>';
+    
+  }
+  
+  dpm($items);
+  
+  // build a list of the links
+  $output['groups'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#prefix' => '<div id="user-groups-block">',
+    '#suffix' => '</div>',
+    //'#pre_render' => array('campuswiki_basic_item_list_child_render'),
+  );
+  
+  return $output;
+  
+}
+
+function campuswiki_profile_user_groups_count() {
+  $user = menu_get_object('user');
+  
+  // Get the group IDs of all the groups a user is an approved member of.
+  $gids = og_get_groups_by_user($user);
+  
+  return count($gids);
 }

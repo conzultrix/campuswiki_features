@@ -50,8 +50,9 @@ function campuswiki_profile_block_view($delta = '') {
     
     case 'cw_user_groups':
       $content = campuswiki_profile_user_groups_block();
+      $count = campuswiki_profile_user_groups_count();
       if (!empty($content)) {
-        $block['subject'] = t('Groups');
+        $block['subject'] = t('Groups (@count)', array('@count' => $count));
         $block['content'] = $content;
       }
       break;
