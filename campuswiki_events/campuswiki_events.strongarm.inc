@@ -27,41 +27,6 @@ function campuswiki_events_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'cck_signup_field_capacity_event';
-  $strongarm->value = 'field_event_capacity';
-  $export['cck_signup_field_capacity_event'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cck_signup_field_date_event';
-  $strongarm->value = 'field_event_date';
-  $export['cck_signup_field_date_event'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cck_signup_field_event';
-  $strongarm->value = 'field_rsvp_event';
-  $export['cck_signup_field_event'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cck_signup_field_status_event';
-  $strongarm->value = 'field_event_open';
-  $export['cck_signup_field_status_event'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cck_signup_type_event';
-  $strongarm->value = 1;
-  $export['cck_signup_type_event'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_event';
   $strongarm->value = '0';
   $export['comment_anonymous_event'] = $strongarm;
