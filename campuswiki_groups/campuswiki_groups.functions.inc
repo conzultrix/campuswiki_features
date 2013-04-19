@@ -30,13 +30,15 @@ function campuswiki_groups_get_node_group($node) {
  * information for private groups.
  */
 function campuswiki_groups_get_group_by_arg() {
-  $group = NULL;
+  $group = array();
 
   // Only implemented on 'node/%' and 'node/%/view'.
   if (arg(0) == 'node' && is_numeric(arg(1)) && (arg(2) == 'view' || count(arg()) < 3)) {
     $node = node_load(arg(1));
     if (og_is_group_type('node', $node->type)) {
-      $group = og_get_group('node', $node->nid);
+      //$group = og_get_group('node', $node->nid);
+      $group['group_type'] = 'node';
+      $group['gid'] = $node->nid;
     }
   }
   return $group;
@@ -63,7 +65,7 @@ function campuswiki_groups_upcoming_events_count($gid) {
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'event')
     ->fieldCondition($field, 'value', $now, '>=')
-    ->fieldCondition(OG_AUDIENCE_FIELD, 'gid', $gid, '=')
+    //->fieldCondition(OG_AUDIENCE_FIELD, 'gid', $gid, '=')
     ->count();
   return $query->execute();
 }

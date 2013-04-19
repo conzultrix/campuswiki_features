@@ -38,7 +38,7 @@ function campuswiki_groups_block_view($delta = '') {
       // The info block is visible to everyone, group member or not.
       $content = campuswiki_groups_info_block();
       if (!empty($content)) {
-        $block['subject'] = t('');
+        $block['subject'] = t('Group Info');
         $block['content'] = $content;
       }
       break;

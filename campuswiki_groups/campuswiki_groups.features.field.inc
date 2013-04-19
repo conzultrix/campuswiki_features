@@ -470,7 +470,9 @@ function campuswiki_groups_field_default_fields() {
         'default' => array(
           'label' => 'above',
           'module' => 'og_ui',
-          'settings' => array(),
+          'settings' => array(
+            'field_name' => FALSE,
+          ),
           'type' => 'og_group_subscribe',
           'weight' => '1',
         ),

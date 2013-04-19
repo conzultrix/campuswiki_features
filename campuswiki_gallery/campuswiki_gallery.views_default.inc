@@ -83,7 +83,7 @@ function campuswiki_gallery_views_default_views() {
   /* Display: Group gallery pane */
   $handler = $view->new_display('panel_pane', 'Group gallery pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Group (group_audience:gid) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['group_audience_gid']['id'] = 'group_audience_gid';
   $handler->display->display_options['arguments']['group_audience_gid']['table'] = 'field_data_group_audience';
   $handler->display->display_options['arguments']['group_audience_gid']['field'] = 'group_audience_gid';
@@ -116,7 +116,7 @@ function campuswiki_gallery_views_default_views() {
   /* Display: Department gallery pane */
   $handler = $view->new_display('panel_pane', 'Department gallery pane', 'panel_pane_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Campus audience (field_campus_audience) */
+  /* Relationship: Content: Faculty/Department (field_campus_audience) */
   $handler->display->display_options['relationships']['field_campus_audience_tid']['id'] = 'field_campus_audience_tid';
   $handler->display->display_options['relationships']['field_campus_audience_tid']['table'] = 'field_data_field_campus_audience';
   $handler->display->display_options['relationships']['field_campus_audience_tid']['field'] = 'field_campus_audience_tid';

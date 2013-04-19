@@ -734,72 +734,82 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-group_audience'.
-  $fields['node-event-group_audience'] = array(
+  // Exported field: 'node-event-og_group_ref'.
+  $fields['node-event-og_group_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'group_audience',
+      'field_name' => 'og_group_ref',
       'foreign keys' => array(
-        'og' => array(
+        'node' => array(
           'columns' => array(
-            'gid' => 'gid',
+            'target_id' => 'nid',
           ),
-          'table' => 'og',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'gid' => array(
-          0 => 'gid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'og',
-      'no_ui' => TRUE,
-      'settings' => array(),
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'og',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'og_behavior' => array(
+              'status' => TRUE,
+            ),
+          ),
+          'membership_type' => 'og_membership_type_default',
+          'target_bundles' => array(),
+        ),
+        'handler_submit' => 'Change handler',
+        'target_type' => 'node',
+      ),
       'translatable' => '0',
-      'type' => 'group',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'event',
       'default_value' => NULL,
-      'default_value_function' => 'og_field_audience_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'alternate_teaser' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '14',
-        ),
         'default' => array(
-          'label' => 'inline',
-          'module' => 'og',
+          'label' => 'above',
+          'module' => 'og_ui',
           'settings' => array(),
           'type' => 'og_list_default',
-          'weight' => '1',
-        ),
-        'square' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '17',
+          'weight' => 9,
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'group_audience',
-      'label' => 'Group',
-      'required' => 0,
+      'field_name' => 'og_group_ref',
+      'label' => 'Groups audience',
+      'required' => FALSE,
       'settings' => array(
+        'behaviors' => array(
+          'og_widget' => array(
+            'admin' => array(
+              'widget_type' => 'entityreference_autocomplete',
+            ),
+            'default' => array(
+              'widget_type' => 'options_select',
+            ),
+            'status' => TRUE,
+          ),
+        ),
         'user_register_form' => FALSE,
       ),
       'view modes' => array(
@@ -815,16 +825,11 @@ function campuswiki_events_field_default_fields() {
         ),
       ),
       'widget' => array(
-        'active' => 1,
         'module' => 'og',
-        'settings' => array(
-          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'opt_group' => 'never',
-        ),
-        'type' => 'group_audience',
-        'weight' => '7',
+        'settings' => array(),
+        'type' => 'og_complex',
+        'weight' => 11,
       ),
-      'widget_type' => 'group_audience',
     ),
   );
 
@@ -1133,88 +1138,6 @@ function campuswiki_events_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-rsvp-group_audience'.
-  $fields['node-rsvp-group_audience'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'group_audience',
-      'foreign keys' => array(
-        'og' => array(
-          'columns' => array(
-            'gid' => 'gid',
-          ),
-          'table' => 'og',
-        ),
-      ),
-      'indexes' => array(
-        'gid' => array(
-          0 => 'gid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'og',
-      'no_ui' => TRUE,
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'group',
-    ),
-    'field_instance' => array(
-      'bundle' => 'rsvp',
-      'default_value' => NULL,
-      'default_value_function' => 'og_field_audience_default_value',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'og',
-          'settings' => array(),
-          'type' => 'og_list_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'group_audience',
-      'label' => 'Group',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'view modes' => array(
-        'full' => array(
-          'custom settings' => FALSE,
-          'label' => 'Full',
-          'type' => 'og_list_default',
-        ),
-        'teaser' => array(
-          'custom settings' => FALSE,
-          'label' => 'Teaser',
-          'type' => 'og_list_default',
-        ),
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'og',
-        'settings' => array(
-          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'opt_group' => 'never',
-        ),
-        'type' => 'group_audience',
-        'weight' => '4',
-      ),
-      'widget_type' => 'group_audience',
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a comment');
@@ -1225,7 +1148,7 @@ function campuswiki_events_field_default_fields() {
   t('Date');
   t('Description');
   t('Event');
-  t('Group');
+  t('Groups audience');
   t('Rating');
   t('Select the faculty or department to target');
   t('Venue');

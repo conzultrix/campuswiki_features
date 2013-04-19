@@ -8,31 +8,31 @@ function campuswiki_groups_info_block() {
   $output = array();
   
   $group = og_context();
-  //dpm($group);
+  dpm($group);
   
   $is_private = FALSE;
 
   if (empty($group)) {
-
+  
     // If there is no group at this point we might be viewing
     // a private group page. In that case we still want to
     // to display this block, so try to retrieve it manually from the arg.
     $group = campuswiki_groups_get_group_by_arg();
-
+  
     // Private groups will see the data but no link for many of the items
     // in this block.
     $is_private = TRUE;
-
+  
     // Still no group? This is not a group page.
     if (empty($group)) {
       return $output;
     }
   }
   
-  $gid = $group->gid;
-
-  $group_node = node_load($group->etid);
-  //dpm($group_node);
+  $gid = $group['gid'];
+  
+  $group_node = node_load($gid);
+  dpm($group_node);
   
   if (!empty($group_node->field_group_photo)) {
     $output['image'] = array(
@@ -146,61 +146,61 @@ function campuswiki_groups_info_block() {
     ),
   );
   
-    // past events
-  $label = t('Past events');
-  $count = campuswiki_groups_past_events_count($gid);
-  $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
-  $items[] = array(
-    'data' => array(
-      '#type' => 'link',
-      '#title' => $title,
-      '#href' =>  'node/' . $group_node->nid . '/past-events',
-      '#options' => array(
-        'html' => TRUE,
-        'attributes' => array(
-          'class' => array('count-' . strtolower($label)),
-        ),
-      ),
-    ),
-  );
-  
-  // events calendar
-  $label = t('Calendar');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
-  $items[] = array(
-    'data' => array(
-      '#type' => 'link',
-      '#title' => $title,
-      '#href' =>  'node/' . $group_node->nid . '/calendar',
-      '#options' => array(
-        'html' => TRUE,
-        'attributes' => array(
-          'class' => array('icon-' . strtolower($label)),
-        ),
-      ),
-    ),
-  );
-  
-  
-   
-  // Gallery
-  $label = t('Gallery');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
-  $items[] = array(
-    'data' => array(
-      '#type' => 'link',
-      '#title' => $title,
-      '#href' =>  'node/' . $group_node->nid . '/gallery',
-      '#options' => array(
-        'html' => TRUE,
-        'attributes' => array(
-          'class' => array('icon-' . strtolower($label)),
-        ),
-      ),
-    ),
-  );
-  
-  
+  //  // past events
+  //$label = t('Past events');
+  //$count = campuswiki_groups_past_events_count($gid);
+  //$title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
+  //$items[] = array(
+  //  'data' => array(
+  //    '#type' => 'link',
+  //    '#title' => $title,
+  //    '#href' =>  'node/' . $group_node->nid . '/past-events',
+  //    '#options' => array(
+  //      'html' => TRUE,
+  //      'attributes' => array(
+  //        'class' => array('count-' . strtolower($label)),
+  //      ),
+  //    ),
+  //  ),
+  //);
+  //
+  //// events calendar
+  //$label = t('Calendar');
+  //$title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  //$items[] = array(
+  //  'data' => array(
+  //    '#type' => 'link',
+  //    '#title' => $title,
+  //    '#href' =>  'node/' . $group_node->nid . '/calendar',
+  //    '#options' => array(
+  //      'html' => TRUE,
+  //      'attributes' => array(
+  //        'class' => array('icon-' . strtolower($label)),
+  //      ),
+  //    ),
+  //  ),
+  //);
+  //
+  //
+  // 
+  //// Gallery
+  //$label = t('Gallery');
+  //$title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  //$items[] = array(
+  //  'data' => array(
+  //    '#type' => 'link',
+  //    '#title' => $title,
+  //    '#href' =>  'node/' . $group_node->nid . '/gallery',
+  //    '#options' => array(
+  //      'html' => TRUE,
+  //      'attributes' => array(
+  //        'class' => array('icon-' . strtolower($label)),
+  //      ),
+  //    ),
+  //  ),
+  //);
+  //
+  //
   // build a list of the links
   $output['menu'] = array(
     '#theme' => 'item_list',
@@ -210,48 +210,53 @@ function campuswiki_groups_info_block() {
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
   
-  // Add group Manager(s) info
-  $manager_uids = array($group_node->uid);
-  $role = og_role_load(3);
-  foreach (og_get_users_by_roles($gid, array(3)) as $item) {
-    $manager_uids[] = $item->uid;
-  }
-  $manager_uids = array_unique($manager_uids);
-  
-  $first = TRUE;
-  $header = count($manager_uids) > 1 ? t('Managers:') . '<br />': t('Manager:') . '<br />';
-  $names = array();
-  foreach ($manager_uids as $uid) {
-    $account = user_load($uid);
-    $names[] =  l($account->name, 'user/' . $account->uid);
-    if ($first) {
-      $picture = theme('user_picture', array('account' => $account));
-    }
-    $first = FALSE;
-  }
-  
-  // reset $items array
-  $items = array();
-  
-  // add Managers' names and $picture to $tiems
-  $items[] = array(
-    'data' => $header . implode(', ', $names),
-    'class' => array('group-info-manager-name'),
-  );
-  
-  $items[] = array(
-    'data' => $picture,
-    'class' => array('group-info-manager-picture'),
-  );
-  
-  
-  $output['manager'] = array(
-    '#theme' => 'item_list',
-    '#items' => $items,
-    '#prefix' => '<div id="group-info-block-manager">',
-    '#suffix' => '</div>',
-  );
-
-  
+  //// Add group Manager(s) info
+  //$manager_uids = array($group_node->uid);
+  //$role = og_role_load(3);
+  //foreach (og_get_users_by_roles($gid, array(3)) as $item) {
+  //  $manager_uids[] = $item->uid;
+  //}
+  //$manager_uids = array_unique($manager_uids);
+  //
+  //$first = TRUE;
+  //$header = count($manager_uids) > 1 ? t('Managers:') . '<br />': t('Manager:') . '<br />';
+  //$names = array();
+  //foreach ($manager_uids as $uid) {
+  //  $account = user_load($uid);
+  //  $names[] =  l($account->name, 'user/' . $account->uid);
+  //  if ($first) {
+  //    $picture = theme('user_picture', array('account' => $account));
+  //  }
+  //  $first = FALSE;
+  //}
+  //
+  //// reset $items array
+  //$items = array();
+  //
+  //// add Managers' names and $picture to $tiems
+  //$items[] = array(
+  //  'data' => $header . implode(', ', $names),
+  //  'class' => array('group-info-manager-name'),
+  //);
+  //
+  //$items[] = array(
+  //  'data' => $picture,
+  //  'class' => array('group-info-manager-picture'),
+  //);
+  //
+  //
+  //$output['manager'] = array(
+  //  '#theme' => 'item_list',
+  //  '#items' => $items,
+  //  '#prefix' => '<div id="group-info-block-manager">',
+  //  '#suffix' => '</div>',
+  //);
+  //
+  //
   return $output;
+  //return array(
+  //  '#prefix' => '<div class="dummy-content">',
+  //  '#suffix' => '</div>',
+  //  '#markup' => '<span class="dummy-span"><strong>Just Dummy Content</strong></span>',
+  //);
 }
