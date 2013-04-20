@@ -32,12 +32,15 @@ function campuswiki_events_preprocess_node(&$var) {
     else {
       $var['attendee_count'] = '<div class="event-attendance">' . t('@count @action', array(
         '@count' => campuswiki_events_attendee_count($node), 
-        '@action' => (cck_signup_event_is_past($node) ? t('attended') : t('attending')),
+        '@action' => (campuswiki_events_event_is_past($node) ? t('attended') : t('attending')),
       ))  . '</div>';
+      
     }
     
     $var['attendee_images'] = '<div class="attendee-images clearfix">' . implode(' ', campuswiki_events_attendees($node, 'picture')) . '</div>';
     $var['attendee_names'] = '<div class="attendee-names">' . implode(', ', campuswiki_events_attendees($node, 'name')) . '</div>';
+
+    
     
     if ($count = campuswiki_events_comment_count($node)) {
       $var['comment_count'] = '<div class="event-comment">' . t('@count @text', array(
@@ -67,7 +70,7 @@ function theme_campuswiki_events_flipcard ($var) {
   $output = '';
   $nid = $var['nid'];
   $node = node_load($nid);
-  $remaining = cck_signup_get_remaining_capacity($node);
+  $remaining = campuswiki_events_get_remaining_capacity($node);
   
   // Event never had capacity set
   if ($remaining === NULL) {

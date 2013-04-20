@@ -12,7 +12,11 @@ function campuswiki_events_show_rsvp_link($node = NULL) {
     $nid = $node->nid;
   }
   
- if (empty($node) || !variable_get('cck_signup_type_' . $node->type, FALSE)) {
+ //if (empty($node) || !variable_get('cck_signup_type_' . $node->type, FALSE)) {
+ //   return FALSE;
+ // }
+ 
+ if (empty($node) || ($node->type != 'event')) {
     return FALSE;
   }
   
@@ -22,26 +26,29 @@ function campuswiki_events_show_rsvp_link($node = NULL) {
     return FALSE;
   }
   
-  $override = user_access('override cck signup restrictions');
+  //$override = user_access('override cck signup restrictions');
 
   // See if signups are closed for this event.
-  if ($check_status = variable_get('cck_signup_field_status_' . $node->type, FALSE)) {
-    if ($status = field_get_items('node', $node, $check_status)) {
-     // dpm($status);
-      $status = $status[0]['value'];
-      if (($status < 1) && !$override) {
-        return FALSE;
-      }
+  // set status field
+  
+  
+  $status_field = 'field_event_open';
+  //field current takes 1 or 0, should be changed to a checkbox
+  if ($status = field_get_items('node', $node, $status_field)) {
+    // dpm($status);
+    $status = $status[0]['value'];
+    if ($status < 1)  {
+      return FALSE;
     }
   }
   
+  
   // See if the event is past already.
-  if ($override || !cck_signup_event_is_past($node)) {
+  if ($override || !campuswiki_events_event_is_past($node)) {
     // See if the event is full.
-    $capacity = cck_signup_get_remaining_capacity($node);
+    $capacity = campuswiki_events_get_remaining_capacity($node);
     // A NULL value means there was no capacity set.
-    if ($override || $capacity === NULL || $capacity > 0 || cck_signup_get_signup($node)) {
-      // TODO: SEE HOW IT WORKS WITH A GROUP
+    if ($capacity === NULL || $capacity > 0) {
       return TRUE;
     }
   }
@@ -62,15 +69,15 @@ function campuswiki_events_show_rsvp_link($node = NULL) {
  */
 function campuswiki_events_allow_rsvp($event) {
   // Check signup status.
-  if ($check_status = variable_get('cck_signup_field_status_' . $event->type, FALSE)) {
-    // Simple status check.
-    if ($status = field_get_items('node', $event, $check_status)) {
-      $status = $status[0]['value'];
-      if ($status > 0) {
-        return TRUE;
-      }
+  // Simple status check.
+  $status_field = 'field_event_open';
+  if ($status = field_get_items('node', $event, $status_field)) {
+    $status = $status[0]['value'];
+    if ($status > 0) {
+      return TRUE;
     }
   }
+
   return FALSE;
 }
 
@@ -82,23 +89,19 @@ function campuswiki_events_allow_rsvp($event) {
  *
  */
 function campuswiki_events_attendee_count($event) {
-  $signup_field = variable_get('cck_signup_field_' . $event->type, FALSE);
+  $signup_field = 'field_rsvp_event';
   // content type $signup_field refers to
-  $types = cck_signup_get_signup_types($signup_field);
+  $signup_type = 'rsvp';
 
-  $signups = array();
-  foreach ($types as $type) {
-    $field = field_info_field($signup_field); 
-    $query = new EntityFieldQuery;
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', $type)
-      ->fieldCondition($field, 'nid', $event->nid)
-      ->count();
-    $count = $query->execute();
-    $signups[$type] = $count;
-  }
+  $field = field_info_field($signup_field); 
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $signup_type)
+    ->fieldCondition($field, 'target_id', $event->nid)
+    ->count();
+    
+  return $query->execute();
 
-  return array_sum($signups);
 }
 
 /**
@@ -111,7 +114,7 @@ function _campuswiki_events_attendee_ids($event, $max) {
   // field and table names.
   $query = db_select('field_data_field_rsvp_event', 'r');
   $query->addField('n', 'uid');
-  $query->condition('field_rsvp_event_nid', $event->nid);
+  $query->condition('field_rsvp_event_target_id', $event->nid);
   $query->leftJoin('node', 'n', 'n.nid=r.entity_id');
   if (!empty($max)) {
     $query->range(0, $max);
@@ -147,22 +150,73 @@ function campuswiki_events_attendees($node, $type = 'picture', $max = 10) {
  *
  */
 function campuswiki_events_comment_count($event) {
-  $signup_field = variable_get('cck_signup_field_' . $event->type, FALSE); 
+  $signup_field = 'field_rsvp_event'; 
   // content type $signup_field refers to
-  $types = cck_signup_get_signup_types($signup_field);
+  $signup_type = 'rsvp';
 
-  $comments = array();
-  foreach ($types as $type) {
-    $field = field_info_field($signup_field); 
-    $query = new EntityFieldQuery;
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', $type)
-      ->fieldCondition($field, 'nid', $event->nid)
-      ->fieldCondition('field_add_a_comment', 'value', 'NULL', '!=' )
-      ->count();
-    $count = $query->execute();
-    $comments[$type] = $count;
+  $field = field_info_field($signup_field); 
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $signup_type)
+    ->fieldCondition($field, 'target_id', $event->nid)
+    ->fieldCondition('field_add_a_comment', 'value', 'NULL', '!=' )
+    ->count();
+    
+  return $query->execute();
+}
+
+
+/**
+ * Check if date for event is passed.
+ * 
+ * @param object $event
+ *  The Event node
+ */
+function campuswiki_events_event_is_past($event) {
+  // function is a reimplementation of cck_signup_event_is_past($node)
+  //TODO reimplement to programatically get the date field for the event
+  //rather than hard coding it
+  if (($check_date = 'field_event_date') && class_exists('DateObject')) {
+    $date = field_get_items('node', $event, $check_date);
+    $event_date = new DateObject(
+      $date[0]['value'],
+      $date[0]['timezone']
+    );
+    $now = date_now();
+    return $event_date <= $now;
   }
+  return FALSE;
 
-  return array_sum($comments);
+}
+
+/**
+ * Get the remaining capacity for an event
+ *
+ * @param object $event
+ *  The Event node
+ */
+function campuswiki_events_get_remaining_capacity($event) {
+  // reimplementation of cck_signup_get_remaining_capacity($node)
+   $capacity_field = 'field_event_capacity';
+  if (!$capacity = field_get_items('node', $event, $capacity_field)) {
+    return;
+  }
+  $capacity = $capacity[0]['value'];
+  //$signup_field = variable_get('cck_signup_field_' . $event->type, FALSE);
+  $signup_field = 'field_rsvp_event';
+  //$types = cck_signup_get_signup_types($signup_field);
+  //the node type for signups
+  $signup_type = 'rsvp';
+
+  $field = field_info_field($signup_field);
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $signup_type)
+    ->fieldCondition($field, 'nid', $event->nid)
+    ->count();
+  $count = $query->execute();
+  
+
+  return $capacity - $count;
+  
 }
