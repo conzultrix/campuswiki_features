@@ -4,6 +4,9 @@
  * Create a group information block
  *
  */
+
+module_load_include('inc', 'og', 'og.rules');
+
 function campuswiki_groups_info_block() {
   $output = array();
   
@@ -31,8 +34,7 @@ function campuswiki_groups_info_block() {
   
   $gid = $group['gid'];
   
-  $group_node = node_load($gid);
-  dpm($group_node);
+  $group_node = node_load($gid); dpm($group_node);
   
   if (!empty($group_node->field_group_photo)) {
     $output['image'] = array(
@@ -130,7 +132,7 @@ function campuswiki_groups_info_block() {
   
   // upcoming events
   $label = t('Upcoming events');
-  $count = campuswiki_groups_upcoming_events_count($gid);
+  $count = campuswiki_groups_upcoming_events_count($gid); //campuswiki_groups_upcoming_events_count2($gid);
   $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
   $items[] = array(
     'data' => array(
@@ -146,61 +148,61 @@ function campuswiki_groups_info_block() {
     ),
   );
   
-  //  // past events
-  //$label = t('Past events');
-  //$count = campuswiki_groups_past_events_count($gid);
-  //$title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
-  //$items[] = array(
-  //  'data' => array(
-  //    '#type' => 'link',
-  //    '#title' => $title,
-  //    '#href' =>  'node/' . $group_node->nid . '/past-events',
-  //    '#options' => array(
-  //      'html' => TRUE,
-  //      'attributes' => array(
-  //        'class' => array('count-' . strtolower($label)),
-  //      ),
-  //    ),
-  //  ),
-  //);
-  //
-  //// events calendar
-  //$label = t('Calendar');
-  //$title = '<span class="label">' . $label . '</span><span class="icon"></span>';
-  //$items[] = array(
-  //  'data' => array(
-  //    '#type' => 'link',
-  //    '#title' => $title,
-  //    '#href' =>  'node/' . $group_node->nid . '/calendar',
-  //    '#options' => array(
-  //      'html' => TRUE,
-  //      'attributes' => array(
-  //        'class' => array('icon-' . strtolower($label)),
-  //      ),
-  //    ),
-  //  ),
-  //);
-  //
-  //
-  // 
-  //// Gallery
-  //$label = t('Gallery');
-  //$title = '<span class="label">' . $label . '</span><span class="icon"></span>';
-  //$items[] = array(
-  //  'data' => array(
-  //    '#type' => 'link',
-  //    '#title' => $title,
-  //    '#href' =>  'node/' . $group_node->nid . '/gallery',
-  //    '#options' => array(
-  //      'html' => TRUE,
-  //      'attributes' => array(
-  //        'class' => array('icon-' . strtolower($label)),
-  //      ),
-  //    ),
-  //  ),
-  //);
-  //
-  //
+  // past events
+  $label = t('Past events');
+  $count = campuswiki_groups_past_events_count($gid);
+  $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/past-events',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('count-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  // events calendar
+  $label = t('Calendar');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/calendar',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  
+   
+  // Gallery
+  $label = t('Gallery');
+  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $items[] = array(
+    'data' => array(
+      '#type' => 'link',
+      '#title' => $title,
+      '#href' =>  'node/' . $group_node->nid . '/gallery',
+      '#options' => array(
+        'html' => TRUE,
+        'attributes' => array(
+          'class' => array('icon-' . strtolower($label)),
+        ),
+      ),
+    ),
+  );
+  
+  
   // build a list of the links
   $output['menu'] = array(
     '#theme' => 'item_list',
@@ -210,6 +212,7 @@ function campuswiki_groups_info_block() {
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
   
+  $manager = og_rules_get_managers($group_node); 
   //// Add group Manager(s) info
   //$manager_uids = array($group_node->uid);
   //$role = og_role_load(3);

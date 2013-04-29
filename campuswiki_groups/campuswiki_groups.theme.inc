@@ -6,7 +6,7 @@ function campuswiki_groups_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'group') {
+  if ($node->type == 'group') { dpm($node);
     
     // Add group information that display suite and custom node templates can use.
     if ($group = campuswiki_groups_get_node_group($node)) {

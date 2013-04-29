@@ -6,7 +6,9 @@ function campuswiki_events_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'event') {
+  if ($node->type == 'event') { dpm($node);
+    $wrapper = entity_metadata_wrapper('node', $node);
+     $og_membership_entity = $wrapper->og_group_ref->value(); dpm($og_membership_entity);
     
     $var['rsvp_link'] = NULL;
     if (isset($var['content']['links']['nodereference_url'])) {

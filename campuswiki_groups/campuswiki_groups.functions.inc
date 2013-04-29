@@ -57,17 +57,22 @@ function campuswiki_groups_member_count($gid) {
  * Number of upcoming Events for a group.
  */
 function campuswiki_groups_upcoming_events_count($gid) {
+  // Get a comparison date in the same timezone and format
+  // as the data stored in the database.
   $now = date_now('UTC');
-  $now->format(DATE_FORMAT_DATETIME);
-  $field = field_info_field('field_event_date');
+  $now = $now->format(DATE_FORMAT_DATETIME);
 
-  $query = new EntityFieldQuery;
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'event')
-    ->fieldCondition($field, 'value', $now, '>=')
-    //->fieldCondition(OG_AUDIENCE_FIELD, 'gid', $gid, '=')
-    ->count();
-  return $query->execute();
+  $query = db_select('og_membership', 'og');
+  $query->condition('og.gid', $gid);
+  $query->condition('og.entity_type', 'node');
+  $query->leftJoin('node', 'n', 'n.nid = og.etid');
+  $query->condition('n.type', 'event');
+  $query->leftJoin('field_data_field_event_date', 'd', 'n.nid=d.entity_id');
+  $query->condition('d.field_event_date_value', $now, '>=');
+  $query->fields('n');
+  $query->orderBy('d.field_event_date_value', 'asc');
+  
+  return $query->execute()->rowCount(); 
 }
 
 
@@ -75,18 +80,24 @@ function campuswiki_groups_upcoming_events_count($gid) {
  * Number of past Events for a group.
  */
 function campuswiki_groups_past_events_count($gid) {
+  // Get a comparison date in the same timezone and format
+  // as the data stored in the database.
   $now = date_now('UTC');
-  $now->format(DATE_FORMAT_DATETIME);
-  $field = field_info_field('field_event_date');
+  $now = $now->format(DATE_FORMAT_DATETIME);
 
-  $query = new EntityFieldQuery;
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'event')
-    ->fieldCondition($field, 'value', $now, '<')
-    ->fieldCondition(OG_AUDIENCE_FIELD, 'gid', $gid, '=')
-    ->count();
-  return $query->execute();
+  $query = db_select('og_membership', 'og');
+  $query->condition('og.gid', $gid);
+  $query->condition('og.entity_type', 'node');
+  $query->leftJoin('node', 'n', 'n.nid = og.etid');
+  $query->condition('n.type', 'event');
+  $query->leftJoin('field_data_field_event_date', 'd', 'n.nid=d.entity_id');
+  $query->condition('d.field_event_date_value', $now, '<');
+  $query->fields('n');
+  $query->orderBy('d.field_event_date_value', 'asc');
+  
+  return $query->execute()->rowCount(); 
 }
+ 
 
 
 /**
