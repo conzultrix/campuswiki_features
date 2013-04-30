@@ -61,6 +61,7 @@ function campuswiki_groups_upcoming_events_count($gid) {
   // as the data stored in the database.
   $now = date_now('UTC');
   $now = $now->format(DATE_FORMAT_DATETIME);
+  $field = og_get_group_audience_fields('node', 'event');
 
   $query = db_select('og_membership', 'og');
   $query->condition('og.gid', $gid);

@@ -11,7 +11,6 @@ function campuswiki_groups_info_block() {
   $output = array();
   
   $group = og_context();
-  dpm($group);
   
   $is_private = FALSE;
 
@@ -34,7 +33,7 @@ function campuswiki_groups_info_block() {
   
   $gid = $group['gid'];
   
-  $group_node = node_load($gid); dpm($group_node);
+  $group_node = node_load($gid);
   
   if (!empty($group_node->field_group_photo)) {
     $output['image'] = array(
@@ -212,50 +211,53 @@ function campuswiki_groups_info_block() {
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
   
-  $manager = og_rules_get_managers($group_node); 
-  //// Add group Manager(s) info
-  //$manager_uids = array($group_node->uid);
+  // Add group Manager(s) info
+  $manager_uids = array($group_node->uid);
+  //TODO add other managers who are not the creator
+  // Find replacement for og_get_users_by_roles
+  // May have to be a custom solution
+  
   //$role = og_role_load(3);
   //foreach (og_get_users_by_roles($gid, array(3)) as $item) {
   //  $manager_uids[] = $item->uid;
   //}
-  //$manager_uids = array_unique($manager_uids);
-  //
-  //$first = TRUE;
-  //$header = count($manager_uids) > 1 ? t('Managers:') . '<br />': t('Manager:') . '<br />';
-  //$names = array();
-  //foreach ($manager_uids as $uid) {
-  //  $account = user_load($uid);
-  //  $names[] =  l($account->name, 'user/' . $account->uid);
-  //  if ($first) {
-  //    $picture = theme('user_picture', array('account' => $account));
-  //  }
-  //  $first = FALSE;
-  //}
-  //
-  //// reset $items array
-  //$items = array();
-  //
-  //// add Managers' names and $picture to $tiems
-  //$items[] = array(
-  //  'data' => $header . implode(', ', $names),
-  //  'class' => array('group-info-manager-name'),
-  //);
-  //
-  //$items[] = array(
-  //  'data' => $picture,
-  //  'class' => array('group-info-manager-picture'),
-  //);
-  //
-  //
-  //$output['manager'] = array(
-  //  '#theme' => 'item_list',
-  //  '#items' => $items,
-  //  '#prefix' => '<div id="group-info-block-manager">',
-  //  '#suffix' => '</div>',
-  //);
-  //
-  //
+  $manager_uids = array_unique($manager_uids);
+  
+  $first = TRUE;
+  $header = count($manager_uids) > 1 ? t('Managers:') . '<br />': t('Manager:') . '<br />';
+  $names = array();
+  foreach ($manager_uids as $uid) {
+    $account = user_load($uid);
+    $names[] =  l($account->name, 'user/' . $account->uid);
+    if ($first) {
+      $picture = theme('user_picture', array('account' => $account));
+    }
+    $first = FALSE;
+  }
+  
+  // reset $items array
+  $items = array();
+  
+  // add Managers' names and $picture to $tiems
+  $items[] = array(
+    'data' => $header . implode(', ', $names),
+    'class' => array('group-info-manager-name'),
+  );
+  
+  $items[] = array(
+    'data' => $picture,
+    'class' => array('group-info-manager-picture'),
+  );
+  
+  
+  $output['manager'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#prefix' => '<div id="group-info-block-manager">',
+    '#suffix' => '</div>',
+  );
+  
+  
   return $output;
   //return array(
   //  '#prefix' => '<div class="dummy-content">',
