@@ -287,6 +287,74 @@ function campuswiki_wiki_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-wiki-field_publish_status'.
+  $fields['node-wiki-field_publish_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_publish_status',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'draft' => 'Draft: unpublished',
+          'publish' => 'Publish',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'wiki',
+      'default_value' => array(
+        0 => array(
+          'value' => 'draft',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_publish_status',
+      'label' => 'Publish status',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_select',
+        'weight' => '34',
+      ),
+    ),
+  );
+
   // Exported field: 'node-wiki-field_tags'.
   $fields['node-wiki-field_tags'] = array(
     'field_config' => array(
@@ -368,33 +436,45 @@ function campuswiki_wiki_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-wiki-group_audience'.
-  $fields['node-wiki-group_audience'] = array(
+  // Exported field: 'node-wiki-og_group_ref'.
+  $fields['node-wiki-og_group_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'group_audience',
+      'field_name' => 'og_group_ref',
       'foreign keys' => array(
-        'og' => array(
+        'node' => array(
           'columns' => array(
-            'gid' => 'gid',
+            'target_id' => 'nid',
           ),
-          'table' => 'og',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'gid' => array(
-          0 => 'gid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'og',
-      'no_ui' => TRUE,
-      'settings' => array(),
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'og',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'og_behavior' => array(
+              'status' => TRUE,
+            ),
+          ),
+          'membership_type' => 'og_membership_type_default',
+          'target_bundles' => array(),
+        ),
+        'handler_submit' => 'Change handler',
+        'target_type' => 'node',
+      ),
       'translatable' => '0',
-      'type' => 'group',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'wiki',
@@ -404,29 +484,34 @@ function campuswiki_wiki_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'og',
+          'module' => 'og_ui',
           'settings' => array(),
           'type' => 'og_list_default',
-          'weight' => '3',
-        ),
-        'square' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '18',
+          'weight' => 6,
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'group_audience',
-      'label' => 'Group',
-      'required' => 0,
+      'field_name' => 'og_group_ref',
+      'label' => 'Groups audience',
+      'required' => FALSE,
       'settings' => array(
+        'behaviors' => array(
+          'og_widget' => array(
+            'admin' => array(
+              'widget_type' => 'entityreference_autocomplete',
+            ),
+            'default' => array(
+              'widget_type' => 'options_select',
+            ),
+            'status' => TRUE,
+          ),
+        ),
         'user_register_form' => FALSE,
       ),
       'view modes' => array(
@@ -442,16 +527,11 @@ function campuswiki_wiki_field_default_fields() {
         ),
       ),
       'widget' => array(
-        'active' => 1,
         'module' => 'og',
-        'settings' => array(
-          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'opt_group' => 'never',
-        ),
-        'type' => 'group_audience',
-        'weight' => '31',
+        'settings' => array(),
+        'type' => 'og_complex',
+        'weight' => 35,
       ),
-      'widget_type' => 'group_audience',
     ),
   );
 
@@ -460,8 +540,9 @@ function campuswiki_wiki_field_default_fields() {
   t('Body');
   t('Enter a comma-separated list of words to describe your content.');
   t('Faculty/Department');
-  t('Group');
+  t('Groups audience');
   t('Image');
+  t('Publish status');
   t('Tags');
   t('Upload an image to go with this article.');
 

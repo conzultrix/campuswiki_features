@@ -161,7 +161,7 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'center';
     $pane->type = 'views_panes';
-    $pane->subtype = 'campuswiki_group_wikis-panel_pane_1';
+    $pane->subtype = 'cw_group_wiki-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
@@ -178,10 +178,8 @@ function campuswiki_groups_default_page_manager_handlers() {
     );
     $pane->configuration = array(
       'context' => array(
-        0 => 'relationship_og_group_from_node_1',
+        0 => 'argument_entity_id:node_1',
       ),
-      'override_title' => 0,
-      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -448,30 +446,6 @@ function campuswiki_groups_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-11'] = $pane;
     $display->panels['right'][1] = 'new-11';
-    $pane = new stdClass();
-    $pane->pid = 'new-12';
-    $pane->panel = 'right';
-    $pane->type = 'node_create_links';
-    $pane->subtype = 'node_create_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'types' => array(),
-      'field_name' => 'og_group_ref',
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['right'][2] = 'new-12';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
