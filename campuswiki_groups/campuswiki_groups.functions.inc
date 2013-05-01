@@ -6,21 +6,20 @@
  */
 function campuswiki_groups_get_node_group($node) {
   if (og_is_group_type('node', $node->type)) {
-    $group = og_get_group('node', $node->nid);
+    $gid = $node->nid;
   }
   elseif (og_is_group_content_type('node', $node->type)) {
-    $gids = og_get_entity_groups('node', $node);
-    if (!$gids) {
+    $groups = og_get_entity_groups('node', $node); dpm($groups);
+    if (!$groups) {
       return;
     }
     // Get the first group.
-    $gid = reset($gids);
-    $group = og_load($gid);
+    $gid = reset($groups);
   }
-  if (empty($group)) {
+  if (empty($gid)) {
     return;
   }
-  return $group;
+  return $gid;
 
 }
 

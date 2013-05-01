@@ -10,7 +10,7 @@ module_load_include('inc', 'og', 'og.rules');
 function campuswiki_groups_info_block() {
   $output = array();
   
-  $group = og_context();
+  $group = og_context(); 
   
   $is_private = FALSE;
 

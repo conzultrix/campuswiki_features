@@ -6,16 +6,16 @@ function campuswiki_groups_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'group') { dpm($node);
+  if ($node->type == 'group') { //dpm($node);
     
     // Add group information that display suite and custom node templates can use.
-    if ($group = campuswiki_groups_get_node_group($node)) {
-      $gid = $group->gid;
-      $var['group'] = $group;
-      $var['group_node'] = node_load($group->etid); 
-      $var['group_url'] = 'node/' . $group->etid;
-      $var['group_name'] = $group->label;
-      $var['group_link'] = l($group->label, 'node/' . $group->etid);
+    if ($gid = campuswiki_groups_get_node_group($node)) {
+      //$gid = $group->gid;
+      //$var['group'] = $group;
+      $var['group_node'] = $node; 
+      $var['group_url'] = 'node/' . $gid;
+      $var['group_name'] = $node->title;
+      $var['group_link'] = l($node->title, 'node/' . $gid);
     }
     
     // find next event for the group
@@ -23,7 +23,7 @@ function campuswiki_groups_preprocess_node(&$var) {
     // See if this user should be able to view this group's meetings.
     $access = field_get_items('node', $var['group_node'], 'group_access');
     $private = $access[0]['value'];
-    if ($private && og_user_access($gid, 'view event content')) {
+    if ($private && og_user_access('node', $gid, 'view event content')) {
       $private = FALSE;
     }
     
