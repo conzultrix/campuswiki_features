@@ -1,7 +1,5 @@
 <?php
 
-// module_load_include('inc', 'campuswiki_groups', 'campuswiki_groups.functions');
-
 /**
  * Check whether to show RSVP for an Event
  */
@@ -44,7 +42,7 @@ function campuswiki_events_show_rsvp_link($node = NULL) {
   
   
   // See if the event is past already.
-  if ($override || !campuswiki_events_event_is_past($node)) {
+  if (!campuswiki_events_event_is_past($node)) {
     // See if the event is full.
     $capacity = campuswiki_events_get_remaining_capacity($node);
     // A NULL value means there was no capacity set.
@@ -174,9 +172,10 @@ function campuswiki_events_comment_count($event) {
  */
 function campuswiki_events_event_is_past($event) {
   // function is a reimplementation of cck_signup_event_is_past($node)
-  //TODO reimplement to programatically get the date field for the event
+  //TODO programatically get the date field for the event
   //rather than hard coding it
-  if (($check_date = 'field_event_date') && class_exists('DateObject')) {
+  if (class_exists('DateObject')) {
+    $check_date = 'field_event_date';
     $date = field_get_items('node', $event, $check_date);
     $event_date = new DateObject(
       $date[0]['value'],
@@ -212,11 +211,139 @@ function campuswiki_events_get_remaining_capacity($event) {
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $signup_type)
-    ->fieldCondition($field, 'nid', $event->nid)
+    ->fieldCondition($field, 'target_id', $event->nid)
     ->count();
   $count = $query->execute();
   
 
   return $capacity - $count;
   
+}
+
+
+/**
+ * Get the id of the user signup entity
+ *
+ * @param object $event
+ *  The Event node
+ *
+ *  optional
+ *  @param object $account
+ *    The user object to check, defaults to loggin in user
+ *
+ *  @return mixed
+ *    object he user signup entity
+ *    bool false if the user hasn't signed up for the event
+ */
+function campuswiki_events_get_signup($event, $account= NULL) {
+  if (empty($account)) {
+    global $user;
+    $account = user_load($user->uid);
+  }
+  
+  // if no user is log in return
+  if (!$account->uid) {
+    return FALSE;
+  }
+  
+  $signup_field = 'field_rsvp_event';
+  $field = field_info_field($signup_field);
+  $signup_type = 'rsvp';
+  
+  $query  = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'rsvp')
+    ->fieldCondition($field, 'target_id', $event->nid)
+    ->propertyCondition('uid', $account->uid);
+  foreach ($query->execute() as $entity_type => $entities) {
+    foreach ($entities as $entity_id => $entity) {
+      if (!empty($entity->nid)) {
+        return node_load($entity->nid);
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * return the correct link for an event signup
+ *
+ * @param object $event
+ *  The event node
+ *
+ * @return array
+ *  Render array to sinup or manage signup for an event
+ *  If no rsvp link is required, return empty array
+ */
+function campuswiki_events_return_signup_link($event) {
+  if (campuswiki_events_show_rsvp_link($event)) {
+    if ($signup = campuswiki_events_get_signup($event)) {
+      // if there is a signup for this event
+      // return rsvp manage link
+      return _campuswiki_events_manage_rsvp_link($signup->nid);
+    }
+    else {
+      return _campuswiki_events_build_rsvp_link($event);
+    }
+  }
+  else {
+    return array();
+  }
+}
+
+/**
+ * Build a signup link
+ *
+ * @param object $event
+ *  The event node
+ *
+ * @return array
+ *  rsvp link as render array
+ */
+function _campuswiki_events_build_rsvp_link($event) {
+  return array(
+    '#theme' => 'links__node',
+    '#links' => array(
+      'rsvp_field_rsvp_event' => array(
+        'title' => 'RSVP',
+        'query' => array(
+          'field_rsvp_event' => $event->nid,
+          'destination' => 'node/' . $event->nid,
+        ),
+        'href' => 'node/add/rsvp',
+        'attributes' => array(
+          'title' => 'Signup for this event',
+        ),
+      ),
+    ),
+    '#attributes' => array(
+      'class' => array('links', 'inline'),
+    ),
+  );
+}
+
+
+/**
+ * Build a signup manage link
+ *
+ * @param int $id
+ *  The signup entity id
+ *
+ * @return array
+ *  manage rsvp link as render array
+ */
+function _campuswiki_events_manage_rsvp_link($id) {
+  return array(
+    '#theme' => 'links__node',
+    '#links' => array(
+      'rsvp_field_rsvp_event' => array(
+        'href' => 'node/' . $id . '/edit',
+        'title' => 'Manage your RSVP',
+        'attributes' => array(
+          'title' => 'Manage your RSVP',
+        ),
+      ),
+    ),
+    '#attributes' => array('links', 'inline'),
+  );
 }

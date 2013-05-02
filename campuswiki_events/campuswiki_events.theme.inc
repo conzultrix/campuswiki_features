@@ -6,16 +6,9 @@ function campuswiki_events_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'event') { dpm($node);
-    $wrapper = entity_metadata_wrapper('node', $node);
-     $og_membership_entity = $wrapper->og_group_ref->value(); dpm($og_membership_entity);
-    
-    $var['rsvp_link'] = NULL;
-    if (isset($var['content']['links']['nodereference_url'])) {
-      $var['rsvp_link'] = $var['content']['links']['nodereference_url'];
-      //unset($var['content']['links']['nodereference_url']);
-    }
-    
+  if ($node->type == 'event') { //dpm($node);
+    $var['rsvp_link'] = campuswiki_events_return_signup_link($node);
+  
     $var['rsvp_badge'] = array(
       '#theme' => 'campuswiki_events_rsvp_badge',
       '#nid' => $node->nid,
@@ -41,7 +34,7 @@ function campuswiki_events_preprocess_node(&$var) {
     
     $var['attendee_images'] = '<div class="attendee-images clearfix">' . implode(' ', campuswiki_events_attendees($node, 'picture')) . '</div>';
     $var['attendee_names'] = '<div class="attendee-names">' . implode(', ', campuswiki_events_attendees($node, 'name')) . '</div>';
-
+  
     
     
     if ($count = campuswiki_events_comment_count($node)) {
