@@ -65,4 +65,3 @@ features[variable][] = node_submitted_group
 features[variable][] = nodeformsettings_group
 features[variable][] = page_manager_node_view_disabled
 features[variable][] = pathauto_node_group_pattern
-features[views_view][] = campuswiki_group_event
