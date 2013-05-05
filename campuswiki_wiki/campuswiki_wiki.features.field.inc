@@ -329,6 +329,12 @@ function campuswiki_wiki_field_default_fields() {
           'type' => 'hidden',
           'weight' => '5',
         ),
+        'square' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -488,6 +494,12 @@ function campuswiki_wiki_field_default_fields() {
           'settings' => array(),
           'type' => 'og_list_default',
           'weight' => 6,
+        ),
+        'square' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',

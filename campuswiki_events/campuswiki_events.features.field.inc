@@ -780,12 +780,24 @@ function campuswiki_events_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'og_ui',
           'settings' => array(),
           'type' => 'og_list_default',
           'weight' => 9,
+        ),
+        'square' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
