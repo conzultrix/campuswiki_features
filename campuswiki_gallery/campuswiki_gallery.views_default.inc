@@ -116,7 +116,7 @@ function campuswiki_gallery_views_default_views() {
   /* Display: Department gallery pane */
   $handler = $view->new_display('panel_pane', 'Department gallery pane', 'panel_pane_2');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Faculty/Department (field_campus_audience) */
+  /* Relationship: Content: Campus audience (field_campus_audience) */
   $handler->display->display_options['relationships']['field_campus_audience_tid']['id'] = 'field_campus_audience_tid';
   $handler->display->display_options['relationships']['field_campus_audience_tid']['table'] = 'field_data_field_campus_audience';
   $handler->display->display_options['relationships']['field_campus_audience_tid']['field'] = 'field_campus_audience_tid';
@@ -240,21 +240,15 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Gallery (field_photo_album) */
-  $handler->display->display_options['arguments']['field_photo_album_nid']['id'] = 'field_photo_album_nid';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['table'] = 'field_data_field_photo_album';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['field'] = 'field_photo_album_nid';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_photo_album_nid']['validate']['type'] = 'node';
-  $handler->display->display_options['arguments']['field_photo_album_nid']['validate_options']['types'] = array(
-    'album' => 'album',
-  );
-  $handler->display->display_options['arguments']['field_photo_album_nid']['validate_options']['access'] = TRUE;
+  /* Contextual filter: Content: Gallery (field_photo_gallery) */
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['id'] = 'field_photo_gallery_target_id';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['table'] = 'field_data_field_photo_gallery';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['field'] = 'field_photo_gallery_target_id';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_photo_gallery_target_id']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -284,12 +278,12 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Gallery (field_photo_album) */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_photo_album_nid']['id'] = 'field_photo_album_nid';
   $handler->display->display_options['relationships']['field_photo_album_nid']['table'] = 'field_data_field_photo_album';
   $handler->display->display_options['relationships']['field_photo_album_nid']['field'] = 'field_photo_album_nid';
+  $handler->display->display_options['relationships']['field_photo_album_nid']['label'] = 'field_photo_album';
   $handler->display->display_options['relationships']['field_photo_album_nid']['required'] = TRUE;
-  $handler->display->display_options['relationships']['field_photo_album_nid']['delta'] = '-1';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';

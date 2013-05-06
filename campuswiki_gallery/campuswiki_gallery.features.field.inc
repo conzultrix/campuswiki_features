@@ -302,7 +302,7 @@ function campuswiki_gallery_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -325,66 +325,69 @@ function campuswiki_gallery_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_select',
-        'weight' => '32',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'node-photo-field_photo_album'.
-  $fields['node-photo-field_photo_album'] = array(
+  // Exported field: 'node-photo-field_photo_gallery'.
+  $fields['node-photo-field_photo_gallery'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_photo_album',
+      'field_name' => 'field_photo_gallery',
       'foreign keys' => array(
-        'nid' => array(
+        'node' => array(
           'columns' => array(
-            'nid' => 'nid',
+            'target_id' => 'nid',
           ),
           'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'node_reference',
+      'module' => 'entityreference',
       'settings' => array(
-        'referenceable_types' => array(
-          'album' => 'album',
-          'blog' => 0,
-          'event' => 0,
-          'group' => 0,
-          'page' => 0,
-          'photo' => 0,
-          'rsvp' => 0,
-          'wiki' => 0,
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'album' => 'album',
+          ),
         ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
+        'target_type' => 'node',
       ),
       'translatable' => '0',
-      'type' => 'node_reference',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'photo',
       'default_value' => NULL,
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '1',
+          'label' => 'inline',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => 1,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -394,30 +397,30 @@ function campuswiki_gallery_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_photo_album',
+      'field_name' => 'field_photo_gallery',
       'label' => 'Gallery',
       'required' => 1,
       'settings' => array(
+        'behaviors' => array(
+          'prepopulate' => array(
+            'action' => 'disable',
+            'action_on_edit' => 0,
+            'fallback' => 'none',
+            'og_context' => 0,
+            'skip_perm' => '0',
+            'status' => 1,
+          ),
+        ),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'nodereference_url',
+        'module' => 'options',
         'settings' => array(
-          'autocomplete_match' => 'contains',
-          'edit_fallback' => 0,
-          'fallback' => 'select',
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'node_link' => array(
-            'destination' => 'node',
-            'full' => 1,
-            'hover_title' => '',
-            'teaser' => 0,
-            'title' => 'Add Photo',
-          ),
         ),
-        'type' => 'nodereference_url',
-        'weight' => '2',
+        'type' => 'options_select',
+        'weight' => '1',
       ),
     ),
   );
@@ -461,8 +464,8 @@ function campuswiki_gallery_field_default_fields() {
           'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
-            'image_link' => 'file',
-            'image_style' => '',
+            'image_link' => '',
+            'image_style' => 'photo',
           ),
           'type' => 'image',
           'weight' => '0',
@@ -498,7 +501,7 @@ function campuswiki_gallery_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -554,7 +557,7 @@ function campuswiki_gallery_field_default_fields() {
           'module' => 'og_ui',
           'settings' => array(),
           'type' => 'og_list_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -597,7 +600,7 @@ function campuswiki_gallery_field_default_fields() {
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
-        'weight' => 33,
+        'weight' => '5',
       ),
     ),
   );

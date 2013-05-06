@@ -192,6 +192,18 @@ function campuswiki_gallery_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'small_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'square' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -199,7 +211,7 @@ function campuswiki_gallery_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '3',
         ),
       ),
       'display' => array(),
