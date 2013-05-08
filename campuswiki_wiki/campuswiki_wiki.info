@@ -19,7 +19,6 @@ dependencies[] = markdown
 dependencies[] = og
 dependencies[] = og_ui
 dependencies[] = options
-dependencies[] = smart_trim
 dependencies[] = strongarm
 dependencies[] = talk
 dependencies[] = taxonomy
