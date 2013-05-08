@@ -514,6 +514,8 @@ function campuswiki_departments_views_default_views() {
   $handler->display->display_options['fields']['field_audience_image']['id'] = 'field_audience_image';
   $handler->display->display_options['fields']['field_audience_image']['table'] = 'field_data_field_audience_image';
   $handler->display->display_options['fields']['field_audience_image']['field'] = 'field_audience_image';
+  $handler->display->display_options['fields']['field_audience_image']['label'] = '';
+  $handler->display->display_options['fields']['field_audience_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audience_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_audience_image']['settings'] = array(
     'image_style' => 'medium',
