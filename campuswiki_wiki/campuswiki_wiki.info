@@ -93,4 +93,5 @@ features[variable][] = wikitools_path
 features[variable][] = wikitools_subpages
 features[variable][] = wikitools_subpages_handling
 features[variable][] = workbench_moderation_default_state_wiki
+features[views_view][] = campuswiki_department_wikis
 features[views_view][] = cw_group_wiki

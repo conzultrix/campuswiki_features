@@ -352,7 +352,7 @@ function campuswiki_departments_default_page_manager_handlers() {
     $pane->pid = 'new-9';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'clone_of_campuswiki_department_event-panel_pane_1';
+    $pane->subtype = 'cw_department_event-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
@@ -388,7 +388,7 @@ function campuswiki_departments_default_page_manager_handlers() {
     $pane->pid = 'new-10';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'clone_of_campuswiki_department_event-panel_pane_2';
+    $pane->subtype = 'cw_department_event-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
@@ -424,7 +424,7 @@ function campuswiki_departments_default_page_manager_handlers() {
     $pane->pid = 'new-11';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'clone_of_campuswiki_department_event-panel_pane_4';
+    $pane->subtype = 'cw_department_event-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(

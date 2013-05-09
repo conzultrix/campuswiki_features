@@ -33,7 +33,4 @@ features[page_manager_handlers][] = term_view_panel_context
 features[taxonomy][] = campus_audience
 features[variable][] = page_manager_term_view_disabled
 features[variable][] = pathauto_taxonomy_term_campus_audience_pattern
-features[views_view][] = campuswiki_department_groups
-features[views_view][] = campuswiki_department_wikis
-features[views_view][] = clone_of_campuswiki_department_event
 features[views_view][] = departments
