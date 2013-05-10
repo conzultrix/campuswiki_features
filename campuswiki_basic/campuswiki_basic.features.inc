@@ -70,7 +70,7 @@ function campuswiki_basic_image_default_styles() {
   $styles['sidebar'] = array(
     'name' => 'sidebar',
     'effects' => array(
-      1 => array(
+      3 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -80,11 +80,11 @@ function campuswiki_basic_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '170',
+          'width' => '180',
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => '-10',
       ),
     ),
   );

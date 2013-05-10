@@ -489,18 +489,18 @@ function campuswiki_members_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'panels_fields';
   $handler->display->display_options['row_options']['inline'] = array(
-    'cancel_node' => 'cancel_node',
     'edit_node' => 'edit_node',
+    'cancel_node' => 'cancel_node',
   );
   $handler->display->display_options['row_options']['layout'] = 'threecol_25_50_25';
   $handler->display->display_options['row_options']['regions'] = array(
+    'picture' => 'left',
     'name' => 'middle',
-    'cancel_node' => 'right',
-    'edit_node' => 'right',
     'access' => 'middle',
-    'contact' => 'right',
-    'picture' => 'middle',
     'created' => 'middle',
+    'contact' => 'right',
+    'edit_node' => 'right',
+    'cancel_node' => 'right',
   );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
