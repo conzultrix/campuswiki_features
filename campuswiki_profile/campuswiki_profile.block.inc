@@ -141,13 +141,16 @@ function campuswiki_profile_user_groups_block() {
   
   // Get the group IDs of all the groups a user is an approved member of.
   $gids = og_get_groups_by_user($user, 'node');
-  //shuffle($gids);
+  // randomize the array
+  shuffle($gids);
   
   // limit the $gids array to the number of groups needed to be listed
   // in the block
   // may make this configurable but currently using the constant
   // NUMBER_OF_GROUPS
+  $more_link = FALSE;
   if (count($gids) > NUMBER_OF_GROUPS) {
+    $more_link = TRUE;
     $gids = array_slice($gids, 0, NUMBER_OF_GROUPS);
   }
   
@@ -182,16 +185,26 @@ function campuswiki_profile_user_groups_block() {
     
   }
   
-  dpm($items);
   
   // build a list of the links
   $output['groups'] = array(
-    '#theme' => 'item_list',
-    '#items' => $items,
     '#prefix' => '<div id="user-groups-block">',
     '#suffix' => '</div>',
+  );
+  
+  $output['groups']['list'] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
+  
+  if ($more_link) {
+    $output['groups']['more_link'] = array(
+      '#theme' => 'more_link',
+      '#url' => 'user/' . $user->uid . '/groups',
+      '#title' => 'View more groups',
+    );
+  }
   
   return $output;
   
