@@ -188,8 +188,14 @@ function campuswiki_gallery_field_default_fields() {
             'og_behavior' => array(
               'status' => TRUE,
             ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
           ),
           'membership_type' => 'og_membership_type_default',
+          'sort' => array(
+            'type' => 'none',
+          ),
           'target_bundles' => array(),
         ),
         'handler_submit' => 'Change handler',
@@ -201,6 +207,7 @@ function campuswiki_gallery_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'album',
       'default_value' => NULL,
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -221,7 +228,7 @@ function campuswiki_gallery_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'og_group_ref',
       'label' => 'Groups audience',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
         'behaviors' => array(
           'og_widget' => array(
@@ -232,6 +239,14 @@ function campuswiki_gallery_field_default_fields() {
               'widget_type' => 'options_select',
             ),
             'status' => TRUE,
+          ),
+          'prepopulate' => array(
+            'action' => 'disable',
+            'action_on_edit' => 0,
+            'fallback' => 'none',
+            'og_context' => 0,
+            'skip_perm' => '0',
+            'status' => 1,
           ),
         ),
         'user_register_form' => FALSE,
@@ -249,8 +264,11 @@ function campuswiki_gallery_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 0,
         'module' => 'og',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'og_complex',
         'weight' => 5,
       ),
@@ -536,8 +554,14 @@ function campuswiki_gallery_field_default_fields() {
             'og_behavior' => array(
               'status' => TRUE,
             ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
           ),
           'membership_type' => 'og_membership_type_default',
+          'sort' => array(
+            'type' => 'none',
+          ),
           'target_bundles' => array(),
         ),
         'handler_submit' => 'Change handler',
@@ -549,6 +573,7 @@ function campuswiki_gallery_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'photo',
       'default_value' => NULL,
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -569,7 +594,7 @@ function campuswiki_gallery_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'og_group_ref',
       'label' => 'Groups audience',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
         'behaviors' => array(
           'og_widget' => array(
@@ -580,6 +605,14 @@ function campuswiki_gallery_field_default_fields() {
               'widget_type' => 'options_select',
             ),
             'status' => TRUE,
+          ),
+          'prepopulate' => array(
+            'action' => 'disable',
+            'action_on_edit' => 0,
+            'fallback' => 'none',
+            'og_context' => 0,
+            'skip_perm' => '0',
+            'status' => 1,
           ),
         ),
         'user_register_form' => FALSE,
@@ -597,8 +630,11 @@ function campuswiki_gallery_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 0,
         'module' => 'og',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'og_complex',
         'weight' => '5',
       ),
