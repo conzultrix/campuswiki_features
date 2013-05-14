@@ -210,6 +210,90 @@ function campuswiki_profile_user_groups_block() {
   
 }
 
+function campuswiki_profile_user_connection_block() {
+  $user = menu_get_object('user');
+  $output = array();
+  
+  // array to hold links
+  $items = array();
+  if (!empty($user->field_facebook_url)) {
+    // build link to user's facebook page
+    $fb = $user->field_facebook_url[LANGUAGE_NONE][0]['url'];
+    $icon = drupal_get_path('module', 'campuswiki_basic') . '/images/icons/facebook-24.png';
+    $items[] = array(
+      'data' => array(
+        '#type' => 'link',
+        '#title' => theme('image', array('path' => $icon, 'width' => 24, 'height' => 24, 'alt' => 'Facebook icon', 'title' => 'Facebook')),
+        '#href' =>  $fb,
+        '#options' => array(
+          'html' => TRUE,
+        ),
+      ),
+    );
+  }
+  
+  if (!empty($user->field_twitter_url)) {
+    $twitter = $user->field_twitter_url[LANGUAGE_NONE][0]['url'];
+    $icon = drupal_get_path('module', 'campuswiki_basic') . '/images/icons/twitter-24.png';
+    $items[] = array(
+      'data' => array(
+        '#type' => 'link',
+        '#title' => theme('image', array('path' => $icon, 'width' => 24, 'height' => 24, 'alt' => 'Twitter icon', 'title' => 'Twitter')),
+        '#href' =>  $twitter,
+        '#options' => array(
+          'html' => TRUE,
+        ),
+      ),
+    );
+  }
+  
+  if (!empty($user->field_google_plus_url)) {
+    $gplus = $user->field_google_plus_url[LANGUAGE_NONE][0]['url'];
+    $icon = drupal_get_path('module', 'campuswiki_basic') . '/images/icons/gplus-24.png';
+    $items[] = array(
+      'data' => array(
+        '#type' => 'link',
+        '#title' => theme('image', array('path' => $icon, 'width' => 24, 'height' => 24, 'alt' => 'Google Plus icon', 'title' => 'Google Plus')),
+        '#href' =>  $gplus,
+        '#options' => array(
+          'html' => TRUE,
+        ),
+      ),
+    );
+  }
+  
+  if (module_exists('contact')) {
+    $icon = drupal_get_path('module', 'campuswiki_basic') . '/images/icons/mail-24.png';
+    $items[] = array(
+      'data' => array(
+        '#type' => 'link',
+        '#title' => theme('image', array('path' => $icon, 'width' => 24, 'height' => 24, 'alt' => 'Mail icon', 'title' => 'Contact')),
+        '#href' =>  'user/' . $user->uid . '/contact',
+        '#options' => array(
+          'html' => TRUE,
+        ),
+      ),
+    );
+  }
+  
+  
+  // build a list of user connection links
+  if (!empty($items)) {
+    $output = array(
+      '#theme' => 'item_list',
+      '#items' => $items,
+      '#prefix' => '<div id="user-connections-block">',
+      '#suffix' => '</div>',
+      '#pre_render' => array('campuswiki_basic_item_list_child_render'),
+      '#attributes' => array(
+        'class' => array('inline'),
+      ),
+    );
+  }
+  
+  return $output;
+}
+
 function campuswiki_profile_user_groups_count() {
   $user = menu_get_object('user');
   
