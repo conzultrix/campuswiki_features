@@ -54,7 +54,19 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->type = 'entity_field';
     $pane->subtype = 'user:field_user_department';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'hidden',
       'formatter' => 'taxonomy_term_reference_link',
@@ -82,7 +94,19 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->type = 'entity_field';
     $pane->subtype = 'user:field_about';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'hidden',
       'formatter' => 'text_default',
@@ -110,7 +134,19 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->type = 'entity_field';
     $pane->subtype = 'user:field_interest';
     $pane->shown = TRUE;
-    $pane->access = array();
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
     $pane->configuration = array(
       'label' => 'inline',
       'formatter' => 'text_default',
@@ -134,30 +170,9 @@ function campuswiki_profile_default_page_manager_handlers() {
     $display->panels['center'][2] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
-    $pane->panel = 'left';
-    $pane->type = 'block';
-    $pane->subtype = 'statuses-statuses';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['left'][0] = 'new-4';
-    $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'right';
-    $pane->type = 'block';
-    $pane->subtype = 'campuswiki_profile-cw_user_connections';
+    $pane->panel = 'center';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'cw_contributions-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
@@ -165,10 +180,46 @@ function campuswiki_profile_default_page_manager_handlers() {
           'name' => 'path_visibility',
           'settings' => array(
             'visibility_setting' => '1',
-            'paths' => 'user/*',
+            'paths' => 'user/*/wiki',
           ),
           'context' => 'empty',
           'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:user_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Wiki %title ',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['center'][3] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-5';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'statuses-statuses';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
         ),
       ),
     );
@@ -185,9 +236,42 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->position = 0;
     $pane->locks = array();
     $display->content['new-5'] = $pane;
-    $display->panels['right'][0] = 'new-5';
+    $display->panels['left'][0] = 'new-5';
     $pane = new stdClass();
     $pane->pid = 'new-6';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'campuswiki_profile-cw_user_connections';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/*',
+          ),
+          'context' => 'empty',
+          'not' => TRUE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][0] = 'new-6';
+    $pane = new stdClass();
+    $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'views';
     $pane->subtype = 'cw_contributions';
@@ -198,10 +282,10 @@ function campuswiki_profile_default_page_manager_handlers() {
           'name' => 'path_visibility',
           'settings' => array(
             'visibility_setting' => '1',
-            'paths' => 'user/*',
+            'paths' => 'user/*/*',
           ),
           'context' => 'empty',
-          'not' => FALSE,
+          'not' => TRUE,
         ),
       ),
     );
@@ -232,8 +316,8 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][1] = 'new-6';
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][1] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-2';
   $handler->conf['display'] = $display;
