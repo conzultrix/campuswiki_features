@@ -262,7 +262,7 @@ function campuswiki_profile_user_connection_block() {
     );
   }
   
-  if (module_exists('contact')) {
+  if (module_exists('contact') && !empty($user)) {
     $icon = drupal_get_path('module', 'campuswiki_basic') . '/images/icons/mail-24.png';
     $items[] = array(
       'data' => array(

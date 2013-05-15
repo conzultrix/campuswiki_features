@@ -43,7 +43,8 @@ function campuswiki_workflow_user_default_permissions() {
     'name' => 'moderate content from draft to needs_review',
     'roles' => array(
       0 => 'administrator',
-      1 => 'manager',
+      1 => 'authenticated user',
+      2 => 'manager',
     ),
     'module' => 'workbench_moderation',
   );
@@ -53,7 +54,8 @@ function campuswiki_workflow_user_default_permissions() {
     'name' => 'moderate content from draft to published',
     'roles' => array(
       0 => 'administrator',
-      1 => 'manager',
+      1 => 'authenticated user',
+      2 => 'manager',
     ),
     'module' => 'workbench_moderation',
   );
@@ -63,7 +65,8 @@ function campuswiki_workflow_user_default_permissions() {
     'name' => 'moderate content from needs_review to draft',
     'roles' => array(
       0 => 'administrator',
-      1 => 'manager',
+      1 => 'authenticated user',
+      2 => 'manager',
     ),
     'module' => 'workbench_moderation',
   );
@@ -73,7 +76,8 @@ function campuswiki_workflow_user_default_permissions() {
     'name' => 'moderate content from needs_review to published',
     'roles' => array(
       0 => 'administrator',
-      1 => 'manager',
+      1 => 'authenticated user',
+      2 => 'manager',
     ),
     'module' => 'workbench_moderation',
   );
@@ -112,7 +116,8 @@ function campuswiki_workflow_user_default_permissions() {
     'name' => 'view moderation history',
     'roles' => array(
       0 => 'administrator',
-      1 => 'manager',
+      1 => 'authenticated user',
+      2 => 'manager',
     ),
     'module' => 'workbench_moderation',
   );
@@ -122,7 +127,8 @@ function campuswiki_workflow_user_default_permissions() {
     'name' => 'view moderation messages',
     'roles' => array(
       0 => 'administrator',
-      1 => 'manager',
+      1 => 'authenticated user',
+      2 => 'manager',
     ),
     'module' => 'workbench_moderation',
   );
