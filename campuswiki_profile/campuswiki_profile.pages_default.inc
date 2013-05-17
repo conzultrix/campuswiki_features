@@ -239,6 +239,102 @@ function campuswiki_profile_default_page_manager_handlers() {
     $display->panels['left'][0] = 'new-5';
     $pane = new stdClass();
     $pane->pid = 'new-6';
+    $pane->panel = 'left';
+    $pane->type = 'views';
+    $pane->subtype = 'cw_user_events';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/events',
+          ),
+          'context' => 'empty',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '5',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block_1',
+      'context' => array(
+        0 => 'argument_entity_id:user_1.uid',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['left'][1] = 'new-6';
+    $pane = new stdClass();
+    $pane->pid = 'new-7';
+    $pane->panel = 'left';
+    $pane->type = 'views';
+    $pane->subtype = 'cw_user_events';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'user/*/events',
+          ),
+          'context' => 'empty',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '5',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block_2',
+      'context' => array(
+        0 => 'argument_entity_id:user_1.uid',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['left'][2] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'campuswiki_profile-cw_user_connections';
@@ -268,10 +364,10 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][0] = 'new-6';
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][0] = 'new-8';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'views';
     $pane->subtype = 'cw_contributions';
@@ -316,8 +412,8 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['right'][1] = 'new-7';
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][1] = 'new-9';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-2';
   $handler->conf['display'] = $display;

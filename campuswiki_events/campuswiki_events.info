@@ -121,3 +121,4 @@ features[variable][] = pathauto_node_event_pattern
 features[variable][] = pathauto_node_rsvp_pattern
 features[views_view][] = cw_department_event
 features[views_view][] = cw_group_event
+features[views_view][] = cw_user_events
