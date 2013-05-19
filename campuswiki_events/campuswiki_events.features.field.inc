@@ -1142,7 +1142,7 @@ function campuswiki_events_field_default_fields() {
         'behaviors' => array(
           'prepopulate' => array(
             'action' => 'disable',
-            'action_on_edit' => 0,
+            'action_on_edit' => 1,
             'fallback' => 'none',
             'og_context' => 0,
             'skip_perm' => '0',
