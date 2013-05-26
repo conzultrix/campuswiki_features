@@ -76,3 +76,4 @@ features[variable][] = nodeformsettings_group
 features[variable][] = page_manager_node_view_disabled
 features[variable][] = pathauto_node_group_pattern
 features[views_view][] = campuswiki_department_groups
+features[views_view][] = cw_user_groups

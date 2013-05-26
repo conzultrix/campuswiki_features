@@ -556,7 +556,7 @@ function campuswiki_events_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['title'] = 'My Events';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -589,8 +589,7 @@ function campuswiki_events_views_default_views() {
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
   $handler->display->display_options['arguments']['uid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'user';
-  $handler->display->display_options['arguments']['uid']['default_argument_options']['user'] = FALSE;
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
@@ -629,13 +628,13 @@ function campuswiki_events_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['argument_input'] = array(
-    'uid' => array(
+    'uid_1' => array(
       'type' => 'context',
       'context' => 'user_edit_form.uid',
       'context_optional' => 0,
       'panel' => '0',
       'fixed' => '',
-      'label' => 'Content: Author uid',
+      'label' => 'User: Uid',
     ),
   );
 
@@ -694,6 +693,94 @@ function campuswiki_events_views_default_views() {
   $handler->display->display_options['filters']['field_rsvp_value']['value'] = array(
     'Yes' => 'Yes',
   );
+
+  /* Display: Block:Calendar */
+  $handler = $view->new_display('block', 'Block:Calendar', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Calendar';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'date_views_pager';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'calendar_style';
+  $handler->display->display_options['style_options']['name_size'] = '3';
+  $handler->display->display_options['style_options']['mini'] = '0';
+  $handler->display->display_options['style_options']['with_weekno'] = '0';
+  $handler->display->display_options['style_options']['multiday_theme'] = '1';
+  $handler->display->display_options['style_options']['theme_style'] = '1';
+  $handler->display->display_options['style_options']['max_items'] = '5';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'calendar_entity';
+  $handler->display->display_options['row_options']['colors']['calendar_colors_type'] = array(
+    'page' => '#ffffff',
+    'blog' => '#ffffff',
+    'event' => '#ffffff',
+    'group' => '#ffffff',
+    'photo' => '#ffffff',
+    'album' => '#ffffff',
+    'rsvp' => '#ffffff',
+    'wiki' => '#ffffff',
+  );
+  $handler->display->display_options['row_options']['colors']['calendar_colors_group'] = array(
+    2 => '#ffffff',
+    3 => '#ffffff',
+    4 => '#ffffff',
+    21 => '#ffffff',
+    31 => '#ffffff',
+    42 => '#ffffff',
+    56 => '#ffffff',
+    58 => '#ffffff',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_rsvp_event_node']['id'] = 'reverse_field_rsvp_event_node';
+  $handler->display->display_options['relationships']['reverse_field_rsvp_event_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_rsvp_event_node']['field'] = 'reverse_field_rsvp_event_node';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Author uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'node';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['relationship'] = 'reverse_field_rsvp_event_node';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'user';
+  $handler->display->display_options['arguments']['uid']['default_argument_options']['user'] = FALSE;
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Date: Date (node) */
+  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
+  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
+    'field_data_field_event_date.field_event_date_value' => 'field_data_field_event_date.field_event_date_value',
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'AND',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Will you attend? (field_rsvp) */
+  $handler->display->display_options['filters']['field_rsvp_value']['id'] = 'field_rsvp_value';
+  $handler->display->display_options['filters']['field_rsvp_value']['table'] = 'field_data_field_rsvp';
+  $handler->display->display_options['filters']['field_rsvp_value']['field'] = 'field_rsvp_value';
+  $handler->display->display_options['filters']['field_rsvp_value']['relationship'] = 'reverse_field_rsvp_event_node';
+  $handler->display->display_options['filters']['field_rsvp_value']['value'] = array(
+    'Yes' => 'Yes',
+  );
+  $handler->display->display_options['filters']['field_rsvp_value']['group'] = 1;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 2;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   $export['cw_user_events'] = $view;
 
   return $export;

@@ -132,6 +132,21 @@ function campuswiki_gallery_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'user_gallery' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'alternate_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'small_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'square' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -149,16 +164,34 @@ function campuswiki_gallery_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '10',
+            'weight' => '3',
             'visible' => TRUE,
+          ),
+          'user_gallery' => array(
+            'weight' => '19',
+            'visible' => FALSE,
           ),
         ),
         'photo_gallery_entity_view_photo_gallery_cover' => array(
           'default' => array(
-            'weight' => '10',
+            'weight' => '4',
             'visible' => FALSE,
           ),
           'teaser' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'user_gallery' => array(
+            'weight' => '18',
+            'visible' => FALSE,
+          ),
+        ),
+        'photo_gallery_entity_view_1' => array(
+          'default' => array(
+            'weight' => '5',
+            'visible' => FALSE,
+          ),
+          'user_gallery' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

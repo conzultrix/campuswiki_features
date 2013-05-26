@@ -12,7 +12,7 @@ function campuswiki_gallery_preprocess_node(&$var) {
     // build the reference link from Album to Photo
     // replacement for nodereference_url using entityreference_propopulate
     if (isset($var['content']['links'])) {
-      $var['content']['links']['add_photo'] = campuswiki_gallery_add_photo_link($node); dpm($var);
+      $var['content']['links']['add_photo'] = campuswiki_gallery_add_photo_link($node); //dpm($var);
       //unset($var['content']['links']['nodereference_url']);
     }
   }

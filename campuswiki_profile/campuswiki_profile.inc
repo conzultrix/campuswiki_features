@@ -38,3 +38,22 @@ function campuswiki_profile_user_attendance_count($uid) {
   
   return $query->execute()->rowCount();
 }
+
+
+
+function campuswiki_profile_created_events($uid) {
+  $now = date_now('UTC');
+  $now->format(DATE_FORMAT_DATETIME);
+  $field = field_info_field('field_event_date');
+  $rsvp_field = field_info_field('field_rsvp');
+
+  // count events user created
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'event')
+    ->propertyCondition('uid', $uid)
+    ->propertyCondition('status', 1)
+    ->fieldCondition($field, 'value', $now, '>=');
+    
+  return $query->execute();
+}

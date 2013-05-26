@@ -81,7 +81,6 @@ function campuswiki_profile_user_info_block() {
     ),
   );
   
-  
   // events calendar
   $label = t('Calendar');
   $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
