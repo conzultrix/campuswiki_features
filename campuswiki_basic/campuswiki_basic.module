@@ -15,3 +15,55 @@ function campuswiki_basic_ctools_plugin_directory($owner, $plugin_type) {
     return "plugins/$plugin_type";
   }
 }
+
+//function campuswiki_basic_features_menu() {
+//  $menu_options = menu_get_menus();
+//  //$menu_options = menu_navigation_links('menu-features');
+//  return $menu_options;
+//}
+//
+//$menus_options = campuswiki_basic_features_menu();
+//dpm($menus_options);
+
+
+/**
+ * Implements hook_block_info
+ */
+function campuswiki_basic_block_info() {
+  $blocks['cw_features_menu'] = array(
+    'info' => t('CW Features Menu'),
+    'cache' => DRUPAL_NO_CACHE
+    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function campuswiki_basic_block_view($delta = '') {
+
+  $block = array(); 
+
+  switch ($delta) {
+    
+    case 'cw_features_menu':
+      $block['subject'] = t('');
+      $block['content'] = array(
+        '#prefix' => '<div id="navigation">',
+        '#suffix' => '</div>',
+        '#theme' => 'links',
+        '#links' => menu_navigation_links('features'),
+        '#attributes' => array(
+          'class' => array('links', 'inline', 'clearfix'),
+          'id' => 'features-menu',
+        ),
+      );
+      break;
+
+  }
+  return $block;
+}
