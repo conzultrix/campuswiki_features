@@ -5,6 +5,7 @@
  */
 
 include_once('campuswiki_basic.features.inc');
+module_load_include('inc', 'campuswiki_basic', 'campuswiki_basic.theme');
 
 /**
  * Implementation of hook_ctools_plugin_directory().
@@ -44,19 +45,22 @@ function campuswiki_basic_block_info() {
  * Implements hook_block_view().
  *
  */
-function campuswiki_basic_block_view($delta = '') {
+function campuswiki_basic_block_view($delta = '') { 
 
   $block = array(); 
 
   switch ($delta) {
     
     case 'cw_features_menu':
+      $features_menu = menu_navigation_links('features');
+      campuswiki_basic_icon_links($features_menu); 
       $block['subject'] = t('');
       $block['content'] = array(
         '#prefix' => '<div id="navigation">',
         '#suffix' => '</div>',
         '#theme' => 'links',
-        '#links' => menu_navigation_links('features'),
+        //'#links' => campuswiki_basic_icon_links($features_menu),
+        '#links' => $features_menu,
         '#attributes' => array(
           'class' => array('links', 'inline', 'clearfix'),
           'id' => 'features-menu',

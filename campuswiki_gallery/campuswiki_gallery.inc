@@ -14,12 +14,12 @@ function campuswiki_gallery_photo_count($album) {
 function campuswiki_gallery_user_photo_count($album, $uid) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', 'photo')
-        ->propertyCondition('status', 1)
-        ->propertyCondition('uid', $uid)
-        ->fieldCondition('field_photo_gallery', 'target_id', $album->nid)
-        ->count();
-  
+    ->entityCondition('bundle', 'photo')
+    ->propertyCondition('status', 1)
+    ->propertyCondition('uid', $uid)
+    ->fieldCondition('field_photo_gallery', 'target_id', $album->nid)
+    ->count();
+
   return $query->execute();
 }
 
