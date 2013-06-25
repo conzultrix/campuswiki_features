@@ -48,7 +48,7 @@ function campuswiki_groups_get_group_by_arg() {
  * Helper function to get a count of the members in a group.
  */
 function campuswiki_groups_member_count($gid) {
-  $members = og_membership_load_multiple(FALSE, array('gid' => $gid, 'entity_type' => 'user'));
+  $members = og_membership_load_multiple(FALSE, array('gid' => $gid, 'entity_type' => 'user', 'state' => '1'));
   return count($members);
 }
 
