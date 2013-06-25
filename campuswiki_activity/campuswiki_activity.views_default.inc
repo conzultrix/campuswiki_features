@@ -22,9 +22,9 @@ function campuswiki_activity_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'CW activity stream';
+  $handler->display->display_options['title'] = 'Activity Stream';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -32,6 +32,10 @@ function campuswiki_activity_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_node_target_group_target_id']['id'] = 'field_node_target_group_target_id';
+  $handler->display->display_options['relationships']['field_node_target_group_target_id']['table'] = 'field_data_field_node_target_group';
+  $handler->display->display_options['relationships']['field_node_target_group_target_id']['field'] = 'field_node_target_group_target_id';
   /* Field: Message: Rendered Message */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_message';
@@ -53,6 +57,11 @@ function campuswiki_activity_views_default_views() {
   $handler->display->display_options['sorts']['timestamp']['table'] = 'message';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
+  /* Filter criterion: Content access: Access */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node_access';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['relationship'] = 'field_node_target_group_target_id';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

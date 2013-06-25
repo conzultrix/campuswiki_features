@@ -98,7 +98,9 @@ function campuswiki_events_user_default_permissions() {
   // Exported permission: edit own rsvp content.
   $permissions['edit own rsvp content'] = array(
     'name' => 'edit own rsvp content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'authenticated user',
+    ),
     'module' => 'node',
   );
 
