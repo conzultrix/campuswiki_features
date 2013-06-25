@@ -1,0 +1,269 @@
+<?php
+/**
+ * @file
+ * Code for the CampusWiki Activity feature.
+ */
+
+include_once 'campuswiki_activity.features.inc';
+
+/**
+ * Implements hook_form_alter().
+ */
+function campuswiki_activity_form_user_profile_form_alter(&$form, &$form_state, $form_id) { //dpm($form);
+  
+  if ($form_id == 'user_profile_form') {
+    // Store default values in form state storage for change detection.
+    static $profile_form_state; 
+    if (!isset($profile_form_state)) {
+      // Use a copy of $form and $form_state for prepare and process.
+      $profile_form = array_merge(array(), $form);
+      $profile_form_state = array_merge(array(), $form_state);
+      drupal_prepare_form('user_profile_form', $profile_form, $profile_form_state);
+      drupal_process_form('user_profile_form', $profile_form, $profile_form_state);
+      $form_state['storage']['values'] = $profile_form_state['values'];
+    }
+    $form['#submit'][] = 'campuswiki_activity_user_profile_submit';
+  }
+}
+
+
+/**
+ * Implements hook_node_insert().
+ */
+function campuswiki_activity_node_insert($node) {
+  // Create a message when a user creates a new node.
+  $account = user_load($node->uid);
+  // Allow other modules to change the message type used for this event.
+  $hook = 'node_insert';
+  $message_type = 'cw_activity_node_created';
+
+  // if node type is rsvp change the message type
+  if ($node->type == 'rsvp') {
+    // check if user is attending the event
+    if ($node->field_rsvp[LANGUAGE_NONE][0]['value'] == 'No') {
+      return;
+    }
+    $message_type = 'cw_activity_attending_event';
+  }
+  
+  // if the node type is photo change the message type
+  if ($node-> type == 'photo') {
+    $message_type = 'cw_activity_photo_posted';
+  }
+  
+  $message = message_create($message_type, array('uid' => $account->uid, 'timestamp' => $node->created));
+  // Save reference to the node in the node reference field, and the
+  $wrapper = entity_metadata_wrapper('message', $message);
+  $wrapper->field_target_node->set($node);
+  $wrapper->save();
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function campuswiki_activity_node_update($node) {
+  campuswiki_activity_update_message_status('node', $node);
+  
+  // see if a wiki is being updated and log message
+  if ($node->type == 'wiki' && module_exists('message')) {
+    global $user;
+    //commons_groups_first_contribution($user, $node);
+    $message = message_create('cw_activity_wiki_edited', array('uid' => $user->uid, 'timestamp' => REQUEST_TIME));
+  }
+  
+  // see if an RSVP is changed from No to Yes
+  // log attending message
+  if ($node->type == 'rsvp' && module_exists('message')) {
+    if ($node->field_rsvp[LANGUAGE_NONE][0]['value']  == 'Yes') {
+      global $user;
+      $message = message_create('cw_activity_attending_event', array('uid' => $user->uid, 'timestamp' => REQUEST_TIME));
+    }
+  }
+  
+  if (isset($message)) {
+    $wrapper = entity_metadata_wrapper('message', $message);
+    $wrapper->field_target_node->set($node);
+    $wrapper->save();
+  }
+}
+
+/**
+ * Update the "published" field in the message entity, when it changes in the
+ * related entity.
+ *
+ * @param $entity_type
+ *   The entity type (node or comment).
+ * @param $entity
+ *   The entity object.
+ */
+function campuswiki_activity_update_message_status($entity_type, $entity) {
+  if ($entity->status == $entity->original->status) {
+    // status didn't change.
+    return;
+  }
+  list($id) = entity_extract_ids($entity_type, $entity);
+  $field_name = 'field_target_' . $entity_type;
+
+  $query = new EntityFieldQuery();
+  $result = $query
+    ->entityCondition('entity_type', 'message')
+    ->fieldCondition($field_name, 'target_id',  $id, '=')
+    ->execute();
+
+  if (empty($result['message'])) {
+    return;
+  }
+
+  foreach (array_keys($result['message']) as $mid) {
+    $wrapper = entity_metadata_wrapper('message', $mid);
+    // If comment status changed, we still need to check the node as-well.
+    if ($entity_type == 'comment') {
+      $node = node_load($entity->nid);
+      $status = intval($entity->status && $node->status);
+    }
+    else {
+      // The entity is the node.
+      $status = $entity->status;
+    }
+    if ($wrapper->field_message_published->value() != $status) {
+      // Status changed, so update the message entity.
+      $wrapper->field_message_published->set($status);
+      $wrapper->save();
+    }
+  }
+}
+
+
+
+/**
+ * Create an activity stream message when a user updates her profile.
+ */
+function campuswiki_activity_user_profile_submit($form, &$form_state) {
+  global $user;
+
+  // Fields to ignore in $form_state['values'] when detecting changes.
+  $remove_keys = array(
+    'uid',
+    'name',
+    'pass',
+    'current_pass_required_values',
+    'current_pass',
+    'status',
+    'roles',
+    'notify',
+    'signature',
+    'picture_delete',
+    'message_subscribe_email',
+    'og_user_node',
+    'cancel',
+    'metatags',
+    'timezone',
+    'signature_format',
+    'form_token',
+    'form_id',
+    'form_build_id',
+    'picture_upload',
+    'submit'
+  );
+  $profile_values = array_diff_key($form_state['values'], array_flip($remove_keys));
+  ksort($profile_values);
+  $profile_data = serialize($profile_values);
+
+  $stored_profile_values = array_diff_key($form_state['storage']['values'], array_flip($remove_keys));
+  ksort($stored_profile_values);
+  $stored_profile_data = serialize($stored_profile_values);
+
+  // Do not generate a message if
+  //  - the user did not submit their own form
+  //  - no changes were detected
+  //  - a profile update message created within the last 15 minutes
+  $time_ago = time() - 900;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'message')
+    ->propertyCondition('uid', $form_state['user']->uid)
+    ->propertyCondition('type', 'cw_activity_user_profile_updated')  
+    ->propertyCondition('timestamp', $time_ago, '>')
+    ->count();
+  $count = $query->execute();
+
+  if ($user->uid != $form_state['user']->uid ||
+    $profile_data == $stored_profile_data ||
+    $count > 0) {
+    return;
+  }
+
+  $account = $form_state['user'];
+  // Allow other modules to change the message type used for this event.
+  $hook = 'user_profile_update';
+  $message_type = 'cw_activity_user_profile_updated';
+  drupal_alter('cw_activity_message_selection', $message_type, $hook, $account);
+  $message = message_create($message_type, array('uid' => $account->uid, 'timestamp' => REQUEST_TIME));
+  // Save reference to the user in the user reference field
+  $wrapper = entity_metadata_wrapper('message', $message);
+  $wrapper->field_target_user->set($account);
+  $wrapper->save();
+}
+
+
+
+/**
+ * Implements hook_og_membership_insert().
+ */
+function campuswiki_activity_og_membership_insert($og_membership) {
+  if ($og_membership->state != OG_STATE_ACTIVE || $og_membership->entity_type != 'user') {
+    // Membership isn't active.
+    return;
+  }
+
+  if ($og_membership->group_type != 'node') {
+    // For simplicity we operate only on membership with node groups.
+    return;
+  }
+
+  if (!$og_membership->etid) {
+    // Don't capture membership of anonymous user, that might be caused
+    // when using Devel generate.
+    return;
+  }
+
+  $node = node_load($og_membership->gid);
+    // Create a "User joined" message.
+  $message = message_create('cw_activity_user_join_group', array('uid' => $og_membership->etid));
+
+  $wrapper = entity_metadata_wrapper('message', $message);
+  $wrapper->field_node_target_group[] = $node;
+  $wrapper->field_message_published->set($node->status);
+  $wrapper->save();
+}
+
+
+/**
+ * Implements hook_og_membership_update().
+ */
+function campuswiki_activity_og_membership_update($og_membership) {
+  dpm($og_membership);
+  if ($og_membership->original->state == OG_STATE_ACTIVE || $og_membership->entity_type != 'user' || $og_membership->state != OG_STATE_ACTIVE) {
+    // We are only interested in when a membership status is changed from Blocked or Pending to Active
+    return;
+  }
+
+  if ($og_membership->group_type != 'node') {
+    // For simplicity we operate only on membership with node groups.
+    return;
+  }
+
+  if (!$og_membership->etid) {
+    // Don't capture membership of anonymous user, that might be caused
+    // when using Devel generate.
+    return;
+  }
+  
+  $node = node_load($og_membership->gid);
+    // Create a "User joined" message.
+  $message = message_create('cw_activity_user_join_group', array('uid' => $og_membership->etid));
+
+  $wrapper = entity_metadata_wrapper('message', $message);
+  $wrapper->field_node_target_group[] = $node;
+  $wrapper->field_message_published->set($node->status);
+  $wrapper->save();
+}

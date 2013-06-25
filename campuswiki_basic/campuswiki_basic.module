@@ -53,7 +53,7 @@ function campuswiki_basic_block_view($delta = '') {
     
     case 'cw_features_menu':
       $features_menu = menu_navigation_links('features');
-      campuswiki_basic_icon_links($features_menu); 
+      //campuswiki_basic_icon_links($features_menu); 
       $block['subject'] = t('');
       $block['content'] = array(
         '#prefix' => '<div id="navigation">',
