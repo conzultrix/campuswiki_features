@@ -140,8 +140,11 @@ function campuswiki_profile_user_groups_block() {
   
   // Get the group IDs of all the groups a user is an approved member of.
   $gids = og_get_groups_by_user($user, 'node');
-  // randomize the array
-  shuffle($gids);
+  if (!empty($gids)) {
+    // randomize the array
+    shuffle($gids);
+  }
+  
   
   // limit the $gids array to the number of groups needed to be listed
   // in the block

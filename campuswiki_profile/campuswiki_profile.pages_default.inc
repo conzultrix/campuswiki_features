@@ -325,8 +325,8 @@ function campuswiki_profile_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-8';
     $pane->panel = 'left';
-    $pane->type = 'block';
-    $pane->subtype = 'statuses-statuses';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'cw_activity_stream-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(
@@ -342,6 +342,9 @@ function campuswiki_profile_default_page_manager_handlers() {
       ),
     );
     $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:user_1',
+      ),
       'override_title' => 0,
       'override_title_text' => '',
     );
