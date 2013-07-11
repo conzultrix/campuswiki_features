@@ -94,6 +94,34 @@ function campuswiki_activity_views_default_views() {
       'label' => 'Message: User uid',
     ),
   );
+
+  /* Display: Group pane */
+  $handler = $view->new_display('panel_pane', 'Group pane', 'panel_pane_2');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['pane_title'] = 'Group activity stream';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'user' => array(
+      'type' => 'context',
+      'context' => 'entity:user.uid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Message: User uid',
+    ),
+  );
   $export['cw_activity_stream'] = $view;
 
   return $export;

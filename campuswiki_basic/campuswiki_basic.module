@@ -31,8 +31,8 @@ function campuswiki_basic_ctools_plugin_directory($owner, $plugin_type) {
  * Implements hook_block_info
  */
 function campuswiki_basic_block_info() {
-  $blocks['cw_features_menu'] = array(
-    'info' => t('CW Features Menu'),
+  $blocks['cw_main_menu'] = array(
+    'info' => t('CW Main Menu'),
     'cache' => DRUPAL_NO_CACHE
     // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
   );
@@ -51,8 +51,8 @@ function campuswiki_basic_block_view($delta = '') {
 
   switch ($delta) {
     
-    case 'cw_features_menu':
-      $features_menu = menu_navigation_links('features');
+    case 'cw_main_menu':
+      $features_menu = menu_navigation_links('main-menu');
       //campuswiki_basic_icon_links($features_menu); 
       $block['subject'] = t('');
       $block['content'] = array(

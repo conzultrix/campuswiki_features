@@ -15,7 +15,7 @@ function campuswiki_basic_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'sitewide_context';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'campuswiki';
   $context->conditions = array(
     'sitewide' => array(
       'values' => array(
@@ -26,16 +26,20 @@ function campuswiki_basic_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'campuswiki_basic-cw_features_menu' => array(
+        'campuswiki_basic-cw_main_menu' => array(
           'module' => 'campuswiki_basic',
-          'delta' => 'cw_features_menu',
-          'region' => 'user_first',
+          'delta' => 'cw_main_menu',
+          'region' => 'navigation',
           'weight' => '-10',
         ),
       ),
     ),
   );
   $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('campuswiki');
   $export['sitewide_context'] = $context;
 
   return $export;
