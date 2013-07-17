@@ -13,6 +13,32 @@ function campuswiki_basic_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'cw_omega_layout_switch';
+  $context->description = 'chose the desired layout depending on the page being viewed';
+  $context->tag = 'theme';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'context_omega_reaction_omega_layout' => array(
+      'layout' => 'landing',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('chose the desired layout depending on the page being viewed');
+  t('theme');
+  $export['cw_omega_layout_switch'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'sitewide_context';
   $context->description = '';
   $context->tag = 'campuswiki';
