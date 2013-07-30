@@ -8,7 +8,6 @@ project = campuswiki_wiki
 dependencies[] = campuswiki_basic
 dependencies[] = campuswiki_departments
 dependencies[] = campuswiki_groups
-dependencies[] = campuswiki_workflow
 dependencies[] = ctools
 dependencies[] = diff
 dependencies[] = ds
