@@ -1,0 +1,11 @@
+name = CampusWiki Frontpage
+core = 7.x
+package = Features
+version = 7.x-0.1-alpha1
+project = campuswiki_frontpage
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = views
+features[context][] = frontpage_context
+features[ctools][] = context:context:3
+features[features_api][] = api:1
