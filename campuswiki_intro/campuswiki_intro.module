@@ -5,3 +5,9 @@
  */
 
 include_once 'campuswiki_intro.features.inc';
+
+function campuswiki_intro_menu_alter(&$items) {
+  if (isset($items['node'])) {
+    unset($items['node']);
+  }
+}
