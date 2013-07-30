@@ -95,3 +95,4 @@ features[variable][] = workbench_moderation_default_state_wiki
 features[views_view][] = campuswiki_department_wikis
 features[views_view][] = cw_contributions
 features[views_view][] = cw_group_wiki
+features[views_view][] = cw_latest_wiki_update
