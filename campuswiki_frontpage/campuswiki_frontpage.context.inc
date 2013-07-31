@@ -38,6 +38,12 @@ function campuswiki_frontpage_context_default_contexts() {
           'region' => 'postscript_second',
           'weight' => '-10',
         ),
+        'views-cw_activity_stream-block_1' => array(
+          'module' => 'views',
+          'delta' => 'cw_activity_stream-block_1',
+          'region' => 'postscript_third',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

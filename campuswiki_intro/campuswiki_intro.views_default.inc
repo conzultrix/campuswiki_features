@@ -43,6 +43,8 @@ function campuswiki_intro_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Intro Image */
   $handler->display->display_options['fields']['field_intro_image']['id'] = 'field_intro_image';
   $handler->display->display_options['fields']['field_intro_image']['table'] = 'field_data_field_intro_image';
