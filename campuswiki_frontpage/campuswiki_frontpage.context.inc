@@ -32,6 +32,12 @@ function campuswiki_frontpage_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'views-photo_gallery-block_1' => array(
+          'module' => 'views',
+          'delta' => 'photo_gallery-block_1',
+          'region' => 'postscript_second',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

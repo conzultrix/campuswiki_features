@@ -1,6 +1,7 @@
 name = CampusWiki Frontpage
 core = 7.x
 package = Features
+php = 5.2.4
 version = 7.x-0.1-alpha1
 project = campuswiki_frontpage
 dependencies[] = context
