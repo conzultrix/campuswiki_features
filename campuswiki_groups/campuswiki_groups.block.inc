@@ -131,7 +131,7 @@ function campuswiki_groups_info_block() {
   
   // upcoming events
   $label = t('Upcoming events');
-  $count = campuswiki_groups_upcoming_events_count($gid); //campuswiki_groups_upcoming_events_count2($gid);
+  $count = campuswiki_groups_upcoming_events_count($gid);
   $title = '<span class="label">' . $label . '</span><span class="count">' . $count . '</span>';
   $items[] = array(
     'data' => array(

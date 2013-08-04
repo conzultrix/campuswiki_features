@@ -4,7 +4,6 @@
  * Create the user information block
  *
  */
-
 function campuswiki_profile_user_info_block() {
   // retrive the object of the user being viewed
   

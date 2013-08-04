@@ -347,3 +347,94 @@ function _campuswiki_events_manage_rsvp_link($id) {
     '#attributes' => array('links', 'inline'),
   );
 }
+
+
+function _campuswiki_events_get_event_image($event) {
+  if (!empty($event->field_event_image)) {
+    return $event->field_event_image[LANGUAGE_NONE][0];
+  }
+  return FALSE;
+}
+
+function _campuswiki_events_get_event_group_image($event) {
+  $is_group_content = og_is_group_content_type('node', $event->type);
+  if ($is_group_content && $gids = og_get_entity_groups('node', $event->nid)) {
+    $first_group = array_shift($gids['node']);
+    $group = node_load($first_group); //dpm($group);
+    if (!empty($group->field_group_photo)) {
+      return $group->field_group_photo[LANGUAGE_NONE][0];
+    }
+  }
+  return FALSE;
+}
+
+function _campuswiki_events_get_event_department_image($event) {
+  if (!empty($event->field_campus_audience)) {
+    $dept = $event->field_campus_audience[LANGUAGE_NONE][0]['taxonomy_term'];
+    if (!empty($dept->field_audience_image)) {
+      return $dept->field_audience_image[LANGUAGE_NONE][0];
+    }
+  }
+  return FALSE;
+}
+
+function campuswiki_events_get_image($event) {
+  if ($image = _campuswiki_events_get_event_image($event)) {
+    return $image;
+  }
+  
+  if ($image = _campuswiki_events_get_event_group_image($event)) {
+    return $image;
+  }
+  
+  if ($image = _campuswiki_events_get_event_department_image($event)) {
+    return $image;
+  }
+  
+  return FALSE;
+}
+
+function campuswiki_events_get_upcoming_events_id($range = 14) {
+  $now = date_now('UTC');
+  $now = $now->format(DATE_FORMAT_DATETIME);
+  
+  $time = strtotime('+ ' . $range . ' days'); //dpm($time);
+  $then = new DateObject($time, 'UTC');
+  $then = $then->format(DATE_FORMAT_DATETIME);
+  
+  $field = 'field_event_date';
+  
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'event')
+    ->propertyCondition('status', 1)
+    ->fieldCondition($field, 'value', $now, '>')
+    ->fieldCondition($field, 'value', $then, '<=');
+  
+  $result = $query->execute();
+  if (!empty($result)) {
+    return array_keys($result['node']);
+  }
+  return array();
+}
+
+function campuswiki_events_get_past_events_id($range = 7) {
+  $now = date_now('UTC');
+  $now = $now->format(DATE_FORMAT_DATETIME);
+  
+  $field = 'field_event_date';
+  
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'event')
+    ->propertyCondition('status', 1)
+    ->fieldCondition($field, 'value', $now, '<')
+    ->fieldOrderBy($field, 'value', 'DESC')
+    ->range(0, $range);
+    
+  $result = $query->execute();
+  if (!empty($result)) {
+    return array_keys($result['node']);
+  }
+  return array();
+}

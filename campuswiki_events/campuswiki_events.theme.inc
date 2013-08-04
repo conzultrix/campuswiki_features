@@ -6,7 +6,7 @@ function campuswiki_events_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'event') { //dpm($node);
+  if ($node->type == 'event') { dpm($node); $gp = _campuswiki_events_get_event_group_image($node); dpm($gp);
     $var['rsvp_link'] = campuswiki_events_return_signup_link($node);
   
     $var['rsvp_badge'] = array(
@@ -57,6 +57,30 @@ function campuswiki_events_preprocess_node(&$var) {
       $venue = $node->field_venue[LANGUAGE_NONE][0]['value'];
       $var['venue_formatted_text'] = '<span class="event-venue-formatted">' . t('at @venue', array('@venue' => $venue));
     }
+    
+    // get event image, use the event image if present
+    // if not use the group image if present,
+    // if not use the department image if present
+    // if not use the default image
+    $var['event_image'] = NULL;
+    if ($image = campuswiki_events_get_image($node)) {
+      $var['event_image'] = array(
+        '#theme' => 'image_style',
+        '#path' => $image['uri'],
+        '#style_name' => 'event_350',
+      );
+    }
+    else {
+      $var['event_image'] = array(
+        '#theme' => 'image',
+        '#path' => drupal_get_path('module', 'campuswiki_events') . '/images/events-default.jpg',
+        '#width' => '350',
+        '#height' => '250',
+        '#alt' => 'default-event-image',
+      );
+      
+    }
+    dpm(drupal_render($var['event_image']));
   }
 }
 

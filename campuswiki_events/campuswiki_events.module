@@ -6,6 +6,7 @@
 
 include_once 'campuswiki_events.features.inc';
 module_load_include('inc', 'campuswiki_events', 'campuswiki_events');
+module_load_include('inc', 'campuswiki_events', 'campuswiki_events.block');
 module_load_include('inc', 'campuswiki_events', 'campuswiki_events.theme');
 
 /**
@@ -23,4 +24,41 @@ function campuswiki_events_theme() {
       'variables' => array('nid' => NULL, 'link' => NULL),
     ),
   );
-} 
+}
+
+
+/**
+ * Implements hook_block_info().
+ *
+ */
+function campuswiki_events_block_info() {
+  $blocks['frontpage_event'] = array(
+    'info' => t('Frontpage event'),
+    'cache' => DRUPAL_NO_CACHE
+    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function campuswiki_events_block_view($delta = '') {
+
+  $block = array(); 
+
+  switch ($delta) {
+    
+    case 'frontpage_event':
+      $content = campuswiki_events_frontpage_block();
+      if (!empty($content)) {
+        $block['subject'] = $content['title'];
+        $block['content'] = $content['body'];
+      }
+      break;
+
+  }
+  return $block;
+}

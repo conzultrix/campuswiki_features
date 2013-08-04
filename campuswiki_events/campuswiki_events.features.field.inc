@@ -99,7 +99,7 @@ function campuswiki_events_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -279,7 +279,7 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'addressfield_standard',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -355,7 +355,7 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'number',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -473,7 +473,100 @@ function campuswiki_events_field_default_fields() {
           'year_range' => '-0:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '4',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-event-field_event_image'.
+  $fields['node-event-field_event_image'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_event_image',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'event',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'alternate_teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 10,
+        ),
+        'square' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_event_image',
+      'label' => 'Event Image',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '1',
       ),
     ),
   );
@@ -637,7 +730,7 @@ function campuswiki_events_field_default_fields() {
           ),
         ),
         'type' => 'stars',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -721,7 +814,7 @@ function campuswiki_events_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -850,7 +943,7 @@ function campuswiki_events_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'og_complex',
-        'weight' => 11,
+        'weight' => '11',
       ),
     ),
   );
@@ -1278,6 +1371,7 @@ function campuswiki_events_field_default_fields() {
   t('Date');
   t('Description');
   t('Event');
+  t('Event Image');
   t('Groups audience');
   t('Rating');
   t('Select the faculty or department to target');

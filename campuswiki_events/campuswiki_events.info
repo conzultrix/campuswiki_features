@@ -52,6 +52,7 @@ features[field][] = node-event-field_campus_audience
 features[field][] = node-event-field_event_address
 features[field][] = node-event-field_event_capacity
 features[field][] = node-event-field_event_date
+features[field][] = node-event-field_event_image
 features[field][] = node-event-field_event_open
 features[field][] = node-event-field_event_rating
 features[field][] = node-event-field_venue

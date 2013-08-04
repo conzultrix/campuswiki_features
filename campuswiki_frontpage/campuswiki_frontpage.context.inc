@@ -32,6 +32,12 @@ function campuswiki_frontpage_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'campuswiki_events-frontpage_event' => array(
+          'module' => 'campuswiki_events',
+          'delta' => 'frontpage_event',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
         'views-photo_gallery-block_1' => array(
           'module' => 'views',
           'delta' => 'photo_gallery-block_1',
