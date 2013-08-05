@@ -520,14 +520,14 @@ function campuswiki_events_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 10,
+          'weight' => '10',
         ),
         'square' => array(
           'label' => 'above',
@@ -684,7 +684,7 @@ function campuswiki_events_field_default_fields() {
           'weight' => '4',
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'fivestar',
           'settings' => array(
             'expose' => TRUE,
@@ -879,11 +879,11 @@ function campuswiki_events_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'og_ui',
           'settings' => array(),
           'type' => 'og_list_default',
-          'weight' => 9,
+          'weight' => '9',
         ),
         'square' => array(
           'label' => 'above',
