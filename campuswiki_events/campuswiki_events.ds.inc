@@ -47,6 +47,51 @@ function campuswiki_events_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|event|showcase';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'event';
+  $ds_fieldsetting->view_mode = 'showcase';
+  $ds_fieldsetting->settings = array(
+    'attendee_count' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'attendee_images' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'cw_event_image' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'rsvp_button' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'venue_formatted_text' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'title' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h3',
+        'class' => '',
+      ),
+    ),
+  );
+  $export['node|event|showcase'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|event|square';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'event';
@@ -189,6 +234,17 @@ function campuswiki_events_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'cw_event_image';
+  $ds_field->label = 'CW Event Image';
+  $ds_field->field_type = 3;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->properties = array();
+  $export['cw_event_image'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'event_calendar_day';
   $ds_field->label = 'Event calendar day';
   $ds_field->field_type = 3;
@@ -273,6 +329,40 @@ function campuswiki_events_ds_layout_settings_info() {
     'classes' => array(),
   );
   $export['node|event|alternate_teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|event|showcase';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'event';
+  $ds_layout->view_mode = 'showcase';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'hide_empty_regions' => 0,
+    'hide_sidebars' => 0,
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'cw_event_image',
+        1 => 'field_event_date',
+        2 => 'title',
+        3 => 'venue_formatted_text',
+        4 => 'attendee_count',
+        5 => 'attendee_images',
+        6 => 'rsvp_button',
+      ),
+    ),
+    'fields' => array(
+      'cw_event_image' => 'ds_content',
+      'field_event_date' => 'ds_content',
+      'title' => 'ds_content',
+      'venue_formatted_text' => 'ds_content',
+      'attendee_count' => 'ds_content',
+      'attendee_images' => 'ds_content',
+      'rsvp_button' => 'ds_content',
+    ),
+    'classes' => array(),
+  );
+  $export['node|event|showcase'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

@@ -6,7 +6,7 @@ function campuswiki_events_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'event') { dpm($node); $gp = _campuswiki_events_get_event_group_image($node); dpm($gp);
+  if ($node->type == 'event') { 
     $var['rsvp_link'] = campuswiki_events_return_signup_link($node);
   
     $var['rsvp_badge'] = array(
@@ -82,9 +82,7 @@ function campuswiki_events_preprocess_node(&$var) {
         '#prefix' => '<div class="event-image">',
         '#suffix' => '</div>',
       );
-      
     }
-    dpm(drupal_render($var['cw_event_image']));
   }
 }
 

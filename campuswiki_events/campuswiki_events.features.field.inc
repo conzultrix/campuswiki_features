@@ -59,6 +59,12 @@ function campuswiki_events_field_default_fields() {
           'type' => 'text_default',
           'weight' => '0',
         ),
+        'showcase' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'square' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -157,6 +163,12 @@ function campuswiki_events_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '6',
         ),
+        'showcase' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'square' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -238,6 +250,12 @@ function campuswiki_events_field_default_fields() {
           ),
           'type' => 'addressfield_default',
           'weight' => '4',
+        ),
+        'showcase' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
         ),
         'square' => array(
           'label' => 'above',
@@ -323,6 +341,12 @@ function campuswiki_events_field_default_fields() {
           ),
           'type' => 'number_integer',
           'weight' => '5',
+        ),
+        'showcase' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
         ),
         'square' => array(
           'label' => 'inline',
@@ -420,6 +444,19 @@ function campuswiki_events_field_default_fields() {
           ),
           'type' => 'date_default',
           'weight' => '2',
+        ),
+        'showcase' => array(
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'day_w_breaks',
+            'fromto' => 'value',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+          ),
+          'type' => 'date_default',
+          'weight' => '1',
         ),
         'square' => array(
           'label' => 'hidden',
@@ -529,6 +566,12 @@ function campuswiki_events_field_default_fields() {
           'type' => 'image',
           'weight' => '10',
         ),
+        'showcase' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
+        ),
         'square' => array(
           'label' => 'above',
           'settings' => array(),
@@ -608,6 +651,12 @@ function campuswiki_events_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '7',
+        ),
+        'showcase' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'square' => array(
           'label' => 'above',
@@ -697,6 +746,12 @@ function campuswiki_events_field_default_fields() {
           'type' => 'fivestar_formatter_default',
           'weight' => '8',
         ),
+        'showcase' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
+        ),
         'square' => array(
           'label' => 'above',
           'settings' => array(),
@@ -782,6 +837,12 @@ function campuswiki_events_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '3',
+        ),
+        'showcase' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'square' => array(
           'label' => 'inline',
@@ -884,6 +945,12 @@ function campuswiki_events_field_default_fields() {
           'settings' => array(),
           'type' => 'og_list_default',
           'weight' => '9',
+        ),
+        'showcase' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
         ),
         'square' => array(
           'label' => 'above',
