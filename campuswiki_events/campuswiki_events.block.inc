@@ -10,7 +10,7 @@ function campuswiki_events_frontpage_block() {
     }
     $nid = array_shift($ids);
     $content['title'] = t('Upcoming Event');
-    $content['body'] = node_view(node_load($nid));
+    $content['body'] = node_view(node_load($nid), 'showcase');
     return $content;
   }
   
@@ -21,7 +21,7 @@ function campuswiki_events_frontpage_block() {
     }
     $nid = array_shift($ids);
     $content['title'] = t('Recent Event');
-    $content['body'] = node_view(node_load($nid));
+    $content['body'] = node_view(node_load($nid), 'showcase');
     return $content;
   }
   

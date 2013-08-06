@@ -24,7 +24,8 @@ function campuswiki_basic_context_default_contexts() {
     ),
   );
   $context->reactions = array(
-    'context_omega_reaction_omega_layout' => array(
+    'block' => array(
+      'blocks' => array(),
       'layout' => 'landing',
     ),
   );

@@ -62,25 +62,29 @@ function campuswiki_events_preprocess_node(&$var) {
     // if not use the group image if present,
     // if not use the department image if present
     // if not use the default image
-    $var['event_image'] = NULL;
+    //$var['cw_event_image'] = NULL;
     if ($image = campuswiki_events_get_image($node)) {
-      $var['event_image'] = array(
+      $var['cw_event_image'] = array(
         '#theme' => 'image_style',
         '#path' => $image['uri'],
         '#style_name' => 'event_350',
+        '#prefix' => '<div class="event-image">',
+        '#suffix' => '</div>',
       );
     }
     else {
-      $var['event_image'] = array(
+      $var['cw_event_image'] = array(
         '#theme' => 'image',
         '#path' => drupal_get_path('module', 'campuswiki_events') . '/images/events-default.jpg',
         '#width' => '350',
         '#height' => '250',
         '#alt' => 'default-event-image',
+        '#prefix' => '<div class="event-image">',
+        '#suffix' => '</div>',
       );
       
     }
-    dpm(drupal_render($var['event_image']));
+    dpm(drupal_render($var['cw_event_image']));
   }
 }
 
