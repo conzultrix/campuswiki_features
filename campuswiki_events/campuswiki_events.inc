@@ -360,7 +360,7 @@ function _campuswiki_events_get_event_group_image($event) {
   $is_group_content = og_is_group_content_type('node', $event->type);
   if ($is_group_content && $gids = og_get_entity_groups('node', $event->nid)) {
     $first_group = array_shift($gids['node']);
-    $group = node_load($first_group); //dpm($group);
+    $group = node_load($first_group);
     if (!empty($group->field_group_photo)) {
       return $group->field_group_photo[LANGUAGE_NONE][0];
     }

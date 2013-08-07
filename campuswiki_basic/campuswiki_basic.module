@@ -56,8 +56,8 @@ function campuswiki_basic_block_view($delta = '') {
       //campuswiki_basic_icon_links($features_menu); 
       $block['subject'] = t('');
       $block['content'] = array(
-        '#prefix' => '<div id="navigation">',
-        '#suffix' => '</div>',
+        '#prefix' => '<nav id="navigation">',
+        '#suffix' => '</nav>',
         '#theme' => 'links',
         //'#links' => campuswiki_basic_icon_links($features_menu),
         '#links' => $features_menu,

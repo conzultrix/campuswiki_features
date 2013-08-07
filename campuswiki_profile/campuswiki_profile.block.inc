@@ -14,7 +14,7 @@ function campuswiki_profile_user_info_block() {
   
   // get the user image
     
-  if (!empty($user->picture->uri)) {
+  if (!empty($user->picture)) {
     $output['image'] = array(
       '#theme' => 'image_style',
       '#path' => $user->picture->uri,
@@ -302,4 +302,17 @@ function campuswiki_profile_user_groups_count() {
   $gids = og_get_groups_by_user($user, 'node');
   
   return count($gids);
+}
+
+/**
+ * Returns the user message block for the top of the page.
+ *
+ */
+function campuswiki_basic_user_message_block() {
+  return array(
+    '#prefix' => '<div class="l-user-message">',
+    '#suffix' => '</div>',
+    'picture' => _campuswiki_profile_user_message_picture(),
+    'message' => _campuswiki_profile_user_message_actions(),
+  );
 }

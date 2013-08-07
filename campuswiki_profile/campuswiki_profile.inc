@@ -57,3 +57,58 @@ function campuswiki_profile_created_events($uid) {
     
   return $query->execute();
 }
+
+function _campuswiki_profile_user_message_picture() {
+  global $user;
+  $account = user_load($user->uid);
+  
+  if (!empty($account->picture)) {
+    return array(
+      '#theme' => 'image_style',
+      '#path' => $account->picture->uri,
+      '#style_name' => 'user_avatar_32',
+    );
+  }
+  else {
+    return array(
+      '#theme' => 'image',
+      '#path' => drupal_get_path('module', 'campuswiki_profile') . '/images/icons/user-32.png',
+      '#width' => '32',
+      '#height' => '32',
+      '#alt' => 'default-user-image',
+      '#prefix' => '<div class="user-image">',
+      '#suffix' => '</div>',
+    );
+  }
+}
+
+function _campuswiki_profile_user_message_actions() {
+  global $user;
+  
+  $output = array(
+    '#prefix' => '<div class="user-actions">',
+    '#suffix' => '</div>',
+  );
+  
+  if (!$user->uid) {
+    $var = array(
+      '@login' => url('user/login'),
+      '@register' => url('user/register'),
+    );
+    $output['#markup'] = t('Please <a href="@login">Login</a> or <a href="@register">Sign up</a>', $var);
+  }
+  else {
+    $username = theme('username', array('account' => $user));
+    $var = array(
+      '@view' => url('user/' . $user->uid),
+      '@edit' => url('user/' . $user->uid . '/edit'),
+      '@logout' => url('user/logout'),
+    );
+    
+    $output['#markup'] = '<div class="username">' . t('Hello !user', array('!user' => $username)) .'</div>';
+    $output['#markup'] .= t('<a href="@view">View</a> | <a href="@edit">Edit</a> | <a href="@logout">Logout</a>', $var);
+    
+  }
+  
+  return $output;
+}

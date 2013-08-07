@@ -32,6 +32,11 @@ function campuswiki_profile_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
   
+  // create user message block
+  $blocks['cw_user_message'] = array(
+    'info' => t('CampusWiki User Message'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -72,6 +77,10 @@ function campuswiki_profile_block_view($delta = '') {
         $block['content'] = $content;
       }
       break;
+    
+    case 'cw_user_message':
+      $block['subject'] = t('User Message');
+      $block['content'] = campuswiki_basic_user_message_block(); 
   }
   return $block;
 }

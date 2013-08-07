@@ -53,6 +53,12 @@ function campuswiki_basic_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'campuswiki_profile-cw_user_message' => array(
+          'module' => 'campuswiki_profile',
+          'delta' => 'cw_user_message',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'campuswiki_basic-cw_main_menu' => array(
           'module' => 'campuswiki_basic',
           'delta' => 'cw_main_menu',
