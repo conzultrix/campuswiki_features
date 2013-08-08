@@ -65,6 +65,12 @@ function campuswiki_basic_context_default_contexts() {
           'region' => 'navigation',
           'weight' => '-10',
         ),
+        'campuswiki_basic-cw_copyright' => array(
+          'module' => 'campuswiki_basic',
+          'delta' => 'cw_copyright',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

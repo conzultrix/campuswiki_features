@@ -33,8 +33,13 @@ function campuswiki_basic_ctools_plugin_directory($owner, $plugin_type) {
 function campuswiki_basic_block_info() {
   $blocks['cw_main_menu'] = array(
     'info' => t('CW Main Menu'),
-    'cache' => DRUPAL_NO_CACHE
+    'cache' => DRUPAL_NO_CACHE,
     // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+  );
+  
+  $blocks['cw_copyright'] = array(
+    'info' => t('CW Copyright'),
+    'cache' => DRUPAL_NO_CACHE,
   );
   
   return $blocks;
@@ -54,9 +59,9 @@ function campuswiki_basic_block_view($delta = '') {
     case 'cw_main_menu':
       $features_menu = menu_navigation_links('main-menu');
       //campuswiki_basic_icon_links($features_menu); 
-      $block['subject'] = t('');
+      $block['subject'] = t('Main Menu');
       $block['content'] = array(
-        '#prefix' => '<nav id="navigation">',
+        '#prefix' => '<nav id="main-menu">',
         '#suffix' => '</nav>',
         '#theme' => 'links',
         //'#links' => campuswiki_basic_icon_links($features_menu),
@@ -67,6 +72,17 @@ function campuswiki_basic_block_view($delta = '') {
         ),
       );
       break;
+    
+    case 'cw_copyright':
+      $startyear = 2013;
+      $currentyear = date('Y');
+      $year = ($currentyear > $startyear) ? $startyear . ' - ' . $currentyear : $startyear;
+      $block['suject'] = t('Copyright');
+      $block['content'] = '<div class="copyright">&#169; Copyright '
+        . $year
+        . ' <a href="http://www.conzultrix.com">Conzultrix</a>. '
+        . 'All Rights Reserved'
+        . '</div>';
 
   }
   return $block;
