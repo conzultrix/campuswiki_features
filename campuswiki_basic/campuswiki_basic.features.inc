@@ -73,6 +73,7 @@ function campuswiki_basic_image_default_styles() {
   // Exported image style: intro.
   $styles['intro'] = array(
     'name' => 'intro',
+    'label' => 'intro',
     'effects' => array(
       4 => array(
         'label' => 'Scale and crop',
@@ -95,6 +96,7 @@ function campuswiki_basic_image_default_styles() {
   // Exported image style: sidebar.
   $styles['sidebar'] = array(
     'name' => 'sidebar',
+    'label' => 'sidebar',
     'effects' => array(
       3 => array(
         'label' => 'Scale',
@@ -118,6 +120,7 @@ function campuswiki_basic_image_default_styles() {
   // Exported image style: user_avatar.
   $styles['user_avatar'] = array(
     'name' => 'user_avatar',
+    'label' => 'user_avatar',
     'effects' => array(
       6 => array(
         'label' => 'Scale and crop',
@@ -140,6 +143,7 @@ function campuswiki_basic_image_default_styles() {
   // Exported image style: user_avatar_32.
   $styles['user_avatar_32'] = array(
     'name' => 'user_avatar_32',
+    'label' => 'user_avatar_32',
     'effects' => array(
       10 => array(
         'label' => 'Scale and crop',

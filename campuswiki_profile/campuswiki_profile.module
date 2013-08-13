@@ -54,7 +54,7 @@ function campuswiki_profile_block_view($delta = '') {
     case 'cw_user_info':
       $content = campuswiki_profile_user_info_block();
       if (!empty($content)) {
-        $block['subject'] = t('');
+        $block['subject'] = t('User Information');
         $block['content'] = $content;
       }
       break;

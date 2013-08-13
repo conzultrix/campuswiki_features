@@ -6,6 +6,7 @@ php = 5.2.4
 version = 7.x-0.1-alpha1
 project = campuswiki_basic
 dependencies[] = comment
+dependencies[] = connections
 dependencies[] = contact
 dependencies[] = context
 dependencies[] = context_omega
