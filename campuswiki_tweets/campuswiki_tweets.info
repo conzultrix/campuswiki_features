@@ -1,0 +1,15 @@
+name = CampusWiki Tweets
+description = Feeds from Twitter account
+core = 7.x
+package = Features
+version = 7.x-0.1-alpha1
+project = campuswiki_tweets
+dependencies[] = context
+dependencies[] = oauth_common
+dependencies[] = twitter
+dependencies[] = views
+features[context][] = cw_tweets
+features[ctools][] = context:context:3
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = cw_tweets
