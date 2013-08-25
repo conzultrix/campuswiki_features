@@ -22,6 +22,7 @@ function campuswiki_intro_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'l-slideshow';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -31,11 +32,6 @@ function campuswiki_intro_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -50,6 +46,8 @@ function campuswiki_intro_views_default_views() {
   $handler->display->display_options['fields']['field_intro_image']['table'] = 'field_data_field_intro_image';
   $handler->display->display_options['fields']['field_intro_image']['field'] = 'field_intro_image';
   $handler->display->display_options['fields']['field_intro_image']['label'] = '';
+  $handler->display->display_options['fields']['field_intro_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_intro_image']['alter']['text'] = '<b>[field_intro_image]</b>';
   $handler->display->display_options['fields']['field_intro_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_intro_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_intro_image']['settings'] = array(
@@ -62,7 +60,6 @@ function campuswiki_intro_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '80';
-  $handler->display->display_options['fields']['body']['alter']['more_link'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['more_link_text'] = 'Read More';
   $handler->display->display_options['fields']['body']['alter']['more_link_path'] = 'node/[nid]';
   $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
@@ -72,6 +69,15 @@ function campuswiki_intro_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '80',
   );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['element_type'] = 'div';
+  $handler->display->display_options['fields']['view_node']['element_class'] = 'btn';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'Read More';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

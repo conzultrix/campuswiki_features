@@ -370,7 +370,8 @@ function _campuswiki_events_get_event_group_image($event) {
 
 function _campuswiki_events_get_event_department_image($event) {
   if (!empty($event->field_campus_audience)) {
-    $dept = $event->field_campus_audience[LANGUAGE_NONE][0]['taxonomy_term'];
+    $tid = $event->field_campus_audience[LANGUAGE_NONE][0]['tid'];
+    $dept = taxonomy_term_load($tid);
     if (!empty($dept->field_audience_image)) {
       return $dept->field_audience_image[LANGUAGE_NONE][0];
     }

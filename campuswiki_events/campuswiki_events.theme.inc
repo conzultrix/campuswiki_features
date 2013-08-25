@@ -6,7 +6,7 @@ function campuswiki_events_preprocess_node(&$var) {
   
   $node = $var['node'];
   
-  if ($node->type == 'event') { 
+  if ($node->type == 'event') {
     $var['rsvp_link'] = campuswiki_events_return_signup_link($node);
   
     $var['rsvp_badge'] = array(
