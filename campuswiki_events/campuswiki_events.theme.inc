@@ -138,7 +138,7 @@ function theme_campuswiki_events_rsvp_button($var) {
   $node = node_load($nid);
   $link = $var['link'];
   
-  $output .= '<div class="rsvp-button clearfix">';
+  $output .= '<div class="btn btn-rsvp clearfix">';
   if (campuswiki_events_show_rsvp_link($node)) {
     $output .= '<div class="rsvp-link">';
     $output .= is_array($link) ? drupal_render($link) : $link;
