@@ -68,6 +68,7 @@ function campuswiki_basic_block_view($delta = '') {
         '#links' => $features_menu,
         '#attributes' => array(
           'class' => array('main-menu', 'links', 'inline', 'clearfix'),
+          'id' => 'main-menu',
         ),
       );
       break;

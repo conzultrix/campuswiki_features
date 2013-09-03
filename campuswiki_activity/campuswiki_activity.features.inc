@@ -45,9 +45,9 @@ function campuswiki_activity_default_message_type() {
           "safe_value" : "\\u003Cp\\u003E[message:user:picture]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E is attending \\u003Ca href=\\u0022[message:field-target-node:field-rsvp-event:url]\\u0022\\u003E[message:field-target-node:field-rsvp-event]\\u003C\\/a\\u003E",
+          "value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E is attending \\u003Ca href=\\u0022[message:field-target-node:field-rsvp-event:url]\\u0022\\u003E[message:field-target-node:field-rsvp-event]\\u003C\\/a\\u003E\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E is attending \\u003Ca href=\\u0022[message:field-target-node:field-rsvp-event:url]\\u0022\\u003E[message:field-target-node:field-rsvp-event]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E is attending \\u003Ca href=\\u0022[message:field-target-node:field-rsvp-event:url]\\u0022\\u003E[message:field-target-node:field-rsvp-event]\\u003C\\/a\\u003E\\u003C\\/div\\u003E\\n"
         }
       ]
     },
@@ -72,9 +72,9 @@ function campuswiki_activity_default_message_type() {
           "safe_value" : "\\u003Cp\\u003E[message:user:picture]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E created [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E",
+          "value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E created [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E created [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E created [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E\\u003C\\/div\\u003E\\n"
         }
       ]
     },
@@ -99,14 +99,14 @@ function campuswiki_activity_default_message_type() {
           "safe_value" : "\\u003Cp\\u003E[message:user:picture]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E posted Photo: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E in \\u003Ca href=\\u0022[message:field-target-node:field-photo-gallery:url]\\u0022\\u003E[message:field-target-node:field-photo-gallery]\\u003C\\/a\\u003E",
+          "value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E posted Photo: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E in \\u003Ca href=\\u0022[message:field-target-node:field-photo-gallery:url]\\u0022\\u003E[message:field-target-node:field-photo-gallery]\\u003C\\/a\\u003E\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E posted Photo: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E in \\u003Ca href=\\u0022[message:field-target-node:field-photo-gallery:url]\\u0022\\u003E[message:field-target-node:field-photo-gallery]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E posted Photo: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E in \\u003Ca href=\\u0022[message:field-target-node:field-photo-gallery:url]\\u0022\\u003E[message:field-target-node:field-photo-gallery]\\u003C\\/a\\u003E\\u003C\\/div\\u003E\\n"
         },
         {
-          "value" : "[message:field-target-node:field_photo_photo]",
+          "value" : "\\u003Cdiv class=\\u0022activity-photo\\u0022\\u003E[message:field-target-node:field_photo_photo]\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E[message:field-target-node:field_photo_photo]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-photo\\u0022\\u003E[message:field-target-node:field_photo_photo]\\u003C\\/div\\u003E\\n"
         }
       ]
     },
@@ -131,9 +131,9 @@ function campuswiki_activity_default_message_type() {
           "safe_value" : "\\u003Cp\\u003E[message:user:picture]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E joined \\u003Ca href=\\u0022[message:field-node-target-group:0:url]\\u0022\\u003E[message:field-node-target-group:0:title]\\u003C\\/a\\u003E group.",
+          "value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E joined \\u003Ca href=\\u0022[message:field-node-target-group:0:url]\\u0022\\u003E[message:field-node-target-group:0:title]\\u003C\\/a\\u003E group.\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:user:url]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E joined \\u003Ca href=\\u0022[message:field-node-target-group:0:url]\\u0022\\u003E[message:field-node-target-group:0:title]\\u003C\\/a\\u003E group.\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E joined \\u003Ca href=\\u0022[message:field-node-target-group:0:url]\\u0022\\u003E[message:field-node-target-group:0:title]\\u003C\\/a\\u003E group.\\u003C\\/div\\u003E\\n"
         }
       ]
     },
@@ -158,9 +158,9 @@ function campuswiki_activity_default_message_type() {
           "safe_value" : "\\u003Cp\\u003E[message:user:picture]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E has an updated profile",
+          "value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E has an updated profile\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E has an updated profile\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E has an updated profile\\u003C\\/div\\u003E\\n"
         }
       ]
     },
@@ -185,9 +185,9 @@ function campuswiki_activity_default_message_type() {
           "safe_value" : "\\u003Cp\\u003E[message:user:picture]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E updated [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E",
+          "value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E updated [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E\\u003C\\/div\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E updated [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cdiv class=\\u0022activity-message\\u0022\\u003E\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E updated [message:field-target-node:content-type]: \\u003Ca href=\\u0022[message:field-target-node:url]\\u0022\\u003E[message:field-target-node:title]\\u003C\\/a\\u003E\\u003C\\/div\\u003E\\n"
         }
       ]
     },

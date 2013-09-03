@@ -308,7 +308,7 @@ function campuswiki_profile_user_groups_count() {
  * Returns the user message block for the top of the page.
  *
  */
-function campuswiki_basic_user_message_block() {
+function campuswiki_profile_user_message_block() {
   return array(
     '#prefix' => '<div class="l-user-message">',
     '#suffix' => '</div>',

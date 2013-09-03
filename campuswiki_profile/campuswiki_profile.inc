@@ -76,8 +76,8 @@ function _campuswiki_profile_user_message_picture() {
       '#width' => '32',
       '#height' => '32',
       '#alt' => 'default-user-image',
-      '#prefix' => '<div class="user-image">',
-      '#suffix' => '</div>',
+      //'#prefix' => '<div class="user-image">',
+      //'#suffix' => '</div>',
     );
   }
 }

@@ -361,6 +361,7 @@ function campuswiki_wiki_views_default_views() {
   $handler->display->display_options['fields']['last_updated']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['last_updated']['field'] = 'last_updated';
   $handler->display->display_options['fields']['last_updated']['label'] = '';
+  $handler->display->display_options['fields']['last_updated']['element_class'] = 'timestamp';
   $handler->display->display_options['fields']['last_updated']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['last_updated']['date_format'] = 'time ago';
   /* Sort criterion: Content: Updated/commented date */

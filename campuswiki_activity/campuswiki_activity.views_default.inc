@@ -52,6 +52,7 @@ function campuswiki_activity_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['table'] = 'message';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
+  $handler->display->display_options['fields']['timestamp']['element_class'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'raw time ago';
   /* Sort criterion: Message: Timestamp */

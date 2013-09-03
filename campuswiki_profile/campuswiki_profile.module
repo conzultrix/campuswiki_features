@@ -80,7 +80,7 @@ function campuswiki_profile_block_view($delta = '') {
     
     case 'cw_user_message':
       $block['subject'] = t('User Message');
-      $block['content'] = campuswiki_basic_user_message_block(); 
+      $block['content'] = campuswiki_profile_user_message_block(); 
   }
   return $block;
 }
