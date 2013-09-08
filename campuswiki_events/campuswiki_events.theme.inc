@@ -15,11 +15,16 @@ function campuswiki_events_preprocess_node(&$var) {
       '#link' => $var['rsvp_link'],
     );
     
-    $var['rsvp_button'] = array(
-      '#theme' => 'campuswiki_events_rsvp_button',
-      '#nid' => $node->nid,
-      '#link' => $var['rsvp_link'],
-    ); 
+    if (campuswiki_events_show_rsvp_link($node)) {
+      $var['rsvp_button'] = array(
+        '#theme' => 'campuswiki_events_rsvp_button',
+        '#nid' => $node->nid,
+        '#link' => $var['rsvp_link'],
+      );
+    }
+    else {
+      $var['rsvp_button'] = NULL;
+    }
     
     if (!campuswiki_events_allow_rsvp($node)) {
       $var['attendee_count'] = NULL;
@@ -55,8 +60,9 @@ function campuswiki_events_preprocess_node(&$var) {
     // get information about the venue of an event
     if (!empty($node->field_venue)) {
       $venue = $node->field_venue[LANGUAGE_NONE][0]['value'];
-      $var['venue_formatted_text'] = '<span class="event-venue-formatted">' . t('at @venue', array('@venue' => $venue));
+      $var['venue_formatted_text'] = '<span class="event-venue-formatted">' . t('at @venue', array('@venue' => $venue)) . '</span>';
     }
+    
     
     // get event image, use the event image if present
     // if not use the group image if present,
@@ -83,6 +89,18 @@ function campuswiki_events_preprocess_node(&$var) {
         '#suffix' => '</div>',
       );
     }
+    
+    // format event information
+    $event_image_link = drupal_render($var['cw_event_image']);
+    $event_date = '<div class="event-date">' . t('@date', array('@date' => date_format($date, 'D, d M Y'))) . '</div>';
+    $var['event_formatted_info'] = '<div class="event-formatted-info">' .
+      $event_image_link .
+      '<div class="overlay">' .
+        '<h3>' . l($node->title, 'node/' . $node->nid) . '</h3>' .
+        $var['venue_formatted_text'] .
+        $event_date .
+      '</div>' .
+    '</div>';
   }
 }
 

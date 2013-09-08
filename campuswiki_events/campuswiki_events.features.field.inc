@@ -57,13 +57,13 @@ function campuswiki_events_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'showcase' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '19',
         ),
         'square' => array(
           'label' => 'hidden',
@@ -167,7 +167,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '22',
         ),
         'square' => array(
           'label' => 'inline',
@@ -255,7 +255,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '20',
         ),
         'square' => array(
           'label' => 'above',
@@ -346,7 +346,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '21',
         ),
         'square' => array(
           'label' => 'inline',
@@ -447,15 +447,8 @@ function campuswiki_events_field_default_fields() {
         ),
         'showcase' => array(
           'label' => 'hidden',
-          'module' => 'date',
-          'settings' => array(
-            'format_type' => 'day_w_breaks',
-            'fromto' => 'value',
-            'multiple_from' => '',
-            'multiple_number' => '',
-            'multiple_to' => '',
-          ),
-          'type' => 'date_default',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'square' => array(
@@ -564,13 +557,13 @@ function campuswiki_events_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '10',
+          'weight' => '0',
         ),
         'showcase' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '25',
+          'weight' => '26',
         ),
         'square' => array(
           'label' => 'above',
@@ -650,13 +643,13 @@ function campuswiki_events_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '9',
         ),
         'showcase' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '24',
+          'weight' => '25',
         ),
         'square' => array(
           'label' => 'above',
@@ -744,13 +737,13 @@ function campuswiki_events_field_default_fields() {
             ),
           ),
           'type' => 'fivestar_formatter_default',
-          'weight' => '8',
+          'weight' => '7',
         ),
         'showcase' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '23',
         ),
         'square' => array(
           'label' => 'above',
@@ -842,7 +835,7 @@ function campuswiki_events_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '18',
         ),
         'square' => array(
           'label' => 'inline',
@@ -944,13 +937,13 @@ function campuswiki_events_field_default_fields() {
           'module' => 'og_ui',
           'settings' => array(),
           'type' => 'og_list_default',
-          'weight' => '9',
+          'weight' => '8',
         ),
         'showcase' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => '24',
         ),
         'square' => array(
           'label' => 'above',

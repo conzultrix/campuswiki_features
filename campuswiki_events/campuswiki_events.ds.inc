@@ -53,39 +53,24 @@ function campuswiki_events_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'showcase';
   $ds_fieldsetting->settings = array(
     'attendee_count' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'attendee_images' => array(
       'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'cw_event_image' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'rsvp_button' => array(
+    'attendee_images' => array(
       'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'venue_formatted_text' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'title' => array(
+    'event_formatted_info' => array(
       'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h3',
-        'class' => '',
-      ),
+    ),
+    'rsvp_button' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
     ),
   );
   $export['node|event|showcase'] = $ds_fieldsetting;
@@ -342,20 +327,14 @@ function campuswiki_events_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'cw_event_image',
-        1 => 'field_event_date',
-        2 => 'title',
-        3 => 'venue_formatted_text',
-        4 => 'attendee_count',
-        5 => 'attendee_images',
-        6 => 'rsvp_button',
+        0 => 'event_formatted_info',
+        1 => 'attendee_count',
+        2 => 'attendee_images',
+        3 => 'rsvp_button',
       ),
     ),
     'fields' => array(
-      'cw_event_image' => 'ds_content',
-      'field_event_date' => 'ds_content',
-      'title' => 'ds_content',
-      'venue_formatted_text' => 'ds_content',
+      'event_formatted_info' => 'ds_content',
       'attendee_count' => 'ds_content',
       'attendee_images' => 'ds_content',
       'rsvp_button' => 'ds_content',

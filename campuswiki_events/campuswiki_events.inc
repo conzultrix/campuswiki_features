@@ -96,6 +96,7 @@ function campuswiki_events_attendee_count($event) {
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $signup_type)
     ->fieldCondition($field, 'target_id', $event->nid)
+    ->fieldCondition('field_rsvp', 'value', 'Yes')
     ->count();
     
   return $query->execute();
@@ -114,6 +115,9 @@ function _campuswiki_events_attendee_ids($event, $max) {
   $query->addField('n', 'uid');
   $query->condition('field_rsvp_event_target_id', $event->nid);
   $query->leftJoin('node', 'n', 'n.nid=r.entity_id');
+  $query->leftjoin('field_data_field_rsvp', 'rp', 'r.entity_id = rp.entity_id');
+  $query->condition('rp.field_rsvp_value', 'Yes', 'LIKE');
+  $query->orderBy('n.changed', 'DESC');
   if (!empty($max)) {
     $query->range(0, $max);
   }
@@ -337,15 +341,18 @@ function _campuswiki_events_manage_rsvp_link($id) {
     '#theme' => 'links__node',
     '#links' => array(
       'rsvp_field_rsvp_event' => array(
+        'title' => 'Manage',
         'href' => 'node/' . $id . '/edit',
-        'title' => 'Manage your RSVP',
         'attributes' => array(
           'title' => 'Manage your RSVP',
         ),
       ),
     ),
-    '#attributes' => array('links', 'inline'),
+    '#attributes' => array(
+      'class' => array('links', 'inline'),
+    ),
   );
+
 }
 
 
