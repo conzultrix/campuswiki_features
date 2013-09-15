@@ -22,6 +22,7 @@ function campuswiki_tweets_views_default_views() {
 
   /* Display: Tweets */
   $handler = $view->new_display('default', 'Tweets', 'default');
+  $handler->display->display_options['css_class'] = 'l-twitter';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';

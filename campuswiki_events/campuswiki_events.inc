@@ -132,7 +132,7 @@ function _campuswiki_events_attendee_ids($event, $max) {
 /**
  * Get names or pix of meeting attendees.
  */
-function campuswiki_events_attendees($node, $type = 'picture', $max = 10) {
+function campuswiki_events_attendees($node, $type = 'picture', $max = 5) {
   $attendees = array();
   $ids = _campuswiki_events_attendee_ids($node, $max);
   foreach ($ids as $id) {
