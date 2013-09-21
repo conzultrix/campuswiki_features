@@ -46,11 +46,12 @@ function campuswiki_gallery_add_photo_link($gallery) {
         'href' => 'node/add/photo',
         'attributes' => array(
           'title' => t('Add photo to @gallery', array('@gallery' => $gallery->title)),
+          'class' => array('btn'),
         ),
       ),
     ),
     '#attributes' => array(
-      'class' => array('links', 'inline'),
+      'class' => array('links', 'inline',),
     ),
   );
 }

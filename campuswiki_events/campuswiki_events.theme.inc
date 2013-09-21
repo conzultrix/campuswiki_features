@@ -93,7 +93,7 @@ function campuswiki_events_preprocess_node(&$var) {
     // format event information
     $event_image_link = drupal_render($var['cw_event_image']);
     $event_date = '<div class="event-date">' . t('@date', array('@date' => date_format($date, 'D, d M Y'))) . '</div>';
-    $var['event_formatted_info'] = '<div class="event-formatted-info">' .
+    $var['event_formatted_info'] = '<div class="event-formatted-info overlay-wrapper">' .
       $event_image_link .
       '<div class="overlay">' .
         '<h3>' . l($node->title, 'node/' . $node->nid) . '</h3>' .

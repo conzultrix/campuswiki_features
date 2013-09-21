@@ -241,6 +241,17 @@ function campuswiki_events_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'event_formatted_info';
+  $ds_field->label = 'Event Formatted Info';
+  $ds_field->field_type = 3;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->properties = array();
+  $export['event_formatted_info'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'rsvp_badge';
   $ds_field->label = 'RSVP badge';
   $ds_field->field_type = 3;
@@ -440,6 +451,15 @@ function campuswiki_events_ds_view_modes_info() {
     'node' => 'node',
   );
   $export['alternate_teaser'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'showcase';
+  $ds_view_mode->label = 'Showcase';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['showcase'] = $ds_view_mode;
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;

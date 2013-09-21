@@ -39,7 +39,11 @@ function campuswiki_groups_block_view($delta = '') {
       $content = campuswiki_groups_info_block();
       if (!empty($content)) {
         $block['subject'] = t('Group Info');
-        $block['content'] = $content;
+        $block['content'] = array(
+          '#prefix' => '<div class="group-info-block">',
+          '#suffix' => '</div>',
+          'content' => $content,
+        );
       }
       break;
 

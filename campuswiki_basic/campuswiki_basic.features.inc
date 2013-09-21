@@ -70,6 +70,75 @@ function campuswiki_basic_flag_default_flags() {
 function campuswiki_basic_image_default_styles() {
   $styles = array();
 
+  // Exported image style: event_350.
+  $styles['event_350'] = array(
+    'name' => 'event_350',
+    'label' => 'event_350',
+    'effects' => array(
+      8 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '350',
+          'height' => '250',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported image style: gallery_150.
+  $styles['gallery_150'] = array(
+    'name' => 'gallery_150',
+    'label' => 'gallery_150',
+    'effects' => array(
+      7 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '150',
+          'height' => '150',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported image style: gallery_250.
+  $styles['gallery_250'] = array(
+    'name' => 'gallery_250',
+    'label' => 'gallery_250',
+    'effects' => array(
+      11 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '250',
+          'height' => '180',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported image style: intro.
   $styles['intro'] = array(
     'name' => 'intro',
@@ -108,7 +177,7 @@ function campuswiki_basic_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '180',
+          'width' => '250',
           'height' => '',
           'upscale' => 0,
         ),

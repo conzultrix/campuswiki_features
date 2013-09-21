@@ -35,11 +35,25 @@ function campuswiki_groups_info_block() {
   
   $group_node = node_load($gid);
   
+  //load current node being viewed
+  $current_node = menu_get_object();
+  $is_group_content = og_is_group_content_type('node', $current_node->type);
+  
+  if ($is_group_content) {
+    $output['group'] = array(
+      '#markup' => '<h3>' . $group_node->title . '</h3>',
+      '#prefix' => '<div class="group-name">',
+      '#suffix' => '</div>',
+    );
+  }
+  
   if (!empty($group_node->field_group_photo)) {
     $output['image'] = array(
       '#theme' => 'image_formatter',
       '#item' => $group_node->field_group_photo['und'][0],
       '#image_style' => 'sidebar',
+      '#prefix' => '<div class="group-image info-image">',
+      '#suffix' => '</div>',
     );
   }
   
@@ -77,7 +91,7 @@ function campuswiki_groups_info_block() {
   
   // the home link
   $label = t('Wall');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -113,7 +127,7 @@ function campuswiki_groups_info_block() {
   
   // wiki
   $label = t('Wiki');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -167,7 +181,7 @@ function campuswiki_groups_info_block() {
   
   // events calendar
   $label = t('Calendar');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -186,7 +200,7 @@ function campuswiki_groups_info_block() {
    
   // Gallery
   $label = t('Gallery');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -206,7 +220,7 @@ function campuswiki_groups_info_block() {
   $output['menu'] = array(
     '#theme' => 'item_list',
     '#items' => $items,
-    '#prefix' => '<div id="group-info-block-menu">',
+    '#prefix' => '<div class="menu info-menu group-info-block-menu">',
     '#suffix' => '</div>',
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );

@@ -10,15 +10,6 @@
 function campuswiki_basic_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access administration pages.
-  $permissions['access administration pages'] = array(
-    'name' => 'access administration pages',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
   // Exported permission: access comments.
   $permissions['access comments'] = array(
     'name' => 'access comments',
@@ -48,33 +39,6 @@ function campuswiki_basic_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: access rules debug.
-  $permissions['access rules debug'] = array(
-    'name' => 'access rules debug',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'rules',
-  );
-
-  // Exported permission: access site in maintenance mode.
-  $permissions['access site in maintenance mode'] = array(
-    'name' => 'access site in maintenance mode',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: access site reports.
-  $permissions['access site reports'] = array(
-    'name' => 'access site reports',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
   );
 
   // Exported permission: access site-wide contact form.
@@ -110,15 +74,6 @@ function campuswiki_basic_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: administer actions.
-  $permissions['administer actions'] = array(
-    'name' => 'administer actions',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
   // Exported permission: administer comments.
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
@@ -137,33 +92,6 @@ function campuswiki_basic_user_default_permissions() {
     'module' => 'contact',
   );
 
-  // Exported permission: administer content types.
-  $permissions['administer content types'] = array(
-    'name' => 'administer content types',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: administer features.
-  $permissions['administer features'] = array(
-    'name' => 'administer features',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'features',
-  );
-
-  // Exported permission: administer filters.
-  $permissions['administer filters'] = array(
-    'name' => 'administer filters',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'filter',
-  );
-
   // Exported permission: administer flags.
   $permissions['administer flags'] = array(
     'name' => 'administer flags',
@@ -171,33 +99,6 @@ function campuswiki_basic_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'flag',
-  );
-
-  // Exported permission: administer image styles.
-  $permissions['administer image styles'] = array(
-    'name' => 'administer image styles',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'image',
-  );
-
-  // Exported permission: administer menu.
-  $permissions['administer menu'] = array(
-    'name' => 'administer menu',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'menu',
-  );
-
-  // Exported permission: administer modules.
-  $permissions['administer modules'] = array(
-    'name' => 'administer modules',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
   );
 
   // Exported permission: administer nodes.
@@ -209,33 +110,6 @@ function campuswiki_basic_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: administer pathauto.
-  $permissions['administer pathauto'] = array(
-    'name' => 'administer pathauto',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'pathauto',
-  );
-
-  // Exported permission: administer permissions.
-  $permissions['administer permissions'] = array(
-    'name' => 'administer permissions',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'user',
-  );
-
-  // Exported permission: administer rules.
-  $permissions['administer rules'] = array(
-    'name' => 'administer rules',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'rules',
-  );
-
   // Exported permission: administer search.
   $permissions['administer search'] = array(
     'name' => 'administer search',
@@ -245,51 +119,6 @@ function campuswiki_basic_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: administer site configuration.
-  $permissions['administer site configuration'] = array(
-    'name' => 'administer site configuration',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: administer software updates.
-  $permissions['administer software updates'] = array(
-    'name' => 'administer software updates',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: administer taxonomy.
-  $permissions['administer taxonomy'] = array(
-    'name' => 'administer taxonomy',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: administer themes.
-  $permissions['administer themes'] = array(
-    'name' => 'administer themes',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: administer url aliases.
-  $permissions['administer url aliases'] = array(
-    'name' => 'administer url aliases',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'path',
-  );
-
   // Exported permission: administer users.
   $permissions['administer users'] = array(
     'name' => 'administer users',
@@ -297,42 +126,6 @@ function campuswiki_basic_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: administer views.
-  $permissions['administer views'] = array(
-    'name' => 'administer views',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'views',
-  );
-
-  // Exported permission: block IP addresses.
-  $permissions['block IP addresses'] = array(
-    'name' => 'block IP addresses',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
-  );
-
-  // Exported permission: bypass node access.
-  $permissions['bypass node access'] = array(
-    'name' => 'bypass node access',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: bypass rules access.
-  $permissions['bypass rules access'] = array(
-    'name' => 'bypass rules access',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'rules',
   );
 
   // Exported permission: cancel account.
@@ -347,15 +140,6 @@ function campuswiki_basic_user_default_permissions() {
     'name' => 'change own username',
     'roles' => array(),
     'module' => 'user',
-  );
-
-  // Exported permission: create url aliases.
-  $permissions['create url aliases'] = array(
-    'name' => 'create url aliases',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'path',
   );
 
   // Exported permission: delete revisions.
@@ -375,25 +159,6 @@ function campuswiki_basic_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: manage features.
-  $permissions['manage features'] = array(
-    'name' => 'manage features',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'manager',
-    ),
-    'module' => 'features',
-  );
-
-  // Exported permission: notify of path changes.
-  $permissions['notify of path changes'] = array(
-    'name' => 'notify of path changes',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'pathauto',
   );
 
   // Exported permission: post comments.
@@ -435,16 +200,6 @@ function campuswiki_basic_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: skip comment approval.
-  $permissions['skip comment approval'] = array(
-    'name' => 'skip comment approval',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
-    ),
-    'module' => 'comment',
   );
 
   // Exported permission: use advanced search.
@@ -497,15 +252,6 @@ function campuswiki_basic_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: view the administration theme.
-  $permissions['view the administration theme'] = array(
-    'name' => 'view the administration theme',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'system',
   );
 
   return $permissions;

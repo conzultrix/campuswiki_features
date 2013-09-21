@@ -34,15 +34,11 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_photo_gallery',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['columns'] = '3';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['class'] = 'l-grid';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'photo-gallery';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'user_gallery';
   /* Relationship: Entity Reference: Referencing entity */
@@ -134,8 +130,8 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '3';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['class'] = 'l-grid';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = FALSE;
   /* No results behavior: Global: Text area */
@@ -269,7 +265,6 @@ function campuswiki_gallery_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Photo gallery';
-  $handler->display->display_options['css_class'] = 'gallery-photo-grid';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -281,9 +276,12 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '6';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '3';
-  $handler->display->display_options['style_options']['summary'] = 'Photos in this gallery';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'overlay-wrapper';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['class'] = 'l-grid';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'photo-gallery';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -297,14 +295,16 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_photo_photo']['field'] = 'field_photo_photo';
   $handler->display->display_options['fields']['field_photo_photo']['label'] = '';
   $handler->display->display_options['fields']['field_photo_photo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_photo_photo']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_photo_photo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_photo_photo']['type'] = 'colorbox';
   $handler->display->display_options['fields']['field_photo_photo']['settings'] = array(
-    'colorbox_node_style' => 'medium',
+    'colorbox_node_style' => 'gallery_250',
     'colorbox_image_style' => '',
     'colorbox_gallery' => 'field_page',
     'colorbox_gallery_custom' => '',
     'colorbox_caption' => 'auto',
+    'colorbox_caption_custom' => '',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -329,8 +329,8 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['ui_name'] = 'Photo info field';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="campuswiki-overlay photo-gallery-info-overlay">
-<h2>[title]</h2>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="overlay photo-gallery-info-overlay">
+<h3>[title]</h3>
 [created]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = '0';
@@ -418,7 +418,7 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_photo_photo']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_photo_photo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_photo_photo']['settings'] = array(
-    'image_style' => 'medium',
+    'image_style' => 'gallery_250',
     'image_link' => '',
   );
   $handler->display->display_options['entity_type'] = 'node';
@@ -471,7 +471,7 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['fields']['field_photo_photo']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_photo_photo']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_photo_photo']['settings'] = array(
-    'image_style' => 'medium',
+    'image_style' => 'gallery_250',
     'image_link' => '',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -508,9 +508,11 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '2';
-  $handler->display->display_options['style_options']['summary'] = 'Photos in this gallery';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['class'] = 'l-grid';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'photo-gallery-block';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';

@@ -19,7 +19,11 @@ function campuswiki_groups_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'album' => 'album',
+        'event' => 'event',
         'group' => 'group',
+        'photo' => 'photo',
+        'wiki' => 'wiki',
       ),
       'options' => array(
         'node_form' => '0',

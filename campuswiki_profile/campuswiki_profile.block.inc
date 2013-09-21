@@ -19,6 +19,8 @@ function campuswiki_profile_user_info_block() {
       '#theme' => 'image_style',
       '#path' => $user->picture->uri,
       '#style_name' => 'sidebar',
+      '#prefix' => '<div class="info-image">',
+      '#suffix' => '</div>',
     );
   }
   
@@ -29,7 +31,7 @@ function campuswiki_profile_user_info_block() {
   
   // the home link
   $label = t('Wall');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -47,7 +49,7 @@ function campuswiki_profile_user_info_block() {
   
   // wiki
   $label = t('Wiki');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -82,7 +84,7 @@ function campuswiki_profile_user_info_block() {
   
   // events calendar
   $label = t('Calendar');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -100,7 +102,7 @@ function campuswiki_profile_user_info_block() {
   
   // Gallery
   $label = t('Gallery');
-  $title = '<span class="label">' . $label . '</span><span class="icon"></span>';
+  $title = '<span class="label">' . $label . '</span><span class="icon-16"></span>';
   $items[] = array(
     'data' => array(
       '#type' => 'link',
@@ -120,7 +122,7 @@ function campuswiki_profile_user_info_block() {
   $output['menu'] = array(
     '#theme' => 'item_list',
     '#items' => $items,
-    '#prefix' => '<div id="user-info-block-menu">',
+    '#prefix' => '<div class="info-menu user-info-block-menu">',
     '#suffix' => '</div>',
     '#pre_render' => array('campuswiki_basic_item_list_child_render'),
   );
