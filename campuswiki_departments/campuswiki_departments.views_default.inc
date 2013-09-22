@@ -109,20 +109,14 @@ function campuswiki_departments_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Content pane: Faculty departments', 'panel_pane_1');
   $handler->display->display_options['display_description'] = 'Listing of departments within a faculty section';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'name',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['columns'] = '3';
-  $handler->display->display_options['style_options']['summary'] = 'Listing of Departments grouped by Faculty';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['class'] = 'l-grid';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'photo-gallery';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'term_teaser';
+  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Taxonomy term: Name */
