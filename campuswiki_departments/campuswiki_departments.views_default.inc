@@ -31,7 +31,7 @@ function campuswiki_departments_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'name',
@@ -39,8 +39,8 @@ function campuswiki_departments_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['columns'] = '3';
-  $handler->display->display_options['style_options']['summary'] = 'Listing of Departments grouped by Faculty';
+  $handler->display->display_options['style_options']['class'] = 'l-grid';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'photo-gallery';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Taxonomy term: Parent term */
   $handler->display->display_options['relationships']['parent']['id'] = 'parent';
@@ -67,7 +67,7 @@ function campuswiki_departments_views_default_views() {
   $handler->display->display_options['fields']['field_audience_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audience_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_audience_image']['settings'] = array(
-    'image_style' => 'medium',
+    'image_style' => 'gallery_250',
     'image_link' => 'content',
   );
   /* Field: Taxonomy term: Name */
