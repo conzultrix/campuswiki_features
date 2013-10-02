@@ -17,7 +17,6 @@ dependencies[] = menu
 dependencies[] = options
 dependencies[] = path
 dependencies[] = pathauto
-dependencies[] = rules
 dependencies[] = search
 dependencies[] = strongarm
 dependencies[] = taxonomy
