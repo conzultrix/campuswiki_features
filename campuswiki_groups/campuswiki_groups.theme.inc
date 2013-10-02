@@ -41,7 +41,7 @@ function campuswiki_groups_preprocess_node(&$var) {
       $var['next_event_date'] = date_format($date, 'M d, Y');
     }
     else {
-      $var['next_event_view'] = '<div class="no-event-text">' . t('There are no upcoming events for this group.') . '</div>';
+      $var['next_event_view'] = '<div class="no-content-text">' . t('There are no upcoming events for this group.') . '</div>';
     }
     
     // create a square view of the recently modified
@@ -58,7 +58,7 @@ function campuswiki_groups_preprocess_node(&$var) {
       
     }
     else {
-      $var['recent_wiki_view'] = '<div class="no-wiki-text">' . t('There are no Wiki pages for this group yet.') . '</div>';
+      $var['recent_wiki_view'] = '<div class="no-content-text">' . t('There are no Wiki pages for this group yet.') . '</div>';
     }
     
     
@@ -66,8 +66,11 @@ function campuswiki_groups_preprocess_node(&$var) {
     // Showcase group content for teaser
     // if group is an academic group show wiki else show event
     $group_type = $var['group_node']->field_group_type[LANGUAGE_NONE][0]['value']; 
-    $var['group_content_view'] = ($group_type == '1') ? $var['recent_wiki_view'] : $var['next_event_view'];
-    
+    $var['group_content_view'] = array(
+      '#prefix' => '<div class="group-square-content">',
+      '#suffix' => '</div>',
+      '#markup' => ($group_type == '1') ? $var['recent_wiki_view'] : $var['next_event_view'],
+    );
   
   }
 }

@@ -36,6 +36,7 @@ features[image][] = gallery_150
 features[image][] = gallery_250
 features[image][] = intro
 features[image][] = sidebar
+features[image][] = square_220
 features[image][] = user_avatar
 features[image][] = user_avatar_32
 features[taxonomy][] = tags

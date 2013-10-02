@@ -18,12 +18,12 @@ function campuswiki_groups_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'small_teaser';
   $ds_fieldsetting->settings = array(
     'group_content_view' => array(
-      'weight' => '0',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -95,27 +95,23 @@ function campuswiki_groups_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'group';
   $ds_layout->view_mode = 'small_teaser';
-  $ds_layout->layout = 'ds_3col';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
     'regions' => array(
-      'middle' => array(
-        0 => 'title',
-        1 => 'body',
-      ),
-      'right' => array(
-        0 => 'group_content_view',
-      ),
-      'left' => array(
+      'ds_content' => array(
         0 => 'field_group_photo',
+        1 => 'title',
+        2 => 'body',
+        3 => 'group_content_view',
       ),
     ),
     'fields' => array(
-      'title' => 'middle',
-      'group_content_view' => 'right',
-      'field_group_photo' => 'left',
-      'body' => 'middle',
+      'field_group_photo' => 'ds_content',
+      'title' => 'ds_content',
+      'body' => 'ds_content',
+      'group_content_view' => 'ds_content',
     ),
     'classes' => array(),
   );

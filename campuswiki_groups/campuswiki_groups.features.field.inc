@@ -56,7 +56,7 @@ function campuswiki_groups_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(
-            'trim_length' => 600,
+            'trim_length' => '250',
           ),
           'type' => 'text_summary_or_trimmed',
           'weight' => '2',
@@ -148,7 +148,7 @@ function campuswiki_groups_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -226,7 +226,7 @@ function campuswiki_groups_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => 'content',
-            'image_style' => 'sidebar',
+            'image_style' => 'square_220',
           ),
           'type' => 'image',
           'weight' => '0',
@@ -317,7 +317,7 @@ function campuswiki_groups_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -394,7 +394,7 @@ function campuswiki_groups_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -480,7 +480,7 @@ function campuswiki_groups_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
