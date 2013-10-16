@@ -132,6 +132,7 @@ function campuswiki_gallery_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['class'] = 'l-grid';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'photo-gallery-list';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = FALSE;
   /* No results behavior: Global: Text area */
