@@ -101,6 +101,12 @@ function campuswiki_events_preprocess_node(&$var) {
         $event_date .
       '</div>' .
     '</div>';
+    
+    // create div tags to group fields for ds
+    $var['event_field_group_left'] = '<div class="event-field-group-left">';
+    $var['event_field_group_left_close'] = '</div>';
+    $var['event_field_group_right'] = '<div class="event-field-group-right">';
+    $var['div_field_group_right_close'] = '</div>';
   }
 }
 
