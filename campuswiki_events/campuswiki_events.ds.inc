@@ -18,7 +18,7 @@ function campuswiki_events_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'alternate_teaser';
   $ds_fieldsetting->settings = array(
     'attendee_count' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -28,7 +28,7 @@ function campuswiki_events_ds_field_settings_info() {
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -133,22 +133,42 @@ function campuswiki_events_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'attendee_count' => array(
-      'weight' => '8',
+      'weight' => '11',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'attendee_images' => array(
-      'weight' => '3',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'comment_count' => array(
-      'weight' => '9',
+      'weight' => '12',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'event_field_group_left' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'event_field_group_left_close' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'event_field_group_right' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'event_field_group_right_close' => array(
+      'weight' => '13',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'rsvp_badge' => array(
-      'weight' => '7',
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -163,14 +183,9 @@ function campuswiki_events_ds_field_settings_info() {
       ),
     ),
     'node_link' => array(
-      'weight' => '5',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
-      'formatter_settings' => array(
-        'link text' => 'Read more',
-        'wrapper' => '',
-        'class' => '',
-      ),
     ),
   );
   $export['node|event|teaser'] = $ds_fieldsetting;
@@ -304,9 +319,9 @@ function campuswiki_events_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'title',
-        1 => 'field_event_date',
-        2 => 'attendee_count',
+        0 => 'field_event_date',
+        1 => 'attendee_count',
+        2 => 'title',
         3 => 'attendee_images',
         4 => 'field_event_rating',
         5 => 'body',
@@ -314,9 +329,9 @@ function campuswiki_events_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
       'field_event_date' => 'ds_content',
       'attendee_count' => 'ds_content',
+      'title' => 'ds_content',
       'attendee_images' => 'ds_content',
       'field_event_rating' => 'ds_content',
       'body' => 'ds_content',
@@ -396,39 +411,43 @@ function campuswiki_events_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'event';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_2col_stacked_fluid';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'hide_empty_regions' => 1,
     'hide_sidebars' => 0,
     'regions' => array(
-      'header' => array(
+      'ds_content' => array(
         0 => 'title',
-      ),
-      'left' => array(
-        0 => 'field_venue',
-        1 => 'field_event_address',
-        2 => 'attendee_images',
-        3 => 'body',
-        4 => 'node_link',
-      ),
-      'right' => array(
-        0 => 'field_event_date',
-        1 => 'rsvp_badge',
-        2 => 'attendee_count',
-        3 => 'comment_count',
+        1 => 'event_field_group_left',
+        2 => 'field_venue',
+        3 => 'field_event_address',
+        4 => 'attendee_images',
+        5 => 'body',
+        6 => 'node_link',
+        7 => 'event_field_group_left_close',
+        8 => 'event_field_group_right',
+        9 => 'field_event_date',
+        10 => 'rsvp_badge',
+        11 => 'attendee_count',
+        12 => 'comment_count',
+        13 => 'event_field_group_right_close',
       ),
     ),
     'fields' => array(
-      'title' => 'header',
-      'field_venue' => 'left',
-      'field_event_address' => 'left',
-      'attendee_images' => 'left',
-      'body' => 'left',
-      'node_link' => 'left',
-      'field_event_date' => 'right',
-      'rsvp_badge' => 'right',
-      'attendee_count' => 'right',
-      'comment_count' => 'right',
+      'title' => 'ds_content',
+      'event_field_group_left' => 'ds_content',
+      'field_venue' => 'ds_content',
+      'field_event_address' => 'ds_content',
+      'attendee_images' => 'ds_content',
+      'body' => 'ds_content',
+      'node_link' => 'ds_content',
+      'event_field_group_left_close' => 'ds_content',
+      'event_field_group_right' => 'ds_content',
+      'field_event_date' => 'ds_content',
+      'rsvp_badge' => 'ds_content',
+      'attendee_count' => 'ds_content',
+      'comment_count' => 'ds_content',
+      'event_field_group_right_close' => 'ds_content',
     ),
     'classes' => array(),
   );
